@@ -1,0 +1,13 @@
+{
+  "name": "bristol_local_business_directory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "express": "latest",
+    "flux": "^2.1.1",
+    "flux-react-dispatcher": "^1.2.5",
+    "react": "^0.14.6"
+  }
+}

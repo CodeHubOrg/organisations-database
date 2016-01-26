@@ -1,2 +1,1 @@
-# organisations-database
-CodeHub Organisations Database Project
+#CodeHub Organisations Database project
