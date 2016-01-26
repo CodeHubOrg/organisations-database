@@ -2,11 +2,11 @@
 
 class Repository {
     constructor () {
-        Repository.localBusinessRepository = new (require("./LocalBusinessRepository.js"))();
+        Repository.organisationRepository = new (require("./OrganisationRepository.js"))();
     }
 
     get organisationRepository() {
-        return Repository.localBusinessRepository;
+        return Repository.organisationRepository;
     }
 }
 

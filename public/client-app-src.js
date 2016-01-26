@@ -5,7 +5,7 @@ var Dispatcher = new ReactDispatcher();
 
 Dispatcher.dispatch({
     eventName: 'appStarted',
-    startTime: Date.now() // example data
+    startTime: Date.now()
 });
 
 
