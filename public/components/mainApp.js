@@ -1,6 +1,6 @@
 "use strict";
-//The individual rows in the organisations table
 
+//The individual rows in the organisations table
 var OrganisationListRow = React.createClass({
      rowClicked: function(event) {
          if (!this.props.selected) {
@@ -99,6 +99,7 @@ var MainApp = React.createClass({
     }
 });
 
+//React Initialisation
 ReactDOM.render(
     <MainApp />,
     document.getElementById('app-container')
