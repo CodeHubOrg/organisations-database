@@ -14,21 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-    <!--Libraries-->
-    <script src="/lib/react.js"></script>
-    <script src="/lib/react-dom.js"></script>
-    <script src="/lib/browser.min.js"></script>
-    <script src="/lib/microevents.js"></script>
-
-    <!--Flux-->
-    <script src="/dispatcher.js"></script>
-    <script src="/actionCreators/organisationActionCreator.js"></script>
-    <script type="text/javascript" src="/stores/organisationStore.js"></script>
-
-    <!--React components-->
-    <script type="text/babel" src="/components/mainApp.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>  
 
     <!--Styles-->
     <link rel="stylesheet" href="/css/main.css" />
@@ -36,5 +22,8 @@
 <body>
     <div id="app-container" class="container">
     </div>
+
+     <!--React components - this script has to come after the container to work -->
+    <script src="/components/mainApp.js"></script>
 </body>
 </html>

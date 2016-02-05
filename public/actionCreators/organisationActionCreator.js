@@ -1,16 +1,20 @@
 "use strict";
 
+var Dispatcher = require('../dispatcher');
+
 window.OrganisationActionCreator = {
     selectOrganisation : function (organisationId){
-        window.Dispatcher.dispatch({
+        Dispatcher.dispatch({
             eventName: 'organisationSelected',
             organisationId: organisationId
         });
     },
     deselectOrganisation : function(organisationId){
-        window.Dispatcher.dispatch({
+        Dispatcher.dispatch({
             eventName: 'organisationDeselected',
             organisationId: organisationId
         });
     }
 }
+
+module.exports = OrganisationActionCreator;
