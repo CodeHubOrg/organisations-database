@@ -42,26 +42,26 @@ const common = {
 // Default configuration
 if(TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
-    devtool: 'eval-source-map',
-    devServer: {
-      contentBase: PATHS.build,
+    // devtool: 'eval-source-map',
+    // devServer: {
+    //   contentBase: PATHS.build,
 
-      historyApiFallback: true,
-      hot: true,
-      inline: true,
-      progress: true,
+    //   historyApiFallback: true,
+    //   hot: true,
+    //   inline: true,
+    //   progress: true,
 
-      // Display only errors to reduce the amount of output.
-      stats: 'errors-only',
+    //   // Display only errors to reduce the amount of output.
+    //   stats: 'errors-only',
 
-      // Parse host and port from env so this is easy to customize.
-      host: process.env.HOST,
-      port: process.env.PORT
-    },
-    plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new NpmInstallPlugin()
-    ]  
+    //   // Parse host and port from env so this is easy to customize.
+    //   host: process.env.HOST,
+    //   port: process.env.PORT
+    // },
+    // plugins: [
+    //   new webpack.HotModuleReplacementPlugin(),
+    //   new NpmInstallPlugin()
+    // ]  
   });
 }
 
