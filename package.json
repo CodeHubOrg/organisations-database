@@ -2,7 +2,7 @@
   "name": "bristol_local_business_directory",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "dependencies": {
     "express": "latest",
     "flux": "^2.1.1",

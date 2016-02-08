@@ -4,5 +4,20 @@
 
 * You'll need a recent copy of node from: https://nodejs.org/
 * Run: `npm install` to install express and other dependencies.
-* Run: `node app.js`
-* Connect to http://localhost:3000/
+
+Updates in this branch:
+
+There are now three scripts you can run: 
+* `npm run build` generates a `bundle.js` from the React and Flux files; this is saved to the `public` directory and will be loaded by the `index.html` file
+* `npm start` runs a server through express, and the app will run in the browser on http://localhost:3000
+* Alternatively you can run a webpack dev server with `npm run dev-start`; this lets you edit React components and css with automatic browser refresh (hot module replacement); visit http://localhost:8080 to see the dev site in the browser
+
+Changes compared to original app:
+Folder structure: 
+- I created a directory `app` that contains the React components and Flux files, including Dispatcher and Microevent library (previously in `public`)
+- The `public` directory now contains only the `index.html` file (moved from root), the generated `bundle.js` file and a css file
+
+There is a new index.jsx file which serves as the entry point for web pack to bundle up the various components. These are modularised now, so that dependencies can be directly required. 
+
+
+
