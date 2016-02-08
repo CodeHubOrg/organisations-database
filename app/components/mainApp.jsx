@@ -96,7 +96,7 @@ var MainApp = React.createClass({
     render : function() {
         return (
             <div>
-                <h1>Bristol local biz Directory</h1>
+                <h1>Bristol local business Directory</h1>
                 <p>Click an organisation below to select it</p>
                 <OrganisationList organisations={this.state.organisations} />
                 <OrganisationSelectionPanel selectedOrganisation={this.state.selectedOrganisation} />

@@ -1,29 +1,9 @@
-"use strict";
+const path = require('path');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
 
-let webpackDevMiddleware = require("webpack-dev-middleware");
-let webpackHotMiddleware = require("webpack-hot-middleware");
-
-let express = require('express');
-let app = express();
-let port = process.env.PORT || 3000;
-
-// app.use(webpackDevMiddleware(compiler, {
-//   hot: true,
-//   filename: 'bundle.js',
-//   publicPath: '/assets/',
-//   stats: {
-//     colors: true,
-//   },
-//   historyApiFallback: true,
-// }));
- 
-// app.use(webpackHotMiddleware(compiler, {
-//   log: console.log,
-//   path: '/__webpack_hmr',
-//   heartbeat: 10 * 1000,
-// }));
-
-app.use("/public/", express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname + '/public')));
 
 
 
