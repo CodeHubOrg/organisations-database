@@ -1,12 +1,18 @@
 "use strict";
 
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    OrganisationActionCreator = require('../actionCreators/organisationActionCreator'),
+    OrganisationStore = require('../stores/organisationStore');
+
+
 //The individual rows in the organisations table
 var OrganisationListRow = React.createClass({
-     rowClicked: function(event) {
+    rowClicked: function(event) {
          if (!this.props.selected) {
-             window.OrganisationActionCreator.selectOrganisation(this.props.id);
+             OrganisationActionCreator.selectOrganisation(this.props.id);
          } else {
-            window.OrganisationActionCreator.deselectOrganisation(this.props.id);
+             OrganisationActionCreator.deselectOrganisation(this.props.id);
          }
     },
     render: function() {
@@ -71,15 +77,15 @@ var OrganisationSelectionPanel = React.createClass({
 var MainApp = React.createClass({
     getInitialState: function(){
          return {
-            organisations: window.OrganisationStore.getAll(),
-            selectedOrganisation : window.OrganisationStore.getSelected()
+            organisations: OrganisationStore.getAll(),
+            selectedOrganisation : OrganisationStore.getSelected()
         };
     },
     componentDidMount: function() {
-        window.OrganisationStore.bind( 'change', this.changed );
+        OrganisationStore.bind( 'change', this.changed );
     },
     componentWillUnmount: function() {
-        window.OrganisationStore.unbind( 'change', this.changed );
+        OrganisationStore.unbind( 'change', this.changed );
     },
 
     changed: function(event) {
@@ -90,7 +96,7 @@ var MainApp = React.createClass({
     render : function() {
         return (
             <div>
-                <h1>Bristol local business directory</h1>
+                <h1>Bristol local business Directory</h1>
                 <p>Click an organisation below to select it</p>
                 <OrganisationList organisations={this.state.organisations} />
                 <OrganisationSelectionPanel selectedOrganisation={this.state.selectedOrganisation} />
@@ -99,8 +105,4 @@ var MainApp = React.createClass({
     }
 });
 
-//React Initialisation
-ReactDOM.render(
-    <MainApp />,
-    document.getElementById('app-container')
-);
+module.exports = MainApp;
