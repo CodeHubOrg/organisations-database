@@ -1,11 +1,12 @@
 "use strict";
 
 var ReactDispatcher = require('flux').Dispatcher;
-window.Dispatcher = new ReactDispatcher();
+var Dispatcher = new ReactDispatcher();
 
-window.Dispatcher.dispatch({
+Dispatcher.dispatch({
     eventName: 'appStarted',
     startTime: Date.now()
 });
 
+module.exports = Dispatcher;
 

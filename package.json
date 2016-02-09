@@ -2,11 +2,30 @@
   "name": "bristol_local_business_directory",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "dependencies": {
-    "browserify": "^13.0.0",
     "express": "latest",
     "flux": "^2.1.1",
-    "react": "^0.14.6"
+    "react": "^0.14.6",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.1.0",
+    "css-loader": "^0.23.1",
+    "npm-install-webpack-plugin": "^2.0.2",
+    "path": "^0.12.7",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.7.3"
+  },
+  "scripts": {
+    "build": "webpack --display-error-details",
+    "start": "node server",
+    "dev-start": "webpack-dev-server"
   }
 }
