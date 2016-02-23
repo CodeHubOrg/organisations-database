@@ -18,4 +18,8 @@ Folder structure:
 
 There is a new index.jsx file which serves as the entry point for web pack to bundle up the various components. These are modularised now, so that dependencies can be directly required. 
 
+**Contributors**
 
+Katja Durrani
+Paul Grimshaw
+Michael Gray
