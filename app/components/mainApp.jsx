@@ -8,6 +8,11 @@ var React = require('react'),
 
 //The individual rows in the organisations table
 var OrganisationListRow = React.createClass({
+    propTypes: {
+        id: React.PropTypes.number.isRequired,
+        name: React.PropTypes.string.isRequired,
+        selected: React.PropTypes.bool.isRequired
+    },
     rowClicked: function(event) {
          if (!this.props.selected) {
              OrganisationActionCreator.selectOrganisation(this.props.id);
@@ -32,6 +37,9 @@ var OrganisationListRow = React.createClass({
 
 //The whole organisations table
 var OrganisationList = React.createClass({
+    propTypes: {
+        organisations: React.PropTypes.array.isRequired
+    },
     render: function() {
         var rows = [];
 
@@ -61,6 +69,9 @@ var OrganisationList = React.createClass({
 
 //A separate panel to show which organisation is selected
 var OrganisationSelectionPanel = React.createClass({
+    propTypes: {
+        selectedOrganisation: React.PropTypes.object
+    },
     render : function() {
         var selectedOrganisationName = this.props.selectedOrganisation !== null ? this.props.selectedOrganisation.name : "None selected";
 
