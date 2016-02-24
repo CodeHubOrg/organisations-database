@@ -20,7 +20,7 @@ var OrganisationStore = {
         });
         return selectedOrganisation;
     },
-    changeSelection(organisationId){
+    changeSelection: function(organisationId){
         for (var i = 0; i < this.organisations.length; i++) {
             if (this.organisations[i].id === organisationId) {
                 this.organisations[i].selected = true;
@@ -29,10 +29,19 @@ var OrganisationStore = {
             }
         }
     },
-    deselectAll() {
+    deselectAll: function() {
         this.organisations.forEach(function(organisation){
             organisation.selected = false;
         });
+    },
+    addNew: function(organisation) {
+        this.organisations.push(organisation);
+    },
+    edit: function(organisation) {
+        this.organisations[organisation.id -1] = organisation;
+    },
+    remove: function(organisation) {
+        // @todo
     }
 };
 
