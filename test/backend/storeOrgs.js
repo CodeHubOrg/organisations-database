@@ -15,9 +15,10 @@ describe('organisations store', () => {
             expect(orgs.all()).to.eql([]);
         });
     });
+    let added;
     describe('add', () => {
         it('adds an organisation to the store', () => {
-            const added = orgs.add({ name: 'Beetroot' });
+            added = orgs.add({ name: 'Beetroot' });
             expect(added.name).to.equal('Beetroot');
             expect(added.id).to.exist;
             expect(orgs.all().length).to.equal(1);
@@ -31,6 +32,14 @@ describe('organisations store', () => {
             const o1 = orgs.all()[1];
             expect(o1.name).to.equal('Roll');
             expect(o1.id).to.exist;
+        });
+    });
+    describe('by_id', () => {
+        it('finds the correct organisation', () => {
+            const by_id = orgs.by_id(added.id);
+            expect(by_id).to.exist;
+            expect(by_id.id).to.equal(added.id);
+            expect(by_id.name).to.equal(added.name);
         });
     });
 });
