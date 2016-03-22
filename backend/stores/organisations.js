@@ -13,7 +13,10 @@ export default class Organisations {
     }
 
     add(org) {
-        return this.orgs.insert(org);
+        const added = this.orgs.insert(org);
+        added.id = added.$loki;
+        this.orgs.update(added);
+        return added;
     }
 
     update(org) {
