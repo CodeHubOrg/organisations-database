@@ -27,11 +27,11 @@ describe('loki persist wrapper', () => {
             let lp = new LokiPersist(testPath);
             var result = lp.persist( (db) => {
                 let cln = db.addCollection('tests'); // because it doesn't exist yet
-                cln.insert({ added: 'stuff'});
-                return 'bonanza';
+                let result = cln.insert({ added: 'stuff'});
+                return result;
             });
             return result.then( (data) => {
-                expect(data).to.equal('bonanza');
+                expect(data['added']).to.equal('stuff');
                 let cln = lp.db.getCollection('tests');
                 expect(cln).to.exist;
                 expect(cln.data).to.exist;
