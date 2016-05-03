@@ -61,7 +61,7 @@ describe('organisations reducer', () => {
     expect(
       organisations([],  {
           type: types.ADD_ORGANISATION,
-          name: 'Javascript 101'
+          name: 'JavaScript 101'
         })
     ).toEqual([
       {
