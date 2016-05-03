@@ -11,7 +11,7 @@ describe('organisation actions', () => {
   })
 
   it('deSelectOrganisation should create DESELECT_ORGANISATION action', () => {
-    expect(actions.selectOrganisation(1)).toEqual({
+    expect(actions.deSelectOrganisation(1)).toEqual({
       type: types.DESELECT_ORGANISATION,
       organisationId: 1
     })
@@ -33,7 +33,7 @@ describe('organisation actions', () => {
   })
 
   it('deleteOrganisation should create DELETE_ORGANISATION action', () => {
-    expect(actions.editOrganisation(1)).toEqual({
+    expect(actions.deleteOrganisation(1)).toEqual({
       type: types.DELETE_ORGANISATION,
       id: 1,
     })

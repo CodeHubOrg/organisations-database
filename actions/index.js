@@ -3,46 +3,48 @@
 // 3) addOrganisation should create ADD_ORGANISATION action
 // 4) editOrganisation should create EDIT_ORGANISATION action
 // 5) deleteOrganisation should create DELETE_ORGANISATION action
+import * as types from '../constants/ActionTypes'
 
-
-export function selectOrganisation(orgName){
+//Action creators
+export function selectOrganisation(orgNum){
   return{
-    type:SELECT_ORGANISATION,
-    payload: orgName
+    type: types.SELECT_ORGANISATION,
+    organisationId: orgNum
   }
 
 }
 
-export function deSelectOrganisation(orgName){
+export function deSelectOrganisation(orgNum){
   return{
-    type:DESELECT_ORGANISATION,
-    payload: orgName
+    type: types.DESELECT_ORGANISATION,
+    organisationId: orgNum
   }
 
 }
 
 export function addOrganisation(orgName){
   return{
-    type:ADD_ORGANISATION,
-    payload: orgName
+    type: types.ADD_ORGANISATION,
+    name: orgName
   }
 
 }
 
 
-export function editOrganisation(orgName){
+export function editOrganisation(orgNum, orgName){
   return{
-    type:EDIT_ORGANISATION,
-    payload: orgName
+    type: types.EDIT_ORGANISATION,
+    id: orgNum,
+    name: orgName
   }
 
 }
 
 
-export function deleteOrganisation(orgName){
+export function deleteOrganisation(orgNum){
   return{
-    type:DELETE_ORGANISATION,
-    payload: orgName
+    type: types.DELETE_ORGANISATION,
+    id: orgNum
   }
 
 }
