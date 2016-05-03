@@ -3,7 +3,7 @@ import organisations from '../../reducers/organisations'
 import * as types from '../../constants/ActionTypes'
 
 describe('organisations reducer', () => {
-  it('shouild handle inital state', () => {
+  it('should handle inital state', () => {
     expect(
       organisations(undefined, {})
     ).toEqual([
@@ -15,7 +15,7 @@ describe('organisations reducer', () => {
     ])
   })
 
-  it('shouild handle SELECT_ORGANISATION', () => {
+  it('should handle SELECT_ORGANISATION', () => {
     expect(
       organisations([
         {
@@ -36,7 +36,7 @@ describe('organisations reducer', () => {
     ])
   })
 
-  it('shouild handle DESELECT_ORGANISATION', () => {
+  it('should handle DESELECT_ORGANISATION', () => {
     expect(
       organisations([
         {
@@ -57,11 +57,11 @@ describe('organisations reducer', () => {
     ])
   })
 
-  it('shouild handle ADD_ORGANISATION', () => {
+  it('should handle ADD_ORGANISATION', () => {
     expect(
       organisations([],  {
           type: types.ADD_ORGANISATION,
-          name: 'CodeHub Bristol'
+          name: 'Javascript 101'
         })
     ).toEqual([
       {
@@ -130,7 +130,7 @@ describe('organisations reducer', () => {
     ])
   })
 
-  it('shouild handle EDIT_ORGANISATION', () => {
+  it('should handle EDIT_ORGANISATION', () => {
     expect(
       organisations([
         {
@@ -162,7 +162,7 @@ describe('organisations reducer', () => {
     ])
   })
 
-  it('shouild handle EDIT_ORGANISATION', () => {
+  it('should handle EDIT_ORGANISATION', () => {
     expect(
       organisations([
         {
@@ -194,7 +194,7 @@ describe('organisations reducer', () => {
     ])
   })
 
-  it('shouild handle DELETE_ORGANISATION', () => {
+  it('should handle DELETE_ORGANISATION', () => {
     expect(
       organisations([
         {
