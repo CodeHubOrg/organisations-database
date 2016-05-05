@@ -24,7 +24,8 @@ describe('organisations reducer', () => {
           id: 1
         }
       ], {
-        type: types.SELECT_ORGANISATION,
+        // type: types.SELECT_ORGANISATION,
+        type: 'SELECT_ORGANISATION',
         id: 1
       })
     ).toEqual([
@@ -45,7 +46,7 @@ describe('organisations reducer', () => {
           id: 1
         }
       ], {
-        type: types.DESELECT_ORGANISATION,
+        type: 'DESELECT_ORGANISATION',
         id: 1
       })
     ).toEqual([
@@ -56,7 +57,7 @@ describe('organisations reducer', () => {
       }
     ])
   })
-
+  
   it('shouild handle ADD_ORGANISATION', () => {
     expect(
       organisations([],  {
