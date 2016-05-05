@@ -11,7 +11,7 @@ class OrganisationListRow extends Component {
 render() {
     return(
 
-            <table><tbody>
+            <table className="table"><tbody>
                 <tr onClick={
                   (this.props.selected) ? 
                   this.props.onDeselectOrganisation : 
