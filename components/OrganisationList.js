@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import { jsdom } from 'jsdom'
+import OrganisationListRow from './OrganisationListRow'
 
 //Snippet taken from https://www.npmjs.com/package/jquery
 require("jsdom").env("", function(err, window) {
@@ -24,10 +25,11 @@ class OrganisationList extends Component {
 						<th>Id</th>
 				</thead>
 				<tbody className="tbody">
-					<tr>
-						<td>{this.props.organisations[0].name}</td>
-						<td>{this.props.organisations[0].id}</td>
-					</tr>
+					<OrganisationListRow name={this.props.organisations[0].name}/>
+					//<tr>
+					//	<td>{this.props.organisations[0].name}</td>
+					//	<td>{this.props.organisations[0].id}</td>
+					//</tr>
 				</tbody>
 			</table>
         );
