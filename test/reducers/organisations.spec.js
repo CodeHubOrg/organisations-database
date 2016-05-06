@@ -24,7 +24,8 @@ describe('organisations reducer', () => {
           id: 1
         }
       ], {
-        type: types.SELECT_ORGANISATION,
+        // type: types.SELECT_ORGANISATION,
+        type: 'SELECT_ORGANISATION',
         id: 1
       })
     ).toEqual([
@@ -45,7 +46,7 @@ describe('organisations reducer', () => {
           id: 1
         }
       ], {
-        type: types.DESELECT_ORGANISATION,
+        type: 'DESELECT_ORGANISATION',
         id: 1
       })
     ).toEqual([
@@ -56,8 +57,13 @@ describe('organisations reducer', () => {
       }
     ])
   })
+<<<<<<< HEAD
 
   it('should handle ADD_ORGANISATION', () => {
+=======
+  
+  it('shouild handle ADD_ORGANISATION', () => {
+>>>>>>> dbed05e507338d8c61094bf325afe39bdd9ba38d
     expect(
       organisations([],  {
           type: types.ADD_ORGANISATION,
