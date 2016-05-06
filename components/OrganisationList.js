@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import { jsdom } from 'jsdom'
 
-//TODO add bootstrap and jquery to package.json dependencies list?
-
 //Snippet taken from https://www.npmjs.com/package/jquery
 require("jsdom").env("", function(err, window) {
 	if (err) {
@@ -12,17 +10,15 @@ require("jsdom").env("", function(err, window) {
 	}
  
 	var $ = require("jquery")(window);
+	require('bootstrap');
 });
-
-//require('bootstrap')
 
 
 class OrganisationList extends Component {
 
-
     render() {
 		return(
-            <table className="table">
+            <table className="table table-striped table-bordered table-hover">
 				<thead className="thead">
 						<th>Name</th>
 						<th>Id</th>
