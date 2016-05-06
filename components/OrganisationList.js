@@ -16,8 +16,13 @@ require("jsdom").env("", function(err, window) {
 
 
 class OrganisationList extends Component {
-
+	
     render() {
+		var numberOfOrgs = this.props.organisations.length;
+		var rows = []
+		for(var i=0; i<numberOfOrgs; i++) {
+			rows.push(<OrganisationListRow name={this.props.organisations[i].name} id={this.props.organisations[i].id}/>);
+		};
 		return(
             <table className="table table-striped table-bordered table-hover">
 				<thead className="thead">
@@ -25,11 +30,8 @@ class OrganisationList extends Component {
 						<th>Id</th>
 				</thead>
 				<tbody className="tbody">
-					<OrganisationListRow name={this.props.organisations[0].name}/>
-					//<tr>
-					//	<td>{this.props.organisations[0].name}</td>
-					//	<td>{this.props.organisations[0].id}</td>
-					//</tr>
+					{rows}
+					//<OrganisationListRow name={this.props.organisations[0].name} id={this.props.organisations[0].id}/>
 				</tbody>
 			</table>
         );
