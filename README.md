@@ -3,23 +3,24 @@
 ## Getting started
 
 * You'll need a recent copy of node from: https://nodejs.org/
-* Run: `npm install` to install express and other dependencies.
+* Run: `npm install` to install dependencies.
 
 **Recent updates**
 
-There are now three scripts you can run: 
-* `npm run build` generates a `bundle.js` from the React and Flux files; this is saved to the `public` directory and will be loaded by the `index.html` file
-* `npm start` runs a server through express, and the app will run in the browser on http://localhost:3000
-* Alternatively you can run a webpack dev server with `npm run dev-start`; this lets you edit React components and css with automatic browser refresh; visit http://localhost:8080 to see the dev site in the browser; if you change styles in the `app/css/main.css` file or in one of the React components and save, the browser should automatically refresh with the changes in place 
+We are now refactoring the project to use Redux.
 
-Folder structure: 
-- I created a directory `app` that contains the React components and Flux files, including Dispatcher and Microevent library (previously in `public`)
-- The `public` directory now contains only the `index.html` file (moved from root), the generated `bundle.js` file and a css file
+You can run the tests with the following command: 
+* `npm test` runs the mocha tests
 
-There is a new index.jsx file which serves as the entry point for web pack to bundle up the various components. These are modularised now, so that dependencies can be directly required. 
+Todo:
+- Make the tests pass!
+
+Help:
+- The app is currently very similar to the todomvc example: https://github.com/reactjs/redux/tree/master/examples/todomvc
 
 **Contributors**
 
 Katja Durrani
 Paul Grimshaw
 Michael Gray
+Dave Thomson
