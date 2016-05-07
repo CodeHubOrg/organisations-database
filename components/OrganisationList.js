@@ -4,19 +4,19 @@ import { jsdom } from 'jsdom'
 import OrganisationListRow from './OrganisationListRow'
 
 //Snippet taken from https://www.npmjs.com/package/jquery
-require("jsdom").env("", function(err, window) {
-	if (err) {
-		console.error(err);
-		return;
-	}
- 
-	var $ = require("jquery")(window);
-	require('bootstrap');
-});
+// require("jsdom").env("", function(err, window) {
+// 	if (err) {
+// 		console.error(err);
+// 		return;
+// 	}
+//
+// 	var $ = require("jquery")(window);
+// 	require('bootstrap');
+// });
 
 
 class OrganisationList extends Component {
-	
+
     render() {
 		var numberOfOrgs = this.props.organisations.length;
 		var rows = [];
