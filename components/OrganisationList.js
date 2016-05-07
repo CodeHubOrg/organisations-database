@@ -19,9 +19,11 @@ class OrganisationList extends Component {
 	
     render() {
 		var numberOfOrgs = this.props.organisations.length;
-		var rows = []
+		var rows = [];
+		var counter = 0;
 		for(var i=0; i<numberOfOrgs; i++) {
-			rows.push(<OrganisationListRow name={this.props.organisations[i].name} id={this.props.organisations[i].id}/>);
+			rows.push(<OrganisationListRow name={this.props.organisations[i].name} id={this.props.organisations[i].id} key={counter}/>);
+			counter++;
 		};
 		return(
             <table className="table table-striped table-bordered table-hover">
