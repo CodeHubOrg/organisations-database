@@ -10,8 +10,6 @@ class OrganisationListRow extends Component {
 
 render() {
     return(
-
-            <table><tbody>
                 <tr onClick={
                   (this.props.selected) ? 
                   this.props.onDeselectOrganisation : 
@@ -21,7 +19,6 @@ render() {
                     <td className="name">{this.props.name}}</td>
                     <td className="id">{this.props.id}</td>
                 </tr>
-            </tbody></table>
         );
     }
 }
