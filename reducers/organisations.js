@@ -4,9 +4,9 @@ const initalState = [
         selected: false,
         id: 1
     }
-]
+];
 
-export default function organisations (state = initalState, action) {
+export default function organisations ( state = initalState, action ) {
     switch (action.type) {
         case 'SELECT_ORGANISATION':
             return  state.map(org => {
@@ -19,32 +19,32 @@ export default function organisations (state = initalState, action) {
         case 'DESELECT_ORGANISATION':
             return  state.map(org => {
                 if (org.id == action.id) {
-                    return Object.assign(org, {selected: false})
+                    return Object.assign({}, org, {selected: false})
                 }
+                return org
             })
-            break;
 
         case 'ADD_ORGANISATION':
             return state.concat([{
                 name: action.name,
                 selected: false,
-                id: state.length+1
+                id: state.reduce((maxId, todo) => Math.max(maxId, todo.id), 0) +1
             }])
 
         case 'EDIT_ORGANISATION':
             return state.map(org => {
                 if (org.id === action.id) {
-                    return Object.assign({}, org, { name: action.name })
+                    return Object.assign({}, org, {name: action.name})
                 }
-                return org
+                return org;
             })
 
         case 'DELETE_ORGANISATION':
             return state.filter(org => {
-                if (org.id !== action.id) return org
+                if (org.id !== action.id) return org;
             })
 
         default:
-            return state
+            return state;
     }
 }
