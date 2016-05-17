@@ -18,7 +18,7 @@ export default function organisations ( state = initalState, action ) {
 
         case 'DESELECT_ORGANISATION':
             return  state.map(org => {
-                if (org.id == action.id) {
+                if (org.id === action.id) {
                     return Object.assign({}, org, {selected: false})
                 }
                 return org
