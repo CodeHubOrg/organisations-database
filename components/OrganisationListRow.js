@@ -1,15 +1,9 @@
-import React, { Component, PropTypes } from 'react'
-import classnames from 'classnames'
-
+import React, { Component } from 'react'
 
 class OrganisationListRow extends Component {
 
-    //onSelectOrganisation: function() {
-
-    //},
-
-render() {
-    return(
+    render() {
+        return(
                 <tr onClick={
                   (this.props.selected) ? 
                   this.props.onDeselectOrganisation : 
