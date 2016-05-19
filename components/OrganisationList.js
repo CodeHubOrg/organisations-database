@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import OrganisationListRow from './OrganisationListRow'
 
-class OrganisationList extends Component {
+export class OrganisationList extends Component {
 
     render() {
 		var numberOfOrgs = this.props.organisations.length;
@@ -23,8 +24,14 @@ class OrganisationList extends Component {
 			</table>
         );
     }
-
-
 }
 
-export default OrganisationList
+const mapStateToProps = (state) => {
+  return {
+    organisations: state.organisations
+  }
+}
+
+export default connect(
+    mapStateToProps
+)(OrganisationList)
