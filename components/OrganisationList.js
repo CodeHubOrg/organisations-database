@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import OrganisationListRow from './OrganisationListRow'
 
-class OrganisationList extends Component {
+export default class OrganisationList extends Component {
 
     render() {
     	let orgs = this.props.organisations;
@@ -23,5 +23,3 @@ class OrganisationList extends Component {
         );
     }
 }
-
-export default OrganisationList
