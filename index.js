@@ -9,17 +9,17 @@ import './public/assets/css/bootstrap.css'
 import './public/assets/css/style.css'
 
 const store = createStore(organisations)
-
-console.log('START APP')
+const state = store.getState()
 
 // Log the initial state
-console.log(store.getState())
+console.log(state)
 
 function render() {
   ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <App
+        organisations={state.organisations}
+        dispatch={store.dispatch}
+    />,
     document.getElementById('root')
   )
 }

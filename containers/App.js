@@ -1,26 +1,18 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import OrganisationList from '../components/OrganisationList'
 
-export class App extends Component {
+export default class App extends Component {
 
     render() {
-        console.log(this.props.organisations)
+        const {organisations, dispatch } = this.props
+
         return (
             <div>
                 <h1>Organisations Database</h1>
-                <OrganisationList organisations={this.props.organisations} />
+                <OrganisationList
+                    organisations={organisations}
+                />
             </div>
         )
     }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    organisations: state.organisations
-  }
-}
-
-export default connect(
-    mapStateToProps
-)(App)
