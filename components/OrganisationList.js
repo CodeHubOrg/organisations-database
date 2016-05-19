@@ -4,13 +4,12 @@ import OrganisationListRow from './OrganisationListRow'
 export default class OrganisationList extends Component {
 
     render() {
-		var numberOfOrgs = this.props.organisations.length;
-		var rows = [];
-		var counter = 0;
-		for(var i=0; i<numberOfOrgs; i++) {
-			rows.push(<OrganisationListRow name={this.props.organisations[i].name} id={this.props.organisations[i].id} key={counter}/>);
-			counter++;
-		};
+    	let orgs = this.props.organisations;
+    	let numberOfOrgs = orgs.length;
+    	let rows = orgs.map(
+    		(org, index) => <OrganisationListRow name={org.name} id={org.ud} key={index} />
+    	);		
+
 		return(
             <table className="table table-striped table-bordered table-hover">
 				<thead className="thead">
