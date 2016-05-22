@@ -10,7 +10,7 @@ class OrganisationListRow extends Component {
                   this.props.onSelectOrganisation
                 }
                 >
-                    <td className="name">{this.props.name}}</td>
+                    <td className="name">{this.props.name}</td>
                     <td className="id">{this.props.id}</td>
                 </tr>
         );
