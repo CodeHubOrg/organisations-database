@@ -9,7 +9,7 @@ import * as types from '../constants/ActionTypes'
 export function selectOrganisation(orgNum){
   return{
     type: types.SELECT_ORGANISATION,
-    organisationId: orgNum
+    id: orgNum
   }
 
 }
@@ -17,7 +17,7 @@ export function selectOrganisation(orgNum){
 export function deSelectOrganisation(orgNum){
   return{
     type: types.DESELECT_ORGANISATION,
-    organisationId: orgNum
+    id: orgNum
   }
 
 }
