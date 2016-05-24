@@ -21,16 +21,16 @@ function setup(selected = null){
 }
 
 describe('Organisation Selection Panel', () => {
-    it('should display a div with class panel', () => {
+    it('should display a div with class "panel"', () => {
         const { component } = setup()
         expect(component.is('div')).toBe(true)
         expect(component.hasClass('panel')).toBe(true)
     });
-    it('should contain a div with class panel-heading', () => {
+    it('should contain a div with class "panel-heading"', () => {
         const { heading } = setup()
         expect(heading.hasClass('panel-heading')).toBe(true)
     });
-    it('should contain a h3 element within the panel-heading, with the class panel-title', () => {
+    it('should contain a h3 element within the panel-heading, with the class "panel-title"', () => {
         const { h3 } = setup()
         expect(h3.hasClass('panel-title')).toBe(true)
     });
