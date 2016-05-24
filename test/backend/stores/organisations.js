@@ -33,21 +33,21 @@ describe('organisations store', () => {
             expect(o1.id).to.exist;
         });
     });
-    describe('by_id', () => {
+    describe('byID', () => {
         it('finds the correct organisation', () => {
-            const by_id = orgs.by_id(added.id);
-            expect(by_id).to.exist;
-            expect(by_id.id).to.equal(added.id);
-            expect(by_id.name).to.equal(added.name);
+            const byID = orgs.byID(added.id);
+            expect(byID).to.exist;
+            expect(byID.id).to.equal(added.id);
+            expect(byID.name).to.equal(added.name);
         });
     });
     describe('update', () => {
         it('updates the stored organisation', () => {
             added.description = 'new description';
             orgs.update(added);
-            const by_id = orgs.by_id(added.id);
-            expect(by_id.name).to.equal(added.name);
-            expect(by_id.description).to.equal(added.description);
+            const byID = orgs.byID(added.id);
+            expect(byID.name).to.equal(added.name);
+            expect(byID.description).to.equal(added.description);
         });
     });
 });

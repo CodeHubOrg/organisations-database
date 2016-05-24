@@ -11,7 +11,7 @@ export default class Organisations {
         return this.orgs.data;
     }
 
-    by_id(id) {
+    byID(id) {
         return this.orgs.get(id);
     }
 
@@ -26,8 +26,8 @@ export default class Organisations {
         return this.orgs.update(org);
     }
 
-    delete_by_id(id) {
-        let org = this.by_id(id);
+    delete_byID(id) {
+        let org = this.byID(id);
         return this.orgs.remove(org);
     }
 }
