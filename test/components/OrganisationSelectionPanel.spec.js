@@ -48,26 +48,3 @@ describe('Organisation Selection Panel', () => {
         expect(body.text()).toMatch(/^JavaScript 101/)
     });
 })
-
-
-
-
-// var OrganisationSelectionPanel = React.createClass({
-//     propTypes: {
-//         selectedOrganisation: React.PropTypes.object
-//     },
-//     render : function() {
-//         var selectedOrganisationName = this.props.selectedOrganisation !== null ? this.props.selectedOrganisation.name : "None selected";
-
-//         return (
-//             <div className={this.props.selectedOrganisation !== null ? "panel panel-info" : "panel panel-warning" }>
-//                 <div className="panel-heading"> 
-//                     <h3 className="panel-title">Selected Organisation</h3> 
-//                 </div> 
-//                 <div className="panel-body"> 
-//                     {selectedOrganisationName}
-//                 </div> 
-//             </div>
-//         )
-//     }
-// });
