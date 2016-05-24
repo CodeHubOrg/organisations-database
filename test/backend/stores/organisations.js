@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import loki from 'lokijs';
 
-import Organisations from '../../backend/stores/organisations.js';
+import Organisations from '../../../backend/stores/organisations.js';
 
 const lokidb = new loki('testdb.js');
 lokidb.addCollection('organisations');

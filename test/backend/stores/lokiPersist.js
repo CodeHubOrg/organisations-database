@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import loki from 'lokijs';
 import fs   from 'fs';
 
-import LokiPersist from '../../backend/stores/lokiPersist.js';
+import LokiPersist from '../../../backend/stores/lokiPersist.js';
 
 let testPath = 'testdb.js';
 
