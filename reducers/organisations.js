@@ -21,7 +21,7 @@ export default function organisations ( state = initalState, action ) {
                 if (org.id === action.id) {
                     return Object.assign({}, org, {selected: true})
                 }
-                return org
+                return Object.assign({}, org, {selected: false})
             })
 
         case DESELECT_ORGANISATION:
