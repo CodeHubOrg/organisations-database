@@ -1,3 +1,4 @@
+![Travis CI badge](https://travis-ci.org/CodeHubOrg/organisations-database.svg?branch=redux)
 #CodeHub Organisations Database project
 
 ## Getting started
