@@ -24,4 +24,9 @@ export default class LokiPersist {
                 .then( () => this.save() )
                 .then( () => result )
     }
+
+    readOnly(action) {
+        return this.load()
+                .then( () => action(this.db ))
+    }
 }

@@ -45,7 +45,7 @@ describe('loki persist wrapper', () => {
     describe('something is still there', () => {
         it('gets something back from the db', (done) => {
             const lp = new LokiPersist(testPath);
-            var result = lp.persist( (db) => {
+            var result = lp.readOnly( (db) => {
                 const cln = db.getCollection('tests');
                 return cln.data;
             });
