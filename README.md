@@ -20,6 +20,7 @@ There is a new index.jsx file which serves as the entry point for web pack to bu
 
 **Contributors**
 
-Katja Durrani
-Paul Grimshaw
-Michael Gray
+Katja Durrani    
+Paul Grimshaw     
+Michael Gray     
+Dave Thomson
