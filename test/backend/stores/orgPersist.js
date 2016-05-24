@@ -22,16 +22,29 @@ describe('org persist wrapper', () => {
         });
     });
 
+    let item;
     describe('add', () => {
         it('adds an organisation to the db', (done) => {
             const op = new OrgPersist(testPath);
             const result = op.add({ name: 'Beetroot' });
             return result.then( (data) => {
-                expect(data['name']).to.equal('Beetroot');
+                expect(data.name).to.equal('Beetroot');
+                item = data;
                 // more tests here
                 done();
             }).catch( (err) => console.error(err));
         });
     });
 
+    describe('byID', () => {
+        it('retrieves an organisation by id', (done) => {
+            const op = new OrgPersist(testPath);
+            const result = op.byID(item.id);
+            return result.then( (data) => {
+                expect(data).to.exist;
+                expect(data.name).to.equal(item.name);
+                done();
+            })
+        })
+    })
 });
