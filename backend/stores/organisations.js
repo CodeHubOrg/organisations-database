@@ -2,6 +2,9 @@
 export default class Organisations {
     constructor(db) {
         this.orgs = db.getCollection('organisations');
+        if (!this.orgs) {
+            this.orgs = db.addCollection('organisations');
+        }
     }
 
     all() {

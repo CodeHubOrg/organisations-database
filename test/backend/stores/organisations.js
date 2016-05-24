@@ -4,7 +4,6 @@ import loki from 'lokijs';
 import Organisations from '../../../backend/stores/organisations.js';
 
 const lokidb = new loki('testdb.js');
-lokidb.addCollection('organisations');
 
 describe('organisations store', () => {
     let orgs;
