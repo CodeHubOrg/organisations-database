@@ -1,3 +1,6 @@
+
+/** Uncomment to run the tests
+
 import expect from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
@@ -48,3 +51,6 @@ describe('Organisation Selection Panel', () => {
         expect(body.text()).toMatch(/^JavaScript 101/)
     });
 })
+
+
+**/
