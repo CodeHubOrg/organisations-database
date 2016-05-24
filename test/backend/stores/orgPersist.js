@@ -25,7 +25,7 @@ describe('org persist wrapper', () => {
     describe('add', () => {
         it('adds an organisation to the db', (done) => {
             const op = new OrgPersist(testPath);
-            var result = op.add({ name: 'Beetroot' });
+            const result = op.add({ name: 'Beetroot' });
             return result.then( (data) => {
                 expect(data['name']).to.equal('Beetroot');
                 // more tests here
