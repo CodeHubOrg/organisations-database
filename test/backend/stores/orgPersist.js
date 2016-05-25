@@ -69,4 +69,18 @@ describe('org persist wrapper', () => {
             }
         );
     })
+
+    describe('update', () => {
+        testPromise('updates the organisation',
+            (op) => {
+                item.name = 'Turnip';
+                return op.update(item);
+            },
+            (data) => expect(data.name).to.equal('Turnip')
+        );
+        testPromise('update persists',
+            (op) => op.byID(item.id),
+            (data) => expect(data.name).to.equal('Turnip')
+        );
+    })
 });
