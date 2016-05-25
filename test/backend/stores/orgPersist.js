@@ -83,4 +83,15 @@ describe('org persist wrapper', () => {
             (data) => expect(data.name).to.equal('Turnip')
         );
     })
+
+    describe('deleteByID', () => {
+        testPromise('deletes by id',
+            (op) => op.deleteByID(item.id),
+            (data) => expect('everything').to.be.ok
+        );
+        testPromise('should be gone',
+            (op) => op.byID(item.id),
+            (data) => expect(data).to.be.null
+        );
+    })
 });

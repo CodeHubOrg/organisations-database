@@ -19,7 +19,10 @@ export default class OrgPersist {
 
     byID(id) { return this._readOnly( (orgs) => orgs.byID(id) ) }
 
-    add(org)    { return this._persist(  (orgs) => orgs.add(org)    ) }
+    add(org)       { return this._persist( (orgs) => orgs.add(org)       ) }
 
-    update(org) { return this._persist(  (orgs) => orgs.update(org) ) }
+    update(org)    { return this._persist( (orgs) => orgs.update(org)    ) }
+
+    deleteByID(id) { return this._persist( (orgs) => orgs.deleteByID(id) ) }
+
 }
