@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 class OrganisationListRow extends Component {
 
     render() {
-        console.log('Row: '+this.props.id+' selected? :'+this.props.selected)
         return(
                 <tr onClick={
                   (this.props.selected) ? 
