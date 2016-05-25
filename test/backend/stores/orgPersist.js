@@ -11,6 +11,17 @@ function setup() {
     console.log('setup done');
 }
 
+const testPromise = (desc, action, tests) => {
+    it(desc, (done) => {
+        const op = new OrgPersist(testPath);
+        const promise = action(op);
+        return promise.then( (data) => {
+            tests(data);
+            done();
+        }).catch( (err) => console.error(err));
+    })
+};
+
 setup();
 
 describe('org persist wrapper', () => {
@@ -24,48 +35,38 @@ describe('org persist wrapper', () => {
 
     let item;
     describe('add', () => {
-        it('adds an organisation to the db', (done) => {
-            const op = new OrgPersist(testPath);
-            const result = op.add({ name: 'Beetroot' });
-            return result.then( (data) => {
+        testPromise('adds an organisation to the db',
+            (op) => op.add({ name: 'Beetroot' }),
+            (data) => {
                 expect(data.name).to.equal('Beetroot');
                 item = data;
                 // more tests here
-                done();
-            }).catch( (err) => console.error(err));
-        });
-        it('adds another organisation to the db', (done) => {
-            const op = new OrgPersist(testPath);
-            const result = op.add({ name: 'Roll FTS' });
-            return result.then( (data) => {
-                expect(data.name).to.equal('Roll FTS');
-                done();
-            }).catch( (err) => console.error(err));
-        });
+            }
+        );
+        testPromise('adds another organisation to the db',
+            (op) => op.add({ name: 'Roll FTS' }),
+            (data) => expect(data.name).to.equal('Roll FTS')
+        );
     });
 
     describe('byID', () => {
-        it('retrieves an organisation by id', (done) => {
-            const op = new OrgPersist(testPath);
-            const result = op.byID(item.id);
-            return result.then( (data) => {
+        testPromise('retrieves an organisation by id',
+            (op) => op.byID(item.id),
+            (data) => {
                 expect(data).to.exist;
                 expect(data.name).to.equal(item.name);
-                done();
-            })
-        })
+            }
+        );
     })
 
     describe('all', () => {
-        it('retrieves all organisations', (done) => {
-            const op = new OrgPersist(testPath);
-            const result = op.all();
-            return result.then( (data) => {
+        testPromise('retrieves all organisations',
+            (op) => op.all(),
+            (data) => {
                 expect(data).to.exist;
                 expect(data.length).to.equal(2);
                 expect(data[0].name).to.equal('Beetroot');
-                done();
-            })
-        })
+            }
+        );
     })
 });
