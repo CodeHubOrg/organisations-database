@@ -6,24 +6,19 @@ export default class OrgPersist {
         this.lp = new LokiPersist(path);
     }
 
-    all() {
-        return this.lp.readOnly( (db) => {
-            const orgs = new Organisations(db);
-            return orgs.all();
-        });
+    _withOrgs(db, action) {
+        const orgs = new Organisations(db);
+        return action(orgs);
     }
 
-    byID(id) {
-        return this.lp.readOnly( (db) => {
-            const orgs = new Organisations(db);
-            return orgs.byID(id);
-        });
-    }
+    _readOnly(action) { return this.lp.readOnly( (db) => this._withOrgs(db, action) ) }
 
-    add(org) {
-        return this.lp.persist( (db) => {
-            const orgs = new Organisations(db);
-            return orgs.add(org);
-        });
-    }
+    _persist(action)  { return this.lp.persist(  (db) => this._withOrgs(db, action) ) }
+
+    all()    { return this._readOnly( (orgs) => orgs.all()    ) }
+
+    byID(id) { return this._readOnly( (orgs) => orgs.byID(id) ) }
+
+    add(org) { return this._persist(  (orgs) => orgs.add(org) ) }
+
 }
