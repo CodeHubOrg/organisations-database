@@ -6,6 +6,13 @@ export default class OrgPersist {
         this.lp = new LokiPersist(path);
     }
 
+    all() {
+        return this.lp.readOnly( (db) => {
+            const orgs = new Organisations(db);
+            return orgs.all();
+        });
+    }
+
     byID(id) {
         return this.lp.readOnly( (db) => {
             const orgs = new Organisations(db);

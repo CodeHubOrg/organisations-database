@@ -34,6 +34,14 @@ describe('org persist wrapper', () => {
                 done();
             }).catch( (err) => console.error(err));
         });
+        it('adds another organisation to the db', (done) => {
+            const op = new OrgPersist(testPath);
+            const result = op.add({ name: 'Roll FTS' });
+            return result.then( (data) => {
+                expect(data.name).to.equal('Roll FTS');
+                done();
+            }).catch( (err) => console.error(err));
+        });
     });
 
     describe('byID', () => {
@@ -43,6 +51,19 @@ describe('org persist wrapper', () => {
             return result.then( (data) => {
                 expect(data).to.exist;
                 expect(data.name).to.equal(item.name);
+                done();
+            })
+        })
+    })
+
+    describe('all', () => {
+        it('retrieves all organisations', (done) => {
+            const op = new OrgPersist(testPath);
+            const result = op.all();
+            return result.then( (data) => {
+                expect(data).to.exist;
+                expect(data.length).to.equal(2);
+                expect(data[0].name).to.equal('Beetroot');
                 done();
             })
         })
