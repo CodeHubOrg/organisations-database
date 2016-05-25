@@ -15,12 +15,14 @@ const state = store.getState()
 console.log(state)
 
 function render() {
-  ReactDOM.render(
-    <App
-        organisations={state.organisations}
-        dispatch={store.dispatch}
-    />,
-    document.getElementById('root')
+    let organisations = store.getState().organisations
+
+    ReactDOM.render(
+        <App
+            organisations={organisations}
+            dispatch={store.dispatch}
+        />,
+        document.getElementById('root')
   )
 }
 
@@ -30,5 +32,5 @@ store.subscribe(render)
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
+  console.log(JSON.stringify(store.getState(),null,3))
 )
