@@ -7,7 +7,7 @@ export default class App extends Component {
 
     render() {
         const {organisations, dispatch} = this.props
-        const selected = displaySelection()
+        const selectedOrganisation = getSelection()
 
         function onSelectOrganisation() {
             let id = this.props.id
@@ -21,12 +21,10 @@ export default class App extends Component {
             dispatch(action)
         }
 
-        function displaySelection() {
-            return organisations.reduce((name, org) => {
-                    return org.selected === true 
-                    ? org.name 
-                    : 'None selected'
-                },'None selected')
+        function getSelection() {
+            return organisations.reduce((result, org) => {
+                    if (org.selected === true) return org
+                }, null)
         }
 
         return (
@@ -38,8 +36,9 @@ export default class App extends Component {
                     onSelectOrganisation={onSelectOrganisation}
                     onDeselectOrganisation={onDeselectOrganisation}
                 />
+
                 <OrganisationSelectionPanel
-                    selected={selected}
+                    selectedOrganisation={selectedOrganisation}
                 />
             </div>
         )
