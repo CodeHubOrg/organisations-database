@@ -26,8 +26,10 @@ export default class OrganisationList extends Component {
 		return(
             <table className="table table-striped table-bordered table-hover">
 				<thead className="thead">
+                    <tr>
 						<th>Name</th>
 						<th>Id</th>
+                    </tr>
 				</thead>
 				<tbody className="tbody">
 					{rows}
