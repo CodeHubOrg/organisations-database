@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 
 /** Uncomment to run the tests
 
@@ -54,3 +56,4 @@ describe('Organisation Selection Panel', () => {
 
 
 **/
+>>>>>>> dbe4515ecd95859f50abc7473f623d078f7a4b1c
