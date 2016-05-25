@@ -1,3 +1,11 @@
+import { 
+    SELECT_ORGANISATION, 
+    DESELECT_ORGANISATION, 
+    ADD_ORGANISATION, 
+    DELETE_ORGANISATION, 
+    EDIT_ORGANISATION 
+} from '../constants/ActionTypes.js'
+
 const initalState = [
     {
         name: 'JavaScript 101',
@@ -8,15 +16,15 @@ const initalState = [
 
 export default function organisations ( state = initalState, action ) {
     switch (action.type) {
-        case 'SELECT_ORGANISATION':
+        case SELECT_ORGANISATION:
             return  state.map(org => {
                 if (org.id === action.id) {
                     return Object.assign({}, org, {selected: true})
                 }
-                return org
+                return Object.assign({}, org, {selected: false})
             })
 
-        case 'DESELECT_ORGANISATION':
+        case DESELECT_ORGANISATION:
             return  state.map(org => {
                 if (org.id === action.id) {
                     return Object.assign({}, org, {selected: false})
@@ -24,14 +32,14 @@ export default function organisations ( state = initalState, action ) {
                 return org
             })
 
-        case 'ADD_ORGANISATION':
+        case ADD_ORGANISATION:
             return state.concat([{
                 name: action.name,
                 selected: false,
                 id: state.reduce((maxId, todo) => Math.max(maxId, todo.id), 0) +1
             }])
 
-        case 'EDIT_ORGANISATION':
+        case EDIT_ORGANISATION:
             return state.map(org => {
                 if (org.id === action.id) {
                     return Object.assign({}, org, {name: action.name})
@@ -39,7 +47,7 @@ export default function organisations ( state = initalState, action ) {
                 return org;
             })
 
-        case 'DELETE_ORGANISATION':
+        case DELETE_ORGANISATION:
             return state.filter(org => {
                 if (org.id !== action.id) return org;
             })

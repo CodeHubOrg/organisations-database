@@ -4,10 +4,23 @@ import OrganisationListRow from './OrganisationListRow'
 export default class OrganisationList extends Component {
 
     render() {
+
+    let { dispatch, organisations, onSelectOrganisation, onDeselectOrganisation } = this.props 
+
     	let orgs = this.props.organisations;
-    	let numberOfOrgs = orgs.length;
     	let rows = orgs.map(
-    		(org, index) => <OrganisationListRow name={org.name} id={org.ud} key={index} />
+    		(org, index) => {
+                return (
+                    <OrganisationListRow 
+    		    		name={org.name}
+                        selected={org.selected}
+    		    		id={org.id} 
+    		    		key={index}
+    		    		onSelectOrganisation={onSelectOrganisation}
+    		    		onDeselectOrganisation={onDeselectOrganisation}
+		    		/>
+                    )
+                }
     	);		
 
 		return(
