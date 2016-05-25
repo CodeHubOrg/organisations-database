@@ -7,7 +7,9 @@ export default class App extends Component {
 
     render() {
         const {organisations, dispatch} = this.props
-        const selectedOrganisation = getSelection()
+        const selectedOrganisation = getSelected()
+
+        console.log('Selected org: '+JSON.stringify(selectedOrganisation, null, 3))
 
         function onSelectOrganisation() {
             let id = this.props.id
@@ -21,10 +23,8 @@ export default class App extends Component {
             dispatch(action)
         }
 
-        function getSelection() {
-            return organisations.reduce((result, org) => {
-                    if (org.selected === true) return org
-                }, null)
+        function getSelected() {
+            return organisations.filter(org => org.selected === true)[0] || null
         }
 
         return (
