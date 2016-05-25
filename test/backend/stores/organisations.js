@@ -50,4 +50,12 @@ describe('organisations store', () => {
             expect(byID.description).to.equal(added.description);
         });
     });
+    describe('deleteByID', () => {
+        it('deletes the organisation by id', () => {
+            orgs.deleteByID(added.id);
+            const byID = orgs.byID(added.id);
+            expect(byID).to.be.null;
+            expect(orgs.all().length).to.equal(1);
+        });
+    });
 });

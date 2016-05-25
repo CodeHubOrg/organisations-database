@@ -26,7 +26,7 @@ export default class Organisations {
         return this.orgs.update(org);
     }
 
-    delete_byID(id) {
+    deleteByID(id) {
         let org = this.byID(id);
         return this.orgs.remove(org);
     }
