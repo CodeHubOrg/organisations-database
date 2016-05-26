@@ -18,7 +18,7 @@ export default class App extends Component {
         }
 
         function getSelected() {
-            return organisations.filter(org => org.selected === true)[0] || null
+            return organisations.filter(org => org.selected === true)[0]
         }
 
         return (
