@@ -9,18 +9,12 @@ export default class App extends Component {
         const {organisations, dispatch} = this.props
         const selectedOrganisation = getSelected()
 
-        console.log('Selected org: '+JSON.stringify(selectedOrganisation, null, 3))
-
         function onSelectOrganisation() {
-            let id = this.props.id
-            let action = actions.selectOrganisation(this.props.id)
-            dispatch(action)
+            dispatch(actions.selectOrganisation(this.props.id))
         }
 
         function onDeselectOrganisation() {
-            let id = this.props.id
-            let action = actions.deSelectOrganisation(this.props.id)
-            dispatch(action)
+            dispatch(actions.deSelectOrganisation(this.props.id))
         }
 
         function getSelected() {
