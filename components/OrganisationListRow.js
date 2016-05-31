@@ -6,11 +6,11 @@ class OrganisationListRow extends Component {
         return(
                 <tr onClick={
                   (this.props.selected) ? 
-                  this.props.onDeselectOrganisation : 
-                  this.props.onSelectOrganisation
+                  this.props.onDeselectOrganisation.bind(this) : 
+                  this.props.onSelectOrganisation.bind(this)
                 }
                 >
-                    <td className="name">{this.props.name}}</td>
+                    <td className="name">{this.props.name}</td>
                     <td className="id">{this.props.id}</td>
                 </tr>
         );
