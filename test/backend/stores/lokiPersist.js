@@ -4,14 +4,8 @@ import fs   from 'fs';
 
 import LokiPersist from '../../../backend/stores/lokiPersist.js';
 
-const testPath = 'testdb.js';
-
-function setup() {
-    fs.truncateSync(testPath, 0);
-    console.log('setup done');
-}
-
-setup();
+import lokiSetup from './lokiSetup.js';
+const testPath = lokiSetup();
 
 describe('loki persist wrapper', () => {
 

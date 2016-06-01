@@ -3,13 +3,8 @@ import fs   from 'fs';
 
 import OrgPersist from '../../../backend/stores/orgPersist.js';
 
-const testPath = 'testdb.js';
-
-// dup with lokiPersist.js
-function setup() {
-    fs.truncateSync(testPath, 0);
-    console.log('setup done');
-}
+import lokiSetup from './lokiSetup.js';
+const testPath = lokiSetup();
 
 const testPromise = (desc, action, tests) => {
     it(desc, (done) => {
@@ -21,8 +16,6 @@ const testPromise = (desc, action, tests) => {
         }).catch( (err) => console.error(err));
     })
 };
-
-setup();
 
 describe('org persist wrapper', () => {
 
