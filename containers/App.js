@@ -24,7 +24,7 @@ export default class App extends Component {
         return (
             <div>
                 <h1>JavaScript tools and resources</h1>
-				<h2>Find everything you need to get started with Javascript</h2>
+				<h4>Find everything you need to get started with Javascript</h4>
                 <OrganisationList
                     dispatch={dispatch}
                     organisations={organisations}
