@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FilterBar from '../components/FilterBar'
 import OrganisationList from '../components/OrganisationList'
 import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
 import * as actions from '../actions'
@@ -25,6 +26,8 @@ export default class App extends Component {
             <div>
                 <h1>JavaScript tools and resources</h1>
 				<h4>Find everything you need to get started with Javascript</h4>
+				<br />
+				<FilterBar />
                 <OrganisationList
                     dispatch={dispatch}
                     organisations={organisations}
