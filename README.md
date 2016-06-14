@@ -5,6 +5,7 @@
 
 * You'll need a recent copy of node from: https://nodejs.org/
 * Run: `npm install` to install dependencies.
+* Run: `npm start` to run the app and view it on http://localhost:3000
 
 **Recent updates**
 
