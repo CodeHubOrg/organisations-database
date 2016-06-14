@@ -21,7 +21,8 @@ Help:
 
 **Contributors**
 
-Katja Durrani
-Paul Grimshaw
-Michael Gray
-Dave Thomson
+Too many to name individually, but key contributers include:
+Katja Durrani & Gicela Morales (organisers of CodeHub)
+Paul Grimshaw (founder of this project in its original form: Organisations Database)
+Michael Gray (initiator of backend using lokiJS)
+Dave Thomson (initiator of frontend using React and Redux)
