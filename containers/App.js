@@ -6,7 +6,7 @@ import * as actions from '../actions'
 export default class App extends Component {
 
     render() {
-        const {organisations, dispatch} = this.props
+        const {organisations, dispatch} = this.props.route
         const selectedOrganisation = getSelected()
 
         function onSelectOrganisation() {

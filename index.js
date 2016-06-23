@@ -3,7 +3,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { Router, Route, browserHistory } from 'react-router'
 import App from './containers/App'
+import Admin from './containers/Admin'
 import organisations from './reducers'
 import './public/assets/css/bootstrap.css'
 import './public/assets/css/style.css'
@@ -17,13 +19,18 @@ console.log(state)
 function render() {
     let organisations = store.getState().organisations
 
-    ReactDOM.render(
-        <App
-            organisations={organisations}
-            dispatch={store.dispatch}
-        />,
-        document.getElementById('root')
-  )
+    ReactDOM.render((
+        <Router history={browserHistory}>
+            <Route
+                path="/"
+                organisations={organisations}
+                dispatch={store.dispatch}
+                component={App}
+            />
+            <Route path="/admin" component={Admin}/>
+        </Router>
+    ), document.getElementById('root'))
+
 }
 
 render()
