@@ -3,18 +3,19 @@ import OrganisationList from '../components/OrganisationList'
 import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
 import * as actions from '../actions'
 
-export default class App extends Component {
+class App extends Component {
 
     render() {
-        const {organisations, dispatch} = this.props.route
+        const { store } = this.context
+        const organisations = store.getState().organisations
         const selectedOrganisation = getSelected()
 
         function onSelectOrganisation() {
-            dispatch(actions.selectOrganisation(this.props.id))
+            store.dispatch(actions.selectOrganisation(this.props.id))
         }
 
         function onDeselectOrganisation() {
-            dispatch(actions.deSelectOrganisation(this.props.id))
+            store.dispatch(actions.deSelectOrganisation(this.props.id))
         }
 
         function getSelected() {
@@ -26,7 +27,7 @@ export default class App extends Component {
                 <h1>JavaScript tools and resources</h1>
 				<h4>Find everything you need to get started with Javascript</h4>
                 <OrganisationList
-                    dispatch={dispatch}
+                    dispatch={store.dispatch}
                     organisations={organisations}
                     onSelectOrganisation={onSelectOrganisation}
                     onDeselectOrganisation={onDeselectOrganisation}
@@ -39,3 +40,10 @@ export default class App extends Component {
         )
     }
 }
+
+// error is thrown if contextTypes is set in constructor
+App.contextTypes = {
+    store: React.PropTypes.object
+}
+
+export default App

@@ -11,30 +11,26 @@ import './public/assets/css/bootstrap.css'
 import './public/assets/css/style.css'
 
 const store = createStore(organisations)
-const state = store.getState()
+
+const routes = [
+    { path: '/', component: App },
+    { path: '/admin', component: Admin }
+]
 
 // Log the initial state
-console.log(state)
+console.log(store.getState())
 
 function render() {
-    let organisations = store.getState().organisations
-
     ReactDOM.render((
-        <Router history={browserHistory}>
-            <Route
-                path="/"
-                organisations={organisations}
-                dispatch={store.dispatch}
-                component={App}
-            />
-            <Route path="/admin" component={Admin}/>
-        </Router>
+        <Provider store={store}>
+            <Router history={browserHistory} routes={routes}></Router>
+        </Provider>
     ), document.getElementById('root'))
 
 }
 
-render()
 store.subscribe(render)
+render()
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
