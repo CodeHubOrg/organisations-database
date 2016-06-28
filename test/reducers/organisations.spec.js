@@ -11,7 +11,10 @@ describe('organisations reducer', () => {
         {
           name: 'JavaScript 101',
           selected: false,
-          id: 1
+          id: 1,
+		  description: "Group for learning JavaScript",
+		  url: "http://www.meetup.com/CodeHub-Bristol/",
+		  imagepath: "../constants/javascript101_logo.jpeg",
         }
       ]
       expect(organisations(stateBefore, action)).toEqual(stateAfter)
