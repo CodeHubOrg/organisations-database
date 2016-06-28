@@ -11,6 +11,11 @@ class Admin extends Component {
 		<h4>Find everything you need to get started with Javascript</h4>
                 <div className="container-admin">
                     <h2>Admin</h2>
+                    <ul className="nav-admin">
+                        <li><button>View Resources</button></li>
+                        <li><button>Add Resource</button></li>
+                        <li><button>View Categories</button></li>
+                    </ul>
                     <ul>
                         <li><Link to={'/'}>Home</Link></li>
                     </ul>
