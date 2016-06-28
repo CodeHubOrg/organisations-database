@@ -11,7 +11,11 @@ class OrganisationSelectionPanel extends Component {
           <div className="panel-heading">
             <h3 className="panel-title">Selected Organisation</h3>
           </div>
-          <div className="panel-body">{ name }</div>
+          <div className="panel-body">{ name }
+			<img className="resource-image" alt="resource-image" />
+			<p className="resource-descrip">Description of resource</p>
+			<a>Resource link</a>
+		  </div>
         </div>
       )
     }

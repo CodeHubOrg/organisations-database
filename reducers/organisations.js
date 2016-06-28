@@ -7,11 +7,12 @@ import {
 } from '../constants/ActionTypes.js'
 
 const initalState = [
-    {
-        name: 'JavaScript 101',
-        selected: false,
-        id: 1
-    }
+	{
+		name: 'JavaScript 101',
+		selected: false,
+		id: 1,
+	}
+	
 ];
 
 export default function organisations ( state = initalState, action ) {
