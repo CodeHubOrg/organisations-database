@@ -4,7 +4,9 @@ import {
     ADD_ORGANISATION, 
     DELETE_ORGANISATION, 
     EDIT_ORGANISATION 
-} from '../constants/ActionTypes.js'
+} from '../constants/ActionTypes.js';
+
+import resources from './dbconnect.js';
 
 const initalState = [
     {
