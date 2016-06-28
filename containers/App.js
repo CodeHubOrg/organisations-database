@@ -3,6 +3,9 @@ import OrganisationList from '../components/OrganisationList'
 import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
 import * as actions from '../actions'
 
+
+import SearchBar from '../components/search_bar';
+
 export default class App extends Component {
 
     render() {
@@ -22,7 +25,10 @@ export default class App extends Component {
         }
 
         return (
+
             <div>
+            <SearchBar />
+
                 <h1>Organisations Database</h1>
                 <OrganisationList
                     dispatch={dispatch}
