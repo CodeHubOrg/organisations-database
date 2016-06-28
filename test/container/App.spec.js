@@ -30,7 +30,7 @@ function setup() {
 describe('App container', () => {
   it('should display a title', () => {
     const { component } = setup()
-    expect(component.contains(<h1>Organisations Database</h1>)).toBe(true)
+    expect(component.contains(<h1>JavaScript tools and resources</h1>)).toBe(true)
   });
   it('contains an <OrganisationList /> component', function () {
     const { component } = setup()
