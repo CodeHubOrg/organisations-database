@@ -16,7 +16,10 @@ function setup(selected = null){
         component: component,
         heading: heading,
         body: body,
-        h3: heading.find('h3')
+        h3: heading.find('h3'),
+		img: body.find('img'),
+		description: body.find('p'),
+		link: body.find('a')
     }
 }
 
@@ -46,5 +49,28 @@ describe('Organisation Selection Panel', () => {
         const selectedOrg = {id: 1, name: "JavaScript 101"}
         const { body } = setup(selectedOrg)
         expect(body.text()).toMatch(/^JavaScript 101/)
+    });
+	it('should contain an img element within the panel-body, with the class "resource-image"', () => {
+        const { img } = setup()
+        expect(img.hasClass('resource-image')).toBe(true)
+    });
+	it('should contain an img element within the panel-body, with the alt "resource-image"', () => {
+		const { body } = setup()
+		var img = body.find('[alt="resource-image"]')
+		var result = false
+		if (img) { result = true }
+		expect(result).toBe(true)
+    });
+	it('should contain a p element within the panel-body, with the class "resource-descrip"', () => {
+        const { description } = setup()
+        expect(description.hasClass('resource-descrip')).toBe(true)
+    });
+	it('should contain a p element within the panel-body, with text "Description of resource"', () => {
+        const { description } = setup()
+        expect(description.text()).toMatch(/^Description of resource/)
+    });
+	it('should contain an a element within the panel-body, with text "Resource link"', () => {
+        const { link } = setup()
+        expect(link.text()).toMatch(/^Resource link/)
     });
 })
