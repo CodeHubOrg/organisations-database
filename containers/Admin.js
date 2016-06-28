@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 class Admin extends Component {
 
     render() {
         const { store } = this.context
         return (
-            <h1>This is the admin area.</h1> 
+            <div>
+                <h1>JavaScript tools and resources</h1>
+		<h4>Find everything you need to get started with Javascript</h4>
+                <div className="container-admin">
+                    <h2>Admin</h2>
+                    <ul>
+                        <li><Link to={'/'}>Home</Link></li>
+                    </ul>
+                </div>
+            </div>
         ) 
     }
 

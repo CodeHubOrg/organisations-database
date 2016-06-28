@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import OrganisationList from '../components/OrganisationList'
 import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
 import * as actions from '../actions'
+import { Link } from 'react-router'
 
 class App extends Component {
 
@@ -36,6 +37,9 @@ class App extends Component {
                 <OrganisationSelectionPanel
                     selectedOrganisation={selectedOrganisation}
                 />
+                <ul>
+                    <li><Link to={'/admin'}>Admin</Link></li>
+                </ul>
             </div>
         )
     }
