@@ -3,31 +3,34 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { Router, Route, browserHistory } from 'react-router'
 import App from './containers/App'
+import Admin from './containers/Admin'
 import organisations from './reducers'
 import './public/assets/css/bootstrap.css'
 import './public/assets/css/style.css'
 
 const store = createStore(organisations)
-const state = store.getState()
+
+const routes = [
+    { path: '/', component: App },
+    { path: '/admin', component: Admin }
+]
 
 // Log the initial state
-console.log(state)
+console.log(store.getState())
 
 function render() {
-    let organisations = store.getState().organisations
+    ReactDOM.render((
+        <Provider store={store}>
+            <Router history={browserHistory} routes={routes}></Router>
+        </Provider>
+    ), document.getElementById('root'))
 
-    ReactDOM.render(
-        <App
-            organisations={organisations}
-            dispatch={store.dispatch}
-        />,
-        document.getElementById('root')
-  )
 }
 
-render()
 store.subscribe(render)
+render()
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
