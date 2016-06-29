@@ -48,3 +48,13 @@ export function deleteOrganisation(orgNum){
   }
 
 }
+
+
+export function searchOrganisation(searchTerm){
+  return{
+    type: types.SEARCH_ORGANISATION,
+    term: searchTerm
+  }
+
+}
+

@@ -39,4 +39,11 @@ describe('organisation actions', () => {
     })
   })
 
+  it('Organisation should create SEARCH_ORGANISATION action', () => {
+    expect(actions.searchOrganisation('JavaScript 101')).toEqual({
+      type: types.SEARCH_ORGANISATION,
+      term: 'JavaScript 101'
+    })
+  })
+
 })
