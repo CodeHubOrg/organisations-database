@@ -1,3 +1,24 @@
 body {
 	margin: 20px;
 }
+
+ul {
+    list-style: none;
+}
+
+.container-admin {
+    margin-top: 38px;
+}
+
+.nav-admin {
+    padding: 0;
+}
+
+.nav-admin li {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.nav-admin li button {
+    border-radius: 8px;
+}

@@ -9,11 +9,15 @@ import {
 import resources from './dbconnect.js';
 
 const initalState = [
-    {
-        name: 'JavaScript 101',
-        selected: false,
-        id: 1
-    }
+	{
+		name: 'JavaScript 101',
+		selected: false,
+		id: 1,
+		description: "Group for learning JavaScript",
+		url: "http://www.meetup.com/CodeHub-Bristol/",
+		imagepath: "../constants/javascript101_logo.jpeg",
+	}
+	
 ];
 
 export default function organisations ( state = initalState, action ) {
