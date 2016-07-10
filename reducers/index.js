@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import organisations from './organisations'
+import formupdates from './formupdates'
 
 const rootReducer = combineReducers({
-  organisations
+  organisations,
+  formupdates
 })
 
 export default rootReducer

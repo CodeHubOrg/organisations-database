@@ -3,12 +3,11 @@ import {
     DESELECT_ORGANISATION, 
     ADD_ORGANISATION, 
     DELETE_ORGANISATION, 
-    EDIT_ORGANISATION 
+    EDIT_ORGANISATION
 } from '../constants/ActionTypes.js';
 
-import resources from './dbconnect.js';
 
-const initalState = [
+const initialState = [
 	{
 		name: 'JavaScript 101',
 		selected: false,
@@ -20,7 +19,7 @@ const initalState = [
 	
 ];
 
-export default function organisations ( state = initalState, action ) {
+export default function organisations ( state = initialState, action ) {
     switch (action.type) {
         case SELECT_ORGANISATION:
             return  state.map(org => {

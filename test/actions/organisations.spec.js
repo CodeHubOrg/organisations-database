@@ -39,4 +39,12 @@ describe('organisation actions', () => {
     })
   })
 
+  it('updateForm should create UPDATE_FORM action', () => {
+    expect(actions.updateForm('JS Ninja', 1)).toEqual({
+      type: types.UPDATE_FORM,
+      id: 1,
+      value: 'JS Ninja'
+    })
+  })
+
 })

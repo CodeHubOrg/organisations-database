@@ -13,7 +13,7 @@ class Admin extends Component {
                     <h2>Admin</h2>
                     <ul className="nav-admin">
                         <li><button>View Resources</button></li>
-                        <li><button>Add Resource</button></li>
+                        <li><Link to={'/new'}><button>Add a Resource</button></Link></li>
                         <li><button>View Categories</button></li>
                     </ul>
                     <ul>

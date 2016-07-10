@@ -8,7 +8,7 @@ import { Link } from 'react-router'
 class App extends Component {
 
     render() {
-        const { store } = this.context
+        const { store } = this.context;
         const organisations = store.getState().organisations
         const selectedOrganisation = getSelected()
 
