@@ -46,5 +46,13 @@ export function deleteOrganisation(orgNum){
     type: types.DELETE_ORGANISATION,
     id: orgNum
   }
+}
 
+
+export function updateForm(input, formId){
+  return{
+    type: types.UPDATE_FORM,
+    id: formId,
+    value: input
+  }
 }

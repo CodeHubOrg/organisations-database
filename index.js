@@ -1,24 +1,31 @@
 import 'babel-polyfill'
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { Router, Route, browserHistory } from 'react-router'
 import App from './containers/App'
 import Admin from './containers/Admin'
-import organisations from './reducers'
+import New from './containers/New'
+import rootReducer from './reducers/index'
 import './public/assets/css/bootstrap.css'
 import './public/assets/css/style.css'
 
-const store = createStore(organisations)
+
+const store = createStore(rootReducer);
 
 const routes = [
     { path: '/', component: App },
-    { path: '/admin', component: Admin }
+    { path: '/admin', component: Admin },
+    { path: '/new', component: New }
 ]
 
+Provider.childContextTypes = {
+    store: React.PropTypes.object
+};
+
 // Log the initial state
-console.log(store.getState())
+// console.log(store.getState())
 
 function render() {
     ReactDOM.render((
@@ -26,7 +33,6 @@ function render() {
             <Router history={browserHistory} routes={routes}></Router>
         </Provider>
     ), document.getElementById('root'))
-
 }
 
 store.subscribe(render)
