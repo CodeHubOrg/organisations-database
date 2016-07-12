@@ -4,7 +4,7 @@ import OrganisationList from '../components/OrganisationList'
 import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
 import * as actions from '../actions'
 import { Link } from 'react-router'
-import { SearchBar } from '../components/searchBar';
+import SearchBar from '../components/searchBar';
 
 class App extends Component {
 
