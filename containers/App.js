@@ -4,10 +4,10 @@ import OrganisationList from '../components/OrganisationList'
 import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
 import * as actions from '../actions'
 import { Link } from 'react-router'
-import { SearchBar } from '../components/search_bar';
+import { SearchBar } from '../components/searchBar';
 
 class App extends Component {
-    
+
     render() {
         const { store } = this.context;
         const organisations = store.getState().organisations
