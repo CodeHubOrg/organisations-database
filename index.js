@@ -6,7 +6,7 @@ import { createStore } from 'redux'
 import { Router, Route, browserHistory } from 'react-router'
 import App from './containers/App'
 import Admin from './containers/Admin'
-import New from './containers/New'
+import OrganisationAdd from './containers/OrganisationAdd'
 import rootReducer from './reducers/index'
 import './public/assets/css/bootstrap.css'
 import './public/assets/css/style.css'
@@ -17,7 +17,7 @@ const store = createStore(rootReducer);
 const routes = [
     { path: '/', component: App },
     { path: '/admin', component: Admin },
-    { path: '/new', component: New }
+    { path: '/new', component: OrganisationAdd }
 ]
 
 Provider.childContextTypes = {
