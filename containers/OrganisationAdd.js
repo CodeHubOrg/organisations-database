@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as actions from '../actions'
 
-class New extends Component {
+class OrganisationAdd extends Component {
     
     render() {
         const { store } = this.context;
@@ -35,8 +35,8 @@ class New extends Component {
     }
 }
 
-New.contextTypes = {
+OrganisationAdd.contextTypes = {
     store: React.PropTypes.object    
 }
 
-export default New
+export default OrganisationAdd
