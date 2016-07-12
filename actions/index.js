@@ -40,7 +40,6 @@ export function editOrganisation(orgNum, orgName){
 
 }
 
-
 export function deleteOrganisation(orgNum){
   return{
     type: types.DELETE_ORGANISATION,
@@ -48,11 +47,18 @@ export function deleteOrganisation(orgNum){
   }
 }
 
-
 export function updateForm(input, formId){
   return{
     type: types.UPDATE_FORM,
     id: formId,
     value: input
   }
+}
+
+export function searchOrganisation(searchTerm){
+  return{
+    type: types.SEARCH_ORGANISATION,
+    term: searchTerm
+  }
+
 }
