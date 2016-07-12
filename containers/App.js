@@ -4,11 +4,12 @@ import OrganisationList from '../components/OrganisationList'
 import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
 import * as actions from '../actions'
 import { Link } from 'react-router'
+import SearchBar from '../components/searchBar';
 
 class App extends Component {
 
     render() {
-        const { store } = this.context
+        const { store } = this.context;
         const organisations = store.getState().organisations
         const selectedOrganisation = getSelected()
 
@@ -25,11 +26,16 @@ class App extends Component {
         }
 
         return (
+
             <div>
+
+                <SearchBar />
+
                 <h1>JavaScript tools and resources</h1>
 				<h4>Find everything you need to get started with Javascript</h4>
 				<br />
 				<FilterBar />
+        
                 <OrganisationList
                     dispatch={store.dispatch}
                     organisations={organisations}
