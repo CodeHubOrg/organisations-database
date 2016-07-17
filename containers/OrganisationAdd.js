@@ -4,8 +4,7 @@ import * as actions from '../actions'
 class OrganisationAdd extends Component {
     
     render() {
-        const { store } = this.context;  // this should probably be done differently
-
+        
         const handleSubmit = (e) => {
             let form = e.target;
             let name = form.querySelector('[name="resource_name"]').value;
@@ -97,10 +96,6 @@ class OrganisationAdd extends Component {
             </div>
         ) 
     }
-}
-
-OrganisationAdd.contextTypes = {
-    store: React.PropTypes.object    
 }
 
 export default OrganisationAdd

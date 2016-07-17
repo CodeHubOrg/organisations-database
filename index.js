@@ -12,7 +12,6 @@ import './public/assets/css/bootstrap.css'
 import './public/assets/css/grid.css'
 import './public/assets/css/style.css'
 
-const store = createStore(rootReducer);
 
 const routes = [
     { path: '/', component: App },
@@ -20,26 +19,43 @@ const routes = [
     { path: '/new', component: OrganisationAdd }
 ]
 
-Provider.childContextTypes = {
-    store: React.PropTypes.object
-};
+let xhr = new XMLHttpRequest();
+xhr.open('GET', '/api/organisations' , true);
+xhr.onreadystatechange = function() {
+    let status;
+    let data;
 
-// Log the initial state
-// console.log(store.getState())
+if (xhr.readyState == 4) {
+    status = xhr.status;
+    if(status == 200) {
+        let data = JSON.parse(xhr.responseText);
+        let initialState = {"organisations": data};        
+        let store = createStore(rootReducer, initialState);       
 
-function render() {
-    ReactDOM.render((
-        <Provider store={store}>
-            <Router history={browserHistory} routes={routes}></Router>
-        </Provider>
-    ), document.getElementById('root'))
+        function render() {
+
+            ReactDOM.render((
+                <Provider store={store}>
+                    <Router history={browserHistory} routes={routes}></Router>
+                </Provider>
+            ), document.getElementById('root'))
+        }
+
+        Provider.childContextTypes = {
+            store: React.PropTypes.object
+        };
+
+
+        store.subscribe(render)
+        render()
+
+        // Every time the state changes, log it
+        // Note that subscribe() returns a function for unregistering the listener
+        let unsubscribe = store.subscribe(() =>
+          console.log(JSON.stringify(store.getState(),null,3))
+        )
+
+        }
+    }
 }
-
-store.subscribe(render)
-render()
-
-// Every time the state changes, log it
-// Note that subscribe() returns a function for unregistering the listener
-let unsubscribe = store.subscribe(() =>
-  console.log(JSON.stringify(store.getState(),null,3))
-)
+xhr.send(null);
