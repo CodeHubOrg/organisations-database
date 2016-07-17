@@ -9,8 +9,8 @@ import Admin from './containers/Admin'
 import OrganisationAdd from './containers/OrganisationAdd'
 import rootReducer from './reducers/index'
 import './public/assets/css/bootstrap.css'
+import './public/assets/css/grid.css'
 import './public/assets/css/style.css'
-
 
 const store = createStore(rootReducer);
 
