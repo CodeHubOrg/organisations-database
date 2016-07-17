@@ -1,10 +1,29 @@
 body {
 	margin: 20px;
+    font-family: "Neue Helvetica", arial, sans-serif;
+    line-height: 1.5em;
 }
 
 ul {
     list-style: none;
 }
+
+
+/* global */
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    padding: 5px 0 8px 0;
+    display: inline-block;
+    color: #555;
+    border-bottom: 3px solid #89f;
+    margin-bottom: 1em;
+}
+
 
 .container-admin {
     margin-top: 38px;
@@ -22,3 +41,56 @@ ul {
 .nav-admin li button {
     border-radius: 8px;
 }
+
+.form--add {
+    max-width: 750px;
+}
+
+.form--control {
+    margin-bottom: 1em;
+}
+.form--control label, .outer-label{
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form--control radiogroup label {
+    display: block;
+    text-align: left;
+    width: auto;
+}
+
+.form--control.marg-left {
+    padding-left: 160px;
+}
+
+.outer-label {
+    font-weight: bold;
+}
+
+radiogroup input {
+    width: 25px;
+    padding-right: 5px;
+}
+
+.v-top {
+    vertical-align: top;
+}
+
+.btn--submit {
+    font-weight: bold;
+    color: white;
+    background: #89f;
+}
+
+.btn--submit:active {
+    background: #67d;
+    color: #ccc;
+}
+
+.btn--submit:hover {
+    background: #45b;
+    color: white;
+}
+
