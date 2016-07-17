@@ -6,8 +6,17 @@ import {
     EDIT_ORGANISATION
 } from '../constants/ActionTypes.js';
 
+const initialState = [
+	{
+		name: 'JavaScript 101',
+		selected: false,
+		id: 1,
+		description: "Group for learning JavaScript",
+		url: "http://www.meetup.com/CodeHub-Bristol/",
+		imagepath: "../constants/javascript101_logo.jpeg",
+	}	
+];
 
-const initialState = [];
 
 export default function organisations ( state = initialState, action ) {
     switch (action.type) {
