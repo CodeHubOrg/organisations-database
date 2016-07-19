@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FilterBar from '../components/FilterBar'
 import OrganisationList from '../components/OrganisationList'
+import OrganisationTiles from '../components/OrganisationTiles'
 import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
 import * as actions from '../actions'
 import { Link } from 'react-router'
@@ -28,7 +29,6 @@ class App extends Component {
         return (
 
             <div>
-
                 <SearchBar />
 
                 <h1>JavaScript tools and resources</h1>
@@ -49,6 +49,7 @@ class App extends Component {
                 <ul>
                     <li><Link to={'/admin'}>Admin</Link></li>
                 </ul>
+                <OrganisationTiles organisations = { organisations } />
             </div>
         )
     }

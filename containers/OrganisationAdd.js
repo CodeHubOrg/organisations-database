@@ -67,11 +67,11 @@ class OrganisationAdd extends Component {
                     <div className="form--control"> 
                         <label for="type">Type:</label>
                         <select id="type" name="resource_type">
-                            <option value="book">Book</option>
-                            <option value="video">Video</option>
-                            <option value="audio">Podcast</option>
-                            <option value="written">Online written tutorial</option>
-                            <option value="interactive">Online interactive</option>
+                            <option value="Book">Book</option>
+                            <option value="Video">Video</option>
+                            <option value="Podcast">Podcast</option>
+                            <option value="Online written">Online written tutorial</option>
+                            <option value="Online interactive">Online interactive</option>
                         </select>
                     </div>
                     <div className="form--control">
@@ -81,7 +81,8 @@ class OrganisationAdd extends Component {
                             <option value="1day">3 hrs to a day</option>  
                             <option value="1week">about a week</option>
                             <option value="weeks">several weeks</option>
-                            <option value="long">long/ongoing</option>
+                            <option value="long">long</option>
+                            <option value="ongoing">ongoing</option>
                         </select>
                     </div>
                     <div className="form--control">   

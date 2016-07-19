@@ -1,6 +1,7 @@
 "use strict";
 
 import express from 'express';
+import path from 'path';
 import bodyParser from 'body-parser';
 
 import webpack from 'webpack';
@@ -53,6 +54,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const compiler = webpack(config)
 // app.use(bodyParser.json({ type: 'application/*+json' }))
+app.use(express.static(path.join(__dirname + '/public')));
 
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
 app.use(webpackHotMiddleware(compiler));
