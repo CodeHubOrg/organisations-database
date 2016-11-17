@@ -28,7 +28,7 @@ describe('org persist wrapper', () => {
 
     let item;
     describe('add', () => {
-        testPromise('adds an organisation to the db',
+        testPromise('adds an item to the db',
             (op) => op.add({ name: 'Beetroot' }),
             (data) => {
                 expect(data.name).to.equal('Beetroot');
@@ -36,14 +36,14 @@ describe('org persist wrapper', () => {
                 // more tests here
             }
         );
-        testPromise('adds another organisation to the db',
+        testPromise('adds another item to the db',
             (op) => op.add({ name: 'Roll FTS' }),
             (data) => expect(data.name).to.equal('Roll FTS')
         );
     });
 
     describe('byID', () => {
-        testPromise('retrieves an organisation by id',
+        testPromise('retrieves an item by id',
             (op) => op.byID(item.id),
             (data) => {
                 expect(data).to.exist;
@@ -53,7 +53,7 @@ describe('org persist wrapper', () => {
     })
 
     describe('all', () => {
-        testPromise('retrieves all organisations',
+        testPromise('retrieves all items',
             (op) => op.all(),
             (data) => {
                 expect(data).to.exist;
@@ -64,7 +64,7 @@ describe('org persist wrapper', () => {
     })
 
     describe('update', () => {
-        testPromise('updates the organisation',
+        testPromise('updates the item',
             (op) => {
                 item.name = 'Turnip';
                 return op.update(item);

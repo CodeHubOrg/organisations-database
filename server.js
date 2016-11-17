@@ -58,21 +58,21 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output
 app.use(webpackHotMiddleware(compiler));
 
 // return all resources
-app.get("/api/organisations", function(req, res){
+app.get("/api/items", function(req, res){
     orgpersist.all().then(function(resources){
       res.send(resources);
     })
 });
 
 // return resource with a specific id
-app.get("/api/organisations/:id", function(req,res){ 
+app.get("/api/items/:id", function(req,res){ 
     orgpersist.byID(req.params.id).then(function(resource){
       res.send(resource);
     })
 });
 
 // add a resource, then return all resources
-app.post("/api/organisations/", jsonParser, function(req,res){
+app.post("/api/items/", jsonParser, function(req,res){
     orgpersist.add(req.body).then(function(resources){
       res.send(resources);
     })

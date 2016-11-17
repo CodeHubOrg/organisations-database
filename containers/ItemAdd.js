@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as actions from '../actions'
 
-class OrganisationAdd extends Component {
+class ItemAdd extends Component {
     
     render() {
         
@@ -15,7 +15,7 @@ class OrganisationAdd extends Component {
             let description = form.querySelector('[name="resource_description"]').value;
             let xhr = new XMLHttpRequest();
                 xhr.open('POST',
-                encodeURI('/api/organisations/'));
+                encodeURI('/api/items/'));
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.send(JSON.stringify({
                     name, 
@@ -98,4 +98,4 @@ class OrganisationAdd extends Component {
     }
 }
 
-export default OrganisationAdd
+export default ItemAdd

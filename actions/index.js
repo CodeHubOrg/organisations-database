@@ -1,55 +1,55 @@
-// 1) selectOrganisation should create SELECT_ORGANISATION action
-// 2) deSelectOrganisation should create DESELECT_ORGANISATION action
-// 3) addOrganisation should create ADD_ORGANISATION action
-// 4) editOrganisation should create EDIT_ORGANISATION action
-// 5) deleteOrganisation should create DELETE_ORGANISATION action
+// 1) selectItem should create SELECT_ITEM action
+// 2) deSelectItem should create DESELECT_ITEM action
+// 3) addItem should create ADD_ITEM action
+// 4) editItem should create EDIT_ITEM action
+// 5) deleteItem should create DELETE_ITEM action
 import * as types from '../constants/ActionTypes'
 
 //Action creators
-export function selectOrganisation(orgNum){
+export function selectItem(orgNum){
   return{
-    type: types.SELECT_ORGANISATION,
+    type: types.SELECT_ITEM,
     id: orgNum
   }
 
 }
 
-export function deSelectOrganisation(orgNum){
+export function deSelectItem(orgNum){
   return{
-    type: types.DESELECT_ORGANISATION,
+    type: types.DESELECT_ITEM,
     id: orgNum
   }
 
 }
 
-export function addOrganisation(orgName){
+export function addItem(orgName){
   return{
-    type: types.ADD_ORGANISATION,
+    type: types.ADD_ITEM,
     name: orgName
   }
 
 }
 
 
-export function editOrganisation(orgNum, orgName){
+export function editItem(orgNum, orgName){
   return{
-    type: types.EDIT_ORGANISATION,
+    type: types.EDIT_ITEM,
     id: orgNum,
     name: orgName
   }
 
 }
 
-export function deleteOrganisation(orgNum){
+export function deleteItem(orgNum){
   return{
-    type: types.DELETE_ORGANISATION,
+    type: types.DELETE_ITEM,
     id: orgNum
   }
 }
 
-export function searchOrganisation(searchTerm){
+export function searchItem(searchTerm){
   return{
-    type: types.SEARCH_ORGANISATION,
+    type: types.SEARCH_ITEM,
     term: searchTerm
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FilterBar from '../components/FilterBar'
-import OrganisationList from '../components/OrganisationList'
-import OrganisationSelectionPanel from '../components/OrganisationSelectionPanel'
+import ItemList from '../components/ItemList'
+import ItemSelectionPanel from '../components/ItemSelectionPanel'
 import * as actions from '../actions'
 import { Link } from 'react-router'
 import SearchBar from '../components/searchBar';
@@ -10,19 +10,19 @@ class App extends Component {
 
     render() {
         const { store } = this.context;
-        const organisations = store.getState().organisations
-        const selectedOrganisation = getSelected()
+        const items = store.getState().items
+        const selectedItem = getSelected()
 
-        function onSelectOrganisation() {
-            store.dispatch(actions.selectOrganisation(this.props.id))
+        function onSelectItem() {
+            store.dispatch(actions.selectItem(this.props.id))
         }
 
-        function onDeselectOrganisation() {
-            store.dispatch(actions.deSelectOrganisation(this.props.id))
+        function onDeselectItem() {
+            store.dispatch(actions.deSelectItem(this.props.id))
         }
 
         function getSelected() {
-            return organisations.filter(org => org.selected === true)[0]
+            return items.filter(org => org.selected === true)[0]
         }
 
         return (
@@ -36,15 +36,15 @@ class App extends Component {
 				<br />
 				<FilterBar />
         
-                <OrganisationList
+                <ItemList
                     dispatch={store.dispatch}
-                    organisations={organisations}
-                    onSelectOrganisation={onSelectOrganisation}
-                    onDeselectOrganisation={onDeselectOrganisation}
+                    items={items}
+                    onSelectItem={onSelectItem}
+                    onDeselectItem={onDeselectItem}
                 />
 
-                <OrganisationSelectionPanel
-                    selectedOrganisation={selectedOrganisation}
+                <ItemSelectionPanel
+                    selectedItem={selectedItem}
                 />
                 <ul>
                     <li><Link to={'/admin'}>Admin</Link></li>
