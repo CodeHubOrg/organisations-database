@@ -11,6 +11,7 @@ The original idea was to display a list of independent shops in Bristol, then we
 * Redux
 * Webpack
 * LokiJS
+
 The app is by now mostly written in ES2015.
 
 ## Getting started
