@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import organisations from './organisations'
+import items from './items'
 
 const rootReducer = combineReducers({
-  organisations
+  items
 })
 
 export default rootReducer

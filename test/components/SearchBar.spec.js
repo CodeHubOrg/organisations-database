@@ -20,7 +20,7 @@
 //     }
 //   ]
 //   const component = shallow(
-//     <searchBar organisations={props} />
+//     <searchBar items={props} />
 //   )
 
 //   return {

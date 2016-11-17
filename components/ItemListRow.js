@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class OrganisationListRow extends Component {
+class ItemListRow extends Component {
 
     render() {
         return(
                 <tr onClick={
                   (this.props.selected) ? 
-                  this.props.onDeselectOrganisation.bind(this) : 
-                  this.props.onSelectOrganisation.bind(this)
+                  this.props.onDeselectItem.bind(this) : 
+                  this.props.onSelectItem.bind(this)
                 }
                 >
                     <td className="name">{this.props.name}</td>
@@ -17,4 +17,4 @@ class OrganisationListRow extends Component {
     }
 }
 
-export default OrganisationListRow
+export default ItemListRow

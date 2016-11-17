@@ -1,9 +1,9 @@
 
-export default class Organisations {
+export default class Items {
     constructor(db) {
-        this.orgs = db.getCollection('organisations');
+        this.orgs = db.getCollection('items');
         if (!this.orgs) {
-            this.orgs = db.addCollection('organisations');
+            this.orgs = db.addCollection('items');
         }
     }
 

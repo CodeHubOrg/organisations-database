@@ -2,46 +2,46 @@ import expect from 'expect'
 import * as types from '../../constants/ActionTypes'
 import * as actions from '../../actions'
 
-describe('organisation actions', () => {
-  it('selectOrganisation should create SELECT_ORGANISATION action', () => {
-    expect(actions.selectOrganisation(1)).toEqual({
-      type: types.SELECT_ORGANISATION,
+describe('item actions', () => {
+  it('selectItem should create SELECT_ITEM action', () => {
+    expect(actions.selectItem(1)).toEqual({
+      type: types.SELECT_ITEM,
       id: 1
     })
   })
 
-  it('deSelectOrganisation should create DESELECT_ORGANISATION action', () => {
-    expect(actions.deSelectOrganisation(1)).toEqual({
-      type: types.DESELECT_ORGANISATION,
+  it('deSelectItem should create DESELECT_ITEM action', () => {
+    expect(actions.deSelectItem(1)).toEqual({
+      type: types.DESELECT_ITEM,
       id: 1
     })
   })
 
-  it('addOrganisation should create ADD_ORGANISATION action', () => {
-    expect(actions.addOrganisation('JavaScript 101')).toEqual({
-      type: types.ADD_ORGANISATION,
+  it('addItem should create ADD_ITEM action', () => {
+    expect(actions.addItem('JavaScript 101')).toEqual({
+      type: types.ADD_ITEM,
       name: 'JavaScript 101'
     })
   })
 
-  it('editOrganisation should create EDIT_ORGANISATION action', () => {
-    expect(actions.editOrganisation(1, 'CodeHub Bristol')).toEqual({
-      type: types.EDIT_ORGANISATION,
+  it('editItem should create EDIT_ITEM action', () => {
+    expect(actions.editItem(1, 'CodeHub Bristol')).toEqual({
+      type: types.EDIT_ITEM,
       id: 1,
       name: 'CodeHub Bristol'
     })
   })
 
-  it('deleteOrganisation should create DELETE_ORGANISATION action', () => {
-    expect(actions.deleteOrganisation(1)).toEqual({
-      type: types.DELETE_ORGANISATION,
+  it('deleteItem should create DELETE_ITEM action', () => {
+    expect(actions.deleteItem(1)).toEqual({
+      type: types.DELETE_ITEM,
       id: 1,
     })
   })
 
-  it('Organisation should create SEARCH_ORGANISATION action', () => {
-    expect(actions.searchOrganisation('JavaScript 101')).toEqual({
-      type: types.SEARCH_ORGANISATION,
+  it('Item should create SEARCH_ITEM action', () => {
+    expect(actions.searchItem('JavaScript 101')).toEqual({
+      type: types.SEARCH_ITEM,
       term: 'JavaScript 101'
       })
   })

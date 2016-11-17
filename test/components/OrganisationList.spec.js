@@ -1,7 +1,7 @@
 import expect from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
-import OrganisationList from '../../components/OrganisationList'
+import ItemList from '../../components/ItemList'
 
 function setup() {
   const props = [
@@ -17,7 +17,7 @@ function setup() {
     }
   ]
   const component = shallow(
-    <OrganisationList organisations={props} />
+    <ItemList items={props} />
   )
 
   return {
@@ -27,7 +27,7 @@ function setup() {
   }
 }
 
-describe('Organisation List component', () => {
+describe('Item List component', () => {
   it('should display a bootstrap table', () => {
     const { component } = setup()
     expect(component.is('table')).toBe(true)
@@ -41,6 +41,6 @@ describe('Organisation List component', () => {
   /**
    * @todo
    */
-  // it('should display organisation rows', () => {
+  // it('should display item rows', () => {
   // });
 })

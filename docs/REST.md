@@ -1,14 +1,14 @@
 # REST API
 ## Base URI
 `/api`
-## Organisations
-### `GET /api/organisations`
-Return a list of all organisations in the database.
-### `POST /api/organisations`
-Add a new organisation to the database. The organisation is returned together with its newly-assigned id.
-### `GET /api/organisations/:id`
-Return the specified organisation.
-### `PUT /api/organisations/:id`
-Update the specified organisation.
-### `DELETE /api/organisations/:id`
-Delete the specified organisation.
+## Items
+### `GET /api/items`
+Return a list of all items in the database.
+### `POST /api/items`
+Add a new item to the database. The item is returned together with its newly-assigned id.
+### `GET /api/items/:id`
+Return the specified item.
+### `PUT /api/items/:id`
+Update the specified item.
+### `DELETE /api/items/:id`
+Delete the specified item.

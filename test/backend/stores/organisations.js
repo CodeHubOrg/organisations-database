@@ -1,22 +1,22 @@
 import {expect} from 'chai';
 import loki from 'lokijs';
 
-import Organisations from '../../../backend/stores/organisations.js';
+import Items from '../../../backend/stores/items.js';
 
 const lokidb = new loki('testdb.js');
 
-describe('organisations store', () => {
+describe('items store', () => {
     let orgs;
     describe('new', () => {
         it('makes a new store', () => {
-            orgs = new Organisations(lokidb);
+            orgs = new Items(lokidb);
             expect(orgs).to.exist;
             expect(orgs.all()).to.eql([]);
         });
     });
     let added;
     describe('add', () => {
-        it('adds an organisation to the store', () => {
+        it('adds an item to the store', () => {
             added = orgs.add({ name: 'Beetroot' });
             expect(added.name).to.equal('Beetroot');
             expect(added.id).to.exist;
@@ -25,7 +25,7 @@ describe('organisations store', () => {
             expect(o0.name).to.equal('Beetroot');
             expect(o0.id).to.exist;
         });
-        it('adds another organisation to the store', () => {
+        it('adds another item to the store', () => {
             orgs.add({ name: 'Roll' });
             expect(orgs.all().length).to.equal(2);
             const o1 = orgs.all()[1];
@@ -34,7 +34,7 @@ describe('organisations store', () => {
         });
     });
     describe('byID', () => {
-        it('finds the correct organisation', () => {
+        it('finds the correct item', () => {
             const byID = orgs.byID(added.id);
             expect(byID).to.exist;
             expect(byID.id).to.equal(added.id);
@@ -42,7 +42,7 @@ describe('organisations store', () => {
         });
     });
     describe('update', () => {
-        it('updates the stored organisation', () => {
+        it('updates the stored item', () => {
             added.description = 'new description';
             orgs.update(added);
             const byID = orgs.byID(added.id);
@@ -51,7 +51,7 @@ describe('organisations store', () => {
         });
     });
     describe('deleteByID', () => {
-        it('deletes the organisation by id', () => {
+        it('deletes the item by id', () => {
             orgs.deleteByID(added.id);
             const byID = orgs.byID(added.id);
             expect(byID).to.be.null;

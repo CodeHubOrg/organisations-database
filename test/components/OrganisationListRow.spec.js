@@ -1,12 +1,12 @@
 import expect from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
-import OrganisationListRow from '../../components/OrganisationListRow'
+import ItemListRow from '../../components/ItemListRow'
 
 function setup(selected = false) {
   const actions = {
-    onSelectOrganisation: expect.createSpy(),
-    onDeselectOrganisation: expect.createSpy()
+    onSelectItem: expect.createSpy(),
+    onDeselectItem: expect.createSpy()
   }
   const props = {
     id: 1,
@@ -14,7 +14,7 @@ function setup(selected = false) {
     selected: selected
   }
   const component = shallow(
-    <OrganisationListRow {...props} {...actions} />
+    <ItemListRow {...props} {...actions} />
   )
 
   return {
@@ -26,23 +26,23 @@ function setup(selected = false) {
   }
 }
 
-describe('Organisation List Row component', () => {
-  it('should display organisation name', () => {
+describe('Item List Row component', () => {
+  it('should display item name', () => {
     const { name } = setup()
     expect(name.text()).toMatch(/^Javascript 101/)
   })
-  it('should display organisation id', () => {
+  it('should display item id', () => {
     const { id } = setup()
     expect(id.text()).toMatch(/^1/)
   })
-  it('row click should call onSelectOrganisation', () => {
+  it('row click should call onSelectItem', () => {
     const { tr, actions } = setup()
     tr.at(0).simulate('click')
-    expect(actions.onSelectOrganisation).toHaveBeenCalled()
+    expect(actions.onSelectItem).toHaveBeenCalled()
   })
-  it('row click should call onDeselectOrganisation', () => {
+  it('row click should call onDeselectItem', () => {
     const { tr, actions } = setup(true)
     tr.at(0).simulate('click')
-    expect(actions.onDeselectOrganisation).toHaveBeenCalled()
+    expect(actions.onDeselectItem).toHaveBeenCalled()
   })
 })
