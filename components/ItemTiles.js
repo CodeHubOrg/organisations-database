@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import OrganisationTile from './OrganisationTile'
+import ItemTile from './ItemTile'
 
-class OrganisationTiles extends Component {
+class ItemTiles extends Component {
 
     render() {
-        let resources = this.props.organisations;
+        let resources = this.props.items;
         let tiles = resources.map(
             (resource, index) => {
                 return (
-                    <OrganisationTile resource = {resource} key = {index} />
+                    <ItemTile resource = {resource} key = {index} />
                 )
             }
         )
@@ -23,8 +23,8 @@ class OrganisationTiles extends Component {
 
 }
 
-OrganisationTiles.contextTypes = {
+ItemTiles.contextTypes = {
     store: React.PropTypes.object
 }
 
-export default OrganisationTiles
+export default ItemTiles

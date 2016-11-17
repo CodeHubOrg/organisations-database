@@ -49,7 +49,7 @@ class App extends Component {
                 <ul>
                     <li><Link to={'/admin'}>Admin</Link></li>
                 </ul>
-                <OrganisationTiles organisations = { organisations } />
+                <ItemTiles items = { items } />
             </div>
         )
     }

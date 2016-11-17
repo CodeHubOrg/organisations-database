@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class OrganisationTile extends Component {
+class ItemTile extends Component {
     
     render() {
 
@@ -48,4 +48,4 @@ class OrganisationTile extends Component {
     }
 } 
 
-export default OrganisationTile
+export default ItemTile
