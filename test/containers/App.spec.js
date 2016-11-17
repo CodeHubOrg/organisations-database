@@ -4,11 +4,11 @@ import { mount, shallow } from 'enzyme'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from '../../containers/App'
-import OrganisationList from '../../components/OrganisationList'
+import ItemList from '../../components/ItemList'
 
 function setup() {
   const  initialState ={ 
-    organisations: [
+    items: [
       {
         id: 1,
         name: 'Javascript 101',
@@ -42,8 +42,8 @@ describe('App container', () => {
     const { component } = setup();
     expect(component.contains(<h1>JavaScript tools and resources</h1>)).toBe(true)
   });
-  it('contains an <OrganisationList /> component', function () {
+  it('contains an <ItemList /> component', function () {
     const { component } = setup()
-    expect(component.find(OrganisationList).length).toBe(1);
+    expect(component.find(ItemList).length).toBe(1);
   });
 })

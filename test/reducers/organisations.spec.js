@@ -1,9 +1,9 @@
 import expect from 'expect'
-import organisations from '../../reducers/organisations'
+import items from '../../reducers/items'
 import deepFreeze from 'deep-freeze'
 import * as types from '../../constants/ActionTypes'
 
-describe('organisations reducer', () => {
+describe('items reducer', () => {
   it('should handle inital state', () => {
       var stateBefore = undefined
       var action = {}
@@ -17,10 +17,10 @@ describe('organisations reducer', () => {
 		  imagepath: "../constants/javascript101_logo.jpeg",
         }
       ]
-      expect(organisations(stateBefore, action)).toEqual(stateAfter)
+      expect(items(stateBefore, action)).toEqual(stateAfter)
   })
 
-  it('should handle SELECT_ORGANISATION', () => {
+  it('should handle SELECT_ITEM', () => {
       var stateBefore = [
           {
             name: 'JavaScript 101',
@@ -29,7 +29,7 @@ describe('organisations reducer', () => {
           }
       ]
       var action = {
-          type: types.SELECT_ORGANISATION,
+          type: types.SELECT_ITEM,
           id: 1
       }
       var stateAfter = [
@@ -41,7 +41,7 @@ describe('organisations reducer', () => {
       ]
       deepFreeze(stateBefore)
       deepFreeze(action)
-      expect(organisations(stateBefore, action)).toEqual(stateAfter)
+      expect(items(stateBefore, action)).toEqual(stateAfter)
 
       var stateBefore = [
           {
@@ -56,7 +56,7 @@ describe('organisations reducer', () => {
           }
       ]
       var action = {
-          type: types.SELECT_ORGANISATION,
+          type: types.SELECT_ITEM,
           id: 2
       }
       var stateAfter = [
@@ -73,10 +73,10 @@ describe('organisations reducer', () => {
       ]
       deepFreeze(stateBefore)
       deepFreeze(action)
-      expect(organisations(stateBefore, action)).toEqual(stateAfter)
+      expect(items(stateBefore, action)).toEqual(stateAfter)
   })
 
-  it('should handle DESELECT_ORGANISATION', () => {
+  it('should handle DESELECT_ITEM', () => {
       var stateBefore = [
           {
             name: 'JavaScript 101',
@@ -85,7 +85,7 @@ describe('organisations reducer', () => {
           }
       ]
       var action = {
-          type: types.DESELECT_ORGANISATION,
+          type: types.DESELECT_ITEM,
           id: 1
       }
       var stateAfter = [
@@ -97,7 +97,7 @@ describe('organisations reducer', () => {
       ]
       deepFreeze(stateBefore)
       deepFreeze(action)
-      expect(organisations(stateBefore, action)).toEqual(stateAfter)
+      expect(items(stateBefore, action)).toEqual(stateAfter)
 
       var stateBefore = [
           {
@@ -112,7 +112,7 @@ describe('organisations reducer', () => {
           }
       ]
       var action = {
-          type: types.DESELECT_ORGANISATION,
+          type: types.DESELECT_ITEM,
           id: 2
       }
       var stateAfter = [
@@ -129,13 +129,13 @@ describe('organisations reducer', () => {
       ]
       deepFreeze(stateBefore)
       deepFreeze(action)
-      expect(organisations(stateBefore, action)).toEqual(stateAfter)
+      expect(items(stateBefore, action)).toEqual(stateAfter)
   })
 
-  it('should handle ADD_ORGANISATION', () => {
+  it('should handle ADD_ITEM', () => {
     var stateBefore = []
     var action = {
-        type: types.ADD_ORGANISATION,
+        type: types.ADD_ITEM,
         name: 'JavaScript 101'
     }
     var stateAfter = [
@@ -147,7 +147,7 @@ describe('organisations reducer', () => {
     ]
     deepFreeze(stateBefore)
     deepFreeze(action)
-    expect(organisations(stateBefore, action)).toEqual(stateAfter)
+    expect(items(stateBefore, action)).toEqual(stateAfter)
 
     var stateBefore = [
         {
@@ -157,7 +157,7 @@ describe('organisations reducer', () => {
         }
     ]
     var action = {
-        type: types.ADD_ORGANISATION,
+        type: types.ADD_ITEM,
         name: 'CodeHub Bristol'
     }
     var stateAfter = [
@@ -174,7 +174,7 @@ describe('organisations reducer', () => {
     ]
     deepFreeze(stateBefore)
     deepFreeze(action)
-    expect(organisations(stateBefore, action)).toEqual(stateAfter)
+    expect(items(stateBefore, action)).toEqual(stateAfter)
 
     var stateBefore = [
         {
@@ -189,7 +189,7 @@ describe('organisations reducer', () => {
         }
     ]
     var action = {
-        type: types.ADD_ORGANISATION,
+        type: types.ADD_ITEM,
         name: 'Beetroot Cafe'
     }
     var stateAfter = [
@@ -211,10 +211,10 @@ describe('organisations reducer', () => {
     ]
     deepFreeze(stateBefore)
     deepFreeze(action)
-    expect(organisations(stateBefore, action)).toEqual(stateAfter)
+    expect(items(stateBefore, action)).toEqual(stateAfter)
   })
 
-  it('should handle EDIT_ORGANISATION', () => {
+  it('should handle EDIT_ITEM', () => {
       var stateBefore = [
           {
             name: 'JavaScript 101',
@@ -228,7 +228,7 @@ describe('organisations reducer', () => {
           }
       ]
       var action = {
-          type: types.EDIT_ORGANISATION,
+          type: types.EDIT_ITEM,
           name: 'Beetroot Cafe',
           id: 2
       }
@@ -246,10 +246,10 @@ describe('organisations reducer', () => {
       ]
       deepFreeze(stateBefore)
       deepFreeze(action)
-      expect(organisations(stateBefore, action)).toEqual(stateAfter)
+      expect(items(stateBefore, action)).toEqual(stateAfter)
   })
 
-  it('should handle DELETE_ORGANISATION', () => {
+  it('should handle DELETE_ITEM', () => {
       var stateBefore = [
           {
             name: 'JavaScript 101',
@@ -263,7 +263,7 @@ describe('organisations reducer', () => {
           }
       ]
       var action = {
-          type: types.DELETE_ORGANISATION,
+          type: types.DELETE_ITEM,
           id: 2
       }
       var stateAfter = [
@@ -275,6 +275,6 @@ describe('organisations reducer', () => {
       ]
       deepFreeze(stateBefore)
       deepFreeze(action)
-      expect(organisations(stateBefore, action)).toEqual(stateAfter)
+      expect(items(stateBefore, action)).toEqual(stateAfter)
   })
 })

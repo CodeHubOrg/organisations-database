@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CodeHubOrg/organisations-database.git"
+    "url": "https://github.com/CodeHubOrg/items-database.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CodeHubOrg/organisations-database/issues"
+    "url": "https://github.com/CodeHubOrg/items-database/issues"
   },
   "homepage": "http://www.codehub.org.uk",
   "dependencies": {

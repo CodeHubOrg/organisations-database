@@ -1,14 +1,14 @@
 import expect from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
-import OrganisationSelectionPanel from '../../components/OrganisationSelectionPanel'
+import ItemSelectionPanel from '../../components/ItemSelectionPanel'
 
 function setup(selected = null){
     const props = {
-        selectedOrganisation: selected
+        selectedItem: selected
     }
     const component = shallow(
-        <OrganisationSelectionPanel {...props} />     
+        <ItemSelectionPanel {...props} />     
     )
     const heading =  component.find('.panel-heading')
     const body = component.find('.panel-body')
@@ -24,7 +24,7 @@ function setup(selected = null){
     }
 }
 
-describe('Organisation Selection Panel', () => {
+describe('Item Selection Panel', () => {
     it('should display a div with class "panel"', () => {
         const { component } = setup()
         expect(component.is('div')).toBe(true)
@@ -38,11 +38,11 @@ describe('Organisation Selection Panel', () => {
         const { h3 } = setup()
         expect(h3.hasClass('panel-title')).toBe(true)
     });
-    it('should contain a h3 element within the panel-heading, with text "Selected Organisation:"', () => {
+    it('should contain a h3 element within the panel-heading, with text "Selected Item:"', () => {
         const { h3 } = setup()
-        expect(h3.text()).toMatch(/^Selected Organisation/)
+        expect(h3.text()).toMatch(/^Selected Item/)
     });
-    it('should have an h4 element saying "None selected" when props selectedOrganisation not set', () => {
+    it('should have an h4 element saying "None selected" when props selectedItem not set', () => {
         let { h4 } = setup()
         expect(h4.text()).toMatch(/^None selected/)
     });
@@ -55,7 +55,7 @@ describe('Organisation Selection Panel', () => {
         const { img } = setup()
         expect(img.hasClass('resource-image')).toBe(true)
     });
-	it('should contain an img element within the panel-body where the alt is an empty string when selectedOrganisation not set', () => {
+	it('should contain an img element within the panel-body where the alt is an empty string when selectedItem not set', () => {
 		
 		const { img } = setup()
 		expect(img.equals(<img className="resource-image" alt='' src='' />)).toBe(true)
@@ -75,7 +75,7 @@ describe('Organisation Selection Panel', () => {
         const { description } = setup(selectedOrg)
         expect(description.text()).toMatch(/^Group for learning JavaScript/)
     });
-	it('should contain an a element within the panel body where the text is an empty string when props selectedOrganisation not set', () => {
+	it('should contain an a element within the panel body where the text is an empty string when props selectedItem not set', () => {
         let { link } = setup()
         expect(link.text()).toMatch(/^/)
     });

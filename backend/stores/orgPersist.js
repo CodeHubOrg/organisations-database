@@ -1,5 +1,5 @@
 import LokiPersist   from './lokiPersist';
-import Organisations from './organisations';
+import Items from './items';
 
 export default class OrgPersist {
     constructor(path) {
@@ -7,7 +7,7 @@ export default class OrgPersist {
     }
 
     _withOrgs(db, action) {
-        const orgs = new Organisations(db);
+        const orgs = new Items(db);
         return action(orgs);
     }
 

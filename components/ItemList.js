@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
-import OrganisationListRow from './OrganisationListRow'
+import ItemListRow from './ItemListRow'
 
-export default class OrganisationList extends Component {
+export default class ItemList extends Component {
 
     render() {
 
-    let { dispatch, organisations, onSelectOrganisation, onDeselectOrganisation } = this.props 
+    let { dispatch, items, onSelectItem, onDeselectItem } = this.props 
 
-    	let orgs = this.props.organisations;
+    	let orgs = this.props.items;
     	let rows = orgs.map(
     		(org, index) => {
                 return (
-                    <OrganisationListRow 
+                    <ItemListRow 
     		    		name={org.name}
                         selected={org.selected}
     		    		id={org.id} 
     		    		key={index}
-    		    		onSelectOrganisation={onSelectOrganisation}
-    		    		onDeselectOrganisation={onDeselectOrganisation}
+    		    		onSelectItem={onSelectItem}
+    		    		onDeselectItem={onDeselectItem}
 		    		/>
                     )
                 }

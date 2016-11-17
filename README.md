@@ -1,5 +1,5 @@
-![Travis CI badge](https://travis-ci.org/CodeHubOrg/organisations-database.svg?branch=redux)
-#CodeHub Organisations Database project
+![Travis CI badge](https://travis-ci.org/CodeHubOrg/items-database.svg?branch=master)
+#CodeHub Items Database project
 
 ## Getting started
 
@@ -24,6 +24,6 @@ Help:
 
 Too many to name individually, but key contributers include:
 Katja Durrani & Gicela Morales (organisers of CodeHub)
-Paul Grimshaw (founder of this project in its original form: Organisations Database)
+Paul Grimshaw (founder of this project in its original form: Items Database)
 Michael Gray (initiator of backend using lokiJS)
 Dave Thomson (initiator of frontend using React and Redux)
