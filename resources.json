@@ -1,7 +1,7 @@
 {
     "filename": "resources.json",
     "collections": [{
-        "name": "organisations",
+        "name": "items",
         "data": [{
             "name": "Eloquent JavaScript",
             "author": "Marijn Haverbeke",
