@@ -5,7 +5,7 @@ class ItemSelectionPanel extends Component {
     render(){
       let { selectedItem } = this.props
       let name = selectedItem ? selectedItem.name : 'None selected'
-	  let description = selectedItem ? selectedItem.description : ''
+	    let description = selectedItem ? selectedItem.description : ''
 	  let link = selectedItem ? selectedItem.url : ''
 	  let linktext = selectedItem ? 'Link to more info' : ''
 	  let imagepath = selectedItem ? selectedItem.imagepath : ''

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Bristol Local Business Directory",
   "scripts": {
+    "lint": "eslint .",
     "start": "babel-node server.js",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
     "test:watch": "npm test -- --watch"
@@ -41,6 +42,10 @@
     "chai": "^3.5.0",
     "cross-env": "^1.0.7",
     "deep-freeze": "0.0.1",
+    "eslint": "^3.10.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
     "expect": "^1.8.0",
     "express": "^4.13.3",
     "jsdom": "^5.6.1",

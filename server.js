@@ -3,7 +3,7 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-import api        from './api';
+//import api        from './backend/api';
 
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -13,18 +13,13 @@ import config from './webpack.config';
 import OrgPersist from './backend/stores/orgPersist.js';
 const orgpersist = new OrgPersist('resources.json');
 
-
 const app = express();
 const port = 3000;
 
-
 // create application/json parser
 var jsonParser = bodyParser.json()
-
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-
 
 const compiler = webpack(config)
 // app.use(bodyParser.json({ type: 'application/*+json' }))
@@ -53,7 +48,6 @@ app.post("/api/items/", jsonParser, function(req,res){
       res.send(resources);
     })
 });
-
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/index.html')

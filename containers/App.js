@@ -29,13 +29,13 @@ class App extends Component {
         return (
 
             <div>
-                <SearchBar />
-
+                
                 <h1>JavaScript tools and resources</h1>
-				<h4>Find everything you need to get started with Javascript</h4>
+				<h4>Everything you need to get started with Javascript</h4>
 				<br />
-				<FilterBar />
-        
+                <SearchBar items={items} />
+
+			        
                 <ItemList
                     dispatch={store.dispatch}
                     items={items}
