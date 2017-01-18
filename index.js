@@ -19,43 +19,55 @@ const routes = [
     { path: '/new', component: ItemAdd }
 ]
 
-let xhr = new XMLHttpRequest();
-xhr.open('GET', '/api/items' , true);
-xhr.onreadystatechange = function() {
-    let status;
-    let data;
+// let xhr = new XMLHttpRequest();
+// xhr.open('GET', '/api/items' , true);
+// xhr.onreadystatechange = function() {
+//     let status;
+//     let data;
 
-if (xhr.readyState == 4) {
-    status = xhr.status;
-    if(status == 200) {
-        let data = JSON.parse(xhr.responseText);
-        let initialState = {"items": data};        
-        let store = createStore(rootReducer, initialState);       
+// if (xhr.readyState == 4) {
+//     status = xhr.status;
+//     if(status == 200) {
+//         let data = JSON.parse(xhr.responseText);
 
-        function render() {
+        fetch('/api/items').then((response) => {
 
-            ReactDOM.render((
-                <Provider store={store}>
-                    <Router history={browserHistory} routes={routes}></Router>
-                </Provider>
-            ), document.getElementById('root'))
-        }
+          if(response.status !== 200) {
+            throw new Error(response.status + " " + response.statusText);
+          }
+          return response.json();
 
-        Provider.childContextTypes = {
-            store: React.PropTypes.object
-        };
+        }).then((json) => {
+        
+          let initialState = {"items": json};        
+          let store = createStore(rootReducer, initialState);       
+
+          function render() {
+
+              ReactDOM.render((
+                  <Provider store={store}>
+                      <Router history={browserHistory} routes={routes}></Router>
+                  </Provider>
+              ), document.getElementById('root'))
+          }
+
+          Provider.childContextTypes = {
+              store: React.PropTypes.object
+          };
 
 
-        store.subscribe(render)
-        render()
+          store.subscribe(render)
+          render()
 
-        // Every time the state changes, log it
-        // Note that subscribe() returns a function for unregistering the listener
-        let unsubscribe = store.subscribe(() =>
-          console.log(JSON.stringify(store.getState(),null,3))
-        )
+          // Every time the state changes, log it
+          // Note that subscribe() returns a function for unregistering the listener
+          let unsubscribe = store.subscribe(() =>
+            console.log(JSON.stringify(store.getState(),null,3))
+          )
 
-        }
-    }
-}
-xhr.send(null);
+        });
+
+//         }
+//     }
+// }
+// xhr.send(null);
