@@ -1,40 +1,53 @@
 import React, { Component } from 'react'
 import ItemListRow from './ItemListRow'
+import { selectItem, deselectItem } from '../actions'
+import { connect } from 'react-redux'
 
-export default class ItemList extends Component {
+const ItemList = ({items, onSelectItem, onDeselectItem}) => {
 
-    render() {
+  let rows = items.map(
+    (item, index) => {
+      return (
+        <ItemListRow
+          name = {item.name}
+          selected = {item.selected}
+          id = {item.id}
+          key = {index}
+          onSelectItem = {() => onSelectItem(item.id)}
+          onDeselectItem = {() => onDeselectItem(item.id)}
+          />
+        )
+      }
+    )
 
-    let { dispatch, items, onSelectItem, onDeselectItem } = this.props 
-
-    	let orgs = this.props.items;
-    	let rows = orgs.map(
-    		(org, index) => {
-                return (
-                    <ItemListRow 
-    		    		name={org.name}
-                        selected={org.selected}
-    		    		id={org.id} 
-    		    		key={index}
-    		    		onSelectItem={onSelectItem}
-    		    		onDeselectItem={onDeselectItem}
-		    		/>
-                    )
-                }
-    	);		
-
-		return(
-            <table className="table table-striped table-bordered table-hover">
-				<thead className="thead">
-                    <tr>
-						<th>Name</th>
-						<th>Id</th>
-                    </tr>
-				</thead>
-				<tbody className="tbody">
-					{rows}
-				</tbody>
-			</table>
-        );
-    }
+    return (
+      <table className="table table-striped table-bordered table-hover">
+        <thead className="thead">
+          <tr>
+            <th>Name</th>
+            <th>Id</th>
+          </tr>
+        </thead>
+        <tbody className="tbody">
+          {rows}
+        </tbody>
+      </table>
+    )
 }
+
+const mapStateToProps = (state) => {
+  return { "items": state.items }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return { 
+    onSelectItem: (id) => {
+      dispatch(selectItem(id))
+    },
+    onDeselectItem: (id) => {
+      dispatch(deselectItem(id))
+    }
+  } 
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemList)

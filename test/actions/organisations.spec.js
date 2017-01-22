@@ -10,8 +10,8 @@ describe('item actions', () => {
     })
   })
 
-  it('deSelectItem should create DESELECT_ITEM action', () => {
-    expect(actions.deSelectItem(1)).toEqual({
+  it('deselectItem should create DESELECT_ITEM action', () => {
+    expect(actions.deselectItem(1)).toEqual({
       type: types.DESELECT_ITEM,
       id: 1
     })

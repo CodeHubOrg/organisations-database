@@ -14,7 +14,7 @@ export function selectItem(orgNum){
 
 }
 
-export function deSelectItem(orgNum){
+export function deselectItem(orgNum){
   return{
     type: types.DESELECT_ITEM,
     id: orgNum
