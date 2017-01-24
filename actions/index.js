@@ -14,7 +14,7 @@ export function selectItem(orgNum){
 
 }
 
-export function deSelectItem(orgNum){
+export function deselectItem(orgNum){
   return{
     type: types.DESELECT_ITEM,
     id: orgNum
@@ -52,5 +52,11 @@ export function searchItem(searchTerm){
     type: types.SEARCH_ITEM,
     term: searchTerm
   }
+}
 
+export function selectView(view){
+  return{
+    type: types.SELECT_VIEW,
+    view: view
+  }
 }

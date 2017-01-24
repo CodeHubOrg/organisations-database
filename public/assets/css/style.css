@@ -14,6 +14,8 @@ ul {
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 h1 {
@@ -22,6 +24,51 @@ h1 {
     color: #555;
     border-bottom: 3px solid #89f;
     margin-bottom: 1em;
+}
+
+p {
+    line-height: 1.4em;
+}
+
+a:link, a:hover, a:active, a:visited {
+    border-bottom: #cdcdff solid 1px;
+    text-decoration: none;
+}
+
+a:link{
+    color: #4e3ddb;
+    
+}
+
+a:visited, a:hover,  a:active {
+    color: #21176f;   
+}
+
+.row.v-pad {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.row.v-pad-top-40 {
+    padding-top: 40px;
+}
+
+
+img.responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (min-width: 480px){
+    body {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 2em;
+    } 
+
+    p {
+        line-height: 1.5em;
+    }
 }
 
 
@@ -93,4 +140,160 @@ radiogroup input {
     background: #45b;
     color: white;
 }
+
+.logo {
+    display: inline-block;
+}
+
+.header {
+    position: relative;
+}
+
+
+
+h1.title {
+    display: inline-block;              
+    position: absolute;
+    left: 220px;
+    bottom: 5px;
+}
+
+.resource {
+    min-height: 200px;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    max-width: 320px;
+    padding: 0 0 10px 0;
+    margin-bottom: 20px;
+}
+
+.resource--header {
+    background: #ffdb58; 
+    color: #605b56;
+    margin-top: 0;
+    border: 1px solid #ffdb58; 
+
+   
+}
+
+.dummy {
+     color: #605b56;
+    color: #837a75;
+    color: #95c14f;
+    color: #edff7a;
+    color: #f2fbe0;
+}
+
+.resource--header h3 {
+    padding: 5px 0 8px 0;
+    margin: 0;
+} 
+
+.resource--info-lines {
+    list-style: none outside;
+    padding: 0;
+    margin: 0;
+}
+
+
+.resource--info-lines li {
+    margin-top: 14px;
+    margin-right: 10px;
+    margin-left: 10px;  
+    line-height: 1.4;          
+}
+
+.resource--info-lines li.top {
+    border-bottom: 1px #fbceb1 dashed 
+}
+
+.difficulty {
+    width: 20px;
+    height: 20px; 
+    border-radius: 2px;          
+}
+
+.difficulty-1 {
+    background: #7cfc00;
+}
+.difficulty-2 {
+    background: #ffff00
+} 
+.difficulty-3 {
+    background: #ffa500;
+}
+.difficulty-4 {
+    background: #ff8c00
+}
+.difficulty-5 {
+    background: #ff6200;
+}
+.difficulty-6 {
+    background: #89f;
+}
+
+.duration {
+    line-height: 1.4;
+    height: 28px;
+}
+
+.description {
+    color: #765;
+}
+
+.label {
+    color: #635147;  
+    background: #edff7a
+;    padding-right: 5px; 
+    padding-left: 5px;
+    border-radius: 2px;
+    margin-right: 5px;          
+}
+
+.text--centered {
+    text-align: center;
+}
+
+
+body {
+    color: #483c32;;
+   /* font-family: "Trebuchet MS", Georgia, serif;*/
+    /*letter-spacing: 0.3px;*/
+    font-family: Helvetica, arial, sans-serif;
+    font-size: 16px;
+}
+
+.resource--Podcast {
+    background: url(/assets/img/Microphone-52.png) no-repeat right;
+}
+
+.resource--Video {
+    background: url(/assets/img/Camcorder-48.png) no-repeat right;
+}
+
+.resource--Book {
+    background: url(/assets/img/Book-48.png) no-repeat right;
+}
+
+.resource--Online.interactive {
+    background: url(/assets/img/Interactive-50.png) no-repeat right;
+    background-size: 25px;
+}
+
+.resource--Online.written {
+    background: url(/assets/img/ELearning-48.png) no-repeat right;   
+    background-size: 25px;
+}
+
+
+.resource--type {
+    padding-right: 30px;
+    margin-right: 5px;
+    font-size: 12px;
+    height: 28px;
+    line-height: 2.2;
+    text-align: right;
+    background-size: 25px;   
+}
+
 
