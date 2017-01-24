@@ -26,6 +26,7 @@ import './public/assets/css/style.css'
   }).then((json) => {
     let initialState = {"items": json};        
     let store = createStore(rootReducer, initialState);
+    console.log(store.getState());
 
     ReactDOM.render((
         <Provider store={store}>

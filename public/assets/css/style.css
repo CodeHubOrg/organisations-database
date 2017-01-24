@@ -149,6 +149,8 @@ radiogroup input {
     position: relative;
 }
 
+
+
 h1.title {
     display: inline-block;              
     position: absolute;
@@ -167,9 +169,19 @@ h1.title {
 
 .resource--header {
     background: #ffdb58; 
-    color: #635147;
+    color: #605b56;
     margin-top: 0;
-    border: 1px solid #ffdb58;
+    border: 1px solid #ffdb58; 
+
+   
+}
+
+.dummy {
+     color: #605b56;
+    color: #837a75;
+    color: #95c14f;
+    color: #edff7a;
+    color: #f2fbe0;
 }
 
 .resource--header h3 {
@@ -231,8 +243,8 @@ h1.title {
 
 .label {
     color: #635147;  
-    background: #fbceb1;
-    padding-right: 5px; 
+    background: #edff7a
+;    padding-right: 5px; 
     padding-left: 5px;
     border-radius: 2px;
     margin-right: 5px;          

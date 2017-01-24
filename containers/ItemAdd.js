@@ -7,6 +7,8 @@ class ItemAdd extends Component {
       let form = e.target
       let name = form.querySelector('[name="resource_name"]').value
       let author = form.querySelector('[name="resource_author"]').value
+      let linktext = form.querySelector('[name="resource_linktext"]').value
+      let linkurl = form.querySelector('[name="resource_linkurl"]').value
       let difficulty = form.querySelector('[name="resource_difficulty"]:checked').value
       let type = form.querySelector('[name="resource_type"]').value
       let duration = form.querySelector('[name="resource_duration"]').value
@@ -19,6 +21,8 @@ class ItemAdd extends Component {
         name,
         author,
         difficulty,
+        linktext,
+        linkurl,
         type,
         duration,
         description,
@@ -38,6 +42,15 @@ class ItemAdd extends Component {
                     <label for="author">Author (if known):</label>
                     <input type="text" name="resource_author" id="author" />
                 </div>
+                <div className="form--control">
+                    <label for="author">Link text:</label>
+                    <input type="text" name="resource_linktext" id="linktextr" />
+                </div>
+                <div className="form--control">
+                    <label for="author">Link URL:</label>
+                    <input type="text" name="resource_linkurl" id="linkurl" />
+                </div>                
+
                 <div className="outer-label">Difficulty:</div>
                 <div className="form--control marg-left">
 
@@ -70,6 +83,7 @@ class ItemAdd extends Component {
                         <option value="Podcast">Podcast</option>
                         <option value="Online written">Online written tutorial</option>
                         <option value="Online interactive">Online interactive</option>
+                        <option value="Reference">Reference</option>
                     </select>
                 </div>
                 <div className="form--control">

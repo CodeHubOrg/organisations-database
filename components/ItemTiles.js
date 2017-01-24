@@ -1,30 +1,25 @@
 import React, { Component } from 'react'
 import ItemTile from './ItemTile'
+import { connect } from 'react-redux'
 
-class ItemTiles extends Component {
-
-    render() {
-        let resources = this.props.items;
-        let tiles = resources.map(
-            (resource, index) => {
-                return (
-                    <ItemTile resource = {resource} key = {index} />
-                )
-            }
-        )
-
+const ItemTiles = ({items}) => {
+  let tiles = items.map(
+      (item,index) => {
         return (
-            <div className = "grid">
-                {tiles}
-            </div>
-        )     
+          <ItemTile resource={item} key={index} />
+        )
+      }
+    )
 
-    }
-
+  return (
+    <div className = "grid">
+      { tiles }
+    </div>
+  )
 }
 
-ItemTiles.contextTypes = {
-    store: React.PropTypes.object
-}
+const mapStateToProps = (state) => {
+  return {"items": state.items}
+} 
 
-export default ItemTiles
+export default connect(mapStateToProps)(ItemTiles)

@@ -13,7 +13,6 @@ const ItemSelectionPanel = ({item}) => (
 )
 
 const mapStateToProps = (state) => {
-  console.log(state.items)
   let selected = state.items.find(
     function(item){
       return item.selected == true

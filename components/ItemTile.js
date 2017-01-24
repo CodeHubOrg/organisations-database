@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 class ItemTile extends Component {
     
     render() {
 
+      //console.log(typeof this.props.resource.linkurl)
+
     let resource = this.props.resource;
-    let difficultyClass = "difficulty difficulty-"+this.props.resource.difficulty;
+    let difficultyClass = "difficulty difficulty-"+resource.difficulty;
     let typeClass = "resource--type resource--"+resource.type;
+    let url = ''
+    let linktext = ''
+    let linkitem = ''
+    if(resource.linkurl !== undefined){
+       url = resource.linkurl
+       linktext = (resource.linktext !== undefined) ? resource.linktext : url
+       linkitem = <li><a rel="external" target="_blank" href={url}>{linktext}</a></li>    
+    }
+    console.log(linkitem)
 
     return(
             <div className="grid__cell u-1/2--medium u-1/3--large">
@@ -30,7 +42,8 @@ class ItemTile extends Component {
                                 </div>
                             </div>
                         </li>
-                 
+
+                        {linkitem}
                         <li className="description">
                         {resource.description}
                         </li>

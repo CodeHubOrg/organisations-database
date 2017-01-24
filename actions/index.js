@@ -52,5 +52,11 @@ export function searchItem(searchTerm){
     type: types.SEARCH_ITEM,
     term: searchTerm
   }
+}
 
+export function selectView(view){
+  return{
+    type: types.SELECT_VIEW,
+    view: view
+  }
 }

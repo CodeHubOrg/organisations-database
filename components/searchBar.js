@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props){
     super(props);
+      // can be filtered in mapStateToProps 
       const items_data = this.props.items.map(
-          (item) => {
+          (item, index) => {
             return {
               name: item.name,
-              author: item.author
+              author: item.author,
+              key: index
             }
           }
         )
@@ -20,13 +23,13 @@ export default class SearchBar extends Component {
       this.onInputChange = this.onInputChange.bind(this);
       this.filterData =  this.filterData.bind(this);
     }
+
     filterData(searchterm){
         let results = this.state.initial_items.filter(
           (item) => {
             //console.log(item.name)
             return item.name.toLowerCase().search(searchterm.toLowerCase()) !== -1 || 
-            item.author.toLowerCase().search(searchterm.toLowerCase()) !== -1
-           
+            item.author.toLowerCase().search(searchterm.toLowerCase()) !== -1            
           }
         )
         console.log(results)
@@ -36,6 +39,7 @@ export default class SearchBar extends Component {
           this.setState({result_data: null, result_orig: false})
         }
     }
+
     onInputChange(event){
       this.filterData(event.target.value)
       this.setState({term:event.target.value}) 
@@ -74,3 +78,9 @@ export default class SearchBar extends Component {
       );
     }
   }
+
+const mapStateToProps = (state) => {
+  return { "items": state.items }
+}
+
+export default connect(mapStateToProps)(SearchBar)
