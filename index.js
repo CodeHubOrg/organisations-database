@@ -19,6 +19,7 @@ import './public/assets/css/style.css'
   ]  
 
   fetch('/api/items').then((response) => {
+    // polyfill needed?
     if(response.status !== 200) {
       throw new Error(response.status + " " + response.statusText);
     }

@@ -30,6 +30,7 @@
     "react-redux": "^4.2.1",
     "react-router": "^2.4.1",
     "redux": "^3.2.1",
+    "resource-router-middleware": "^0.6.0",
     "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {

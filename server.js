@@ -3,15 +3,15 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-//import api        from './backend/api';
+import api from './backend/api';
 
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './webpack.config';
 
-import OrgPersist from './backend/stores/orgPersist.js';
-const orgpersist = new OrgPersist('resources.json');
+import ItemPersist from './backend/stores/itemPersist.js';
+const itempersist = new ItemPersist('./backend/data/itemDB.js');
 
 const app = express();
 const port = 3000;
@@ -28,26 +28,30 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
 app.use(webpackHotMiddleware(compiler));
 
+
+
 // return all resources
 app.get("/api/items", function(req, res){
-    orgpersist.all().then(function(resources){
+    itempersist.all().then(function(resources){
       res.send(resources);
     })
 });
 
-// return resource with a specific id
+// // return resource with a specific id
 app.get("/api/items/:id", function(req,res){ 
-    orgpersist.byID(req.params.id).then(function(resource){
+    itempersist.byID(req.params.id).then(function(resource){
       res.send(resource);
     })
 });
 
-// add a resource, then return all resources
+// // add a resource, then return all resources
 app.post("/api/items/", jsonParser, function(req,res){
-    orgpersist.add(req.body).then(function(resources){
+    itempersist.add(req.body).then(function(resources){
       res.send(resources);
     })
 });
+
+// console.log(app)
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/index.html')

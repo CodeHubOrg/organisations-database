@@ -1,5 +1,5 @@
 {
-    "filename": "resources.json",
+    "filename": "itemDB.js",
     "collections": [{
         "name": "items",
         "data": [{

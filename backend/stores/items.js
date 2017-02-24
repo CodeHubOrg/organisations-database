@@ -1,33 +1,33 @@
 
 export default class Items {
     constructor(db) {
-        this.orgs = db.getCollection('items');
-        if (!this.orgs) {
-            this.orgs = db.addCollection('items');
+        this.items = db.getCollection('items');
+        if (!this.items) {
+            this.items = db.addCollection('items');
         }
     }
 
     all() {
-        return this.orgs.data;
+        return this.items.data;
     }
 
     byID(id) {
-        return this.orgs.get(id);
+        return this.items.get(id);
     }
 
     add(org) {
-        const added = this.orgs.insert(org);
+        const added = this.items.insert(org);
         added.id = added.$loki;
-        this.orgs.update(added);
+        this.items.update(added);
         return added;
     }
 
     update(org) {
-        return this.orgs.update(org);
+        return this.items.update(org);
     }
 
     deleteByID(id) {
-        let org = this.byID(id);
-        return this.orgs.remove(org);
+        let item = this.byID(id);
+        return this.items.remove(org);
     }
 }
