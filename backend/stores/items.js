@@ -28,6 +28,6 @@ export default class Items {
 
     deleteByID(id) {
         let item = this.byID(id);
-        return this.items.remove(org);
+        return this.items.remove(item);
     }
 }

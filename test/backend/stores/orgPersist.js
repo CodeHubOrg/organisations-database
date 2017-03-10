@@ -1,14 +1,14 @@
 import {expect} from 'chai';
 import fs   from 'fs';
 
-import OrgPersist from '../../../backend/stores/orgPersist.js';
+import ItemPersist from '../../../backend/stores/itemPersist.js';
 
 import lokiSetup from './lokiSetup.js';
 const testPath = lokiSetup();
 
 const testPromise = (desc, action, tests) => {
     it(desc, (done) => {
-        const op = new OrgPersist(testPath);
+        const op = new ItemPersist(testPath);
         const promise = action(op);
         return promise.then( (data) => {
             tests(data);
@@ -17,11 +17,11 @@ const testPromise = (desc, action, tests) => {
     })
 };
 
-describe('org persist wrapper', () => {
+describe('Item persist wrapper', () => {
 
     describe('new', () => {
         it('connects a new persistent db', () => {
-            const op = new OrgPersist(testPath);
+            const op = new ItemPersist(testPath);
             expect(op).to.exist;
         });
     });
