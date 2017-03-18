@@ -8,30 +8,29 @@ import App from './containers/App'
 import Admin from './containers/Admin'
 import ItemAdd from './containers/ItemAdd'
 import rootReducer from './reducers/index'
-import './public/assets/css/bootstrap.css'
-import './public/assets/css/grid.css'
-import './public/assets/css/style.css'
+import '../public/assets/css/bootstrap.css'
+import '../public/assets/css/grid.css'
+import '../public/assets/css/style.css'
 
-  const routes = [
+const routes = [
       { path: '/', component: App },
       { path: '/admin', component: Admin },
       { path: '/new', component: ItemAdd }
-  ]  
+]
 
-  fetch('/api/items').then((response) => {
+fetch('/api/items').then((response) => {
     // polyfill needed?
     if(response.status !== 200) {
-      throw new Error(response.status + " " + response.statusText);
+      throw new Error(response.status + ' ' + response.statusText)
     }
-    return response.json();
+    return response.json()
   }).then((json) => {
-    let initialState = {"items": json};        
-    let store = createStore(rootReducer, initialState);
-    console.log(store.getState());
-
+    let initialState = {'items': json}
+    let store = createStore(rootReducer, initialState)
+  
     ReactDOM.render((
         <Provider store={store}>
             <Router history={browserHistory} routes={routes}></Router>
         </Provider>
     ), document.getElementById('root'))
-  });
+  })
