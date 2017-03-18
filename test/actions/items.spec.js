@@ -1,6 +1,6 @@
 import expect from 'expect'
-import * as types from '../../constants/ActionTypes'
-import * as actions from '../../actions'
+import * as types from '../../src/constants/ActionTypes'
+import * as actions from '../../src/actions'
 
 describe('item actions', () => {
   it('selectItem should create SELECT_ITEM action', () => {

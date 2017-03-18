@@ -1,7 +1,7 @@
 import expect from 'expect'
-import items from '../../reducers/items'
+import items from '../../src/reducers/items'
 import deepFreeze from 'deep-freeze'
-import * as types from '../../constants/ActionTypes'
+import * as types from '../../src/constants/ActionTypes'
 
 describe('items reducer', () => {
   it('should handle inital state', () => {
