@@ -1,5 +1,6 @@
-![Travis CI badge](https://travis-ci.org/CodeHubOrg/items-database.svg?branch=master)
-#CodeHub JavaScript Resources Project
+![Travis CI badge](https://travis-ci.org/CodeHubOrg/organisations-database.svg?branch=master)
+
+# CodeHub JavaScript Resources Project
 
 This app was started as part of CodeHub's JS101 group, in order to work together on a project and practise using new JavaScript technologies.    
      
