@@ -32,22 +32,47 @@ app.use(webpackHotMiddleware(compiler));
 
 // return all resources
 app.get("/api/items", function(req, res){
-    itempersist.all().then(function(resources){
-      res.send(resources);
-    })
+      itempersist.all().then(
+      function(resources){
+        res.send(resources);
+      },
+      function(error){
+        console.log(error.message);
+      }
+    )
 });
 
-// // return resource with a specific id
+// return resource with a specific id
 app.get("/api/items/:id", function(req,res){ 
-    itempersist.byID(req.params.id).then(function(resource){
-      res.send(resource);
-    })
+    itempersist.byID(req.params.id).then(
+      function(resource){
+        res.send(resource);
+      },
+      function(error){
+        console.log(error.message);
+      }
+    )
+});
+
+// update resource with given id
+app.put("/api/items/:id", jsonParser, function(req,res){ 
+   itempersist.update(req.body).then(
+     function(resources){
+       //res.sendStatus(204);
+       res.send(resources);
+     },
+     function(error){
+        console.log(error.message);
+     }
+   )
 });
 
 // // add a resource, then return all resources
 app.post("/api/items/", jsonParser, function(req,res){
-    itempersist.add(req.body).then(function(resources){
-      res.send(resources);
+    itempersist.add(req.body).then(
+    function(resources){
+      res.sendStatus(204);
+      //res.send(resources);
     })
 });
 

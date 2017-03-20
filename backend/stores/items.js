@@ -15,15 +15,15 @@ export default class Items {
         return this.items.get(id);
     }
 
-    add(org) {
-        const added = this.items.insert(org);
+    add(item) {
+        const added = this.items.insert(item);
         added.id = added.$loki;
         this.items.update(added);
         return added;
     }
 
-    update(org) {
-        return this.items.update(org);
+    update(item) {
+        return this.items.update(item);
     }
 
     deleteByID(id) {

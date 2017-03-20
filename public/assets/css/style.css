@@ -52,6 +52,10 @@ a:visited, a:hover,  a:active {
     padding-top: 40px;
 }
 
+.success {
+    color: #2a2;
+    font-weight: bold;
+}
 
 img.responsive {
     max-width: 100%;

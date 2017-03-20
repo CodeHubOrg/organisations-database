@@ -18,7 +18,8 @@ class ItemTile extends Component {
        linktext = (resource.linktext !== undefined) ? resource.linktext : url
        linkitem = <li><a rel="external" target="_blank" href={url}>{linktext}</a></li>    
     }
-    console.log(linkitem)
+    let editlink = '/edit/' + resource.id
+    // console.log(linkitem)
 
     return(
             <div className="grid__cell u-1/2--medium u-1/3--large">
@@ -53,9 +54,13 @@ class ItemTile extends Component {
                         </li>
                         <li>
                             <span className="label">JS general</span>
-                        </li>                      
+                        </li> 
+                        <li>
+                        <Link to={editlink}>Edit</Link>
+                        </li>                     
                     </ul>
                 </div>
+
             </div>
         )
     }

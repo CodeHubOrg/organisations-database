@@ -15,7 +15,7 @@ const App = () => (
     <SearchBar />
     <SelectView />
     <p /> 
-    <ListOrTiles/>
+    <ListOrTiles />
     <ItemSelectionPanel />
     <ul>
       <li><Link to={'/admin'}>Admin</Link></li>
