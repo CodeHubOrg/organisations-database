@@ -29,7 +29,6 @@ fetch('/api/items').then((response) => {
   }).then((json) => {
     let initialState = {'items': json}
     let store = createStore(rootReducer, initialState)
-
   
     ReactDOM.render((
         <Provider store={store}>

@@ -60,3 +60,10 @@ export function selectView(view){
     view: view
   }
 }
+
+export function selectFilter(filter){
+    return{
+    type: types.SELECT_FILTER,
+    filter:filter
+  }
+}

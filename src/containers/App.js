@@ -13,6 +13,7 @@ const App = () => (
     <h4>Everything you need to get started with Javascript</h4>
     <br />
     <SearchBar />
+    <FilterBar />
     <SelectView />
     <p /> 
     <ListOrTiles />
