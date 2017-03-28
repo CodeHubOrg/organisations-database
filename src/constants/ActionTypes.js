@@ -7,3 +7,4 @@ export const DELETE_ITEM = 'DELETE_ITEM'
 export const UPDATE_FORM = 'UPDATE_FORM'
 export const SELECT_VIEW = 'SELECT_VIEW'
 export const SELECT_FILTER = 'SELECT_FILTER'
+

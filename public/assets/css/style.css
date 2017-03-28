@@ -106,6 +106,8 @@ img.responsive {
     margin-right: 10px;
 }
 
+
+
 .form--control radiogroup label {
     display: block;
     text-align: left;
@@ -300,4 +302,18 @@ body {
     background-size: 25px;   
 }
 
+/*
+---------------------
+---- SEARCH ---------
+---------------------
+*/
+.search-component {
+    background-color: goldenrod;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.search-input {
+    width: 500px;
+}
 

@@ -61,9 +61,10 @@ export function selectView(view){
   }
 }
 
-export function selectFilter(filter){
-    return{
+export function selectSearchFilter (filterObj) {
+  return {
     type: types.SELECT_FILTER,
-    filter:filter
+    category: filterObj.category,
+    filter: filterObj.filter
   }
 }

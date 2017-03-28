@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-class SearchBar extends Component {
+class FilterByKeyword extends Component {
   constructor(props){
     super(props);
       // can be filtered in mapStateToProps 
@@ -16,12 +16,12 @@ class SearchBar extends Component {
         )
 
       this.state = {term:'',
-                    result_orig: 'Search by title or name of author',
+                    result_orig: '',
                     initial_items: items_data,
                     result_data: null
-                                                            };
-      this.onInputChange = this.onInputChange.bind(this);
-      this.filterData =  this.filterData.bind(this);
+                                                            }
+      this.onInputChange = this.onInputChange.bind(this)
+      this.filterData =  this.filterData.bind(this)
     }
 
     filterData(searchterm){
@@ -32,7 +32,6 @@ class SearchBar extends Component {
             item.author.toLowerCase().search(searchterm.toLowerCase()) !== -1            
           }
         )
-        console.log(results)
         if(searchterm.length > 2){
           this.setState({result_data: results, result_orig: false})
         } else {
@@ -63,19 +62,35 @@ class SearchBar extends Component {
       <div>
         <form onSubmit= {this.onFormSubmit} className="input-group">
           <input
-          placeholder= "Find a resource"
+          placeholder= "Find a resource - search by author, title or keyword"
+          className = "search-input"
+          value={this.state.term}
+          onChange={this.onInputChange}/>
+
+        </form>
+        <div className="">{results}</div>
+        <br />
+      </div>
+      )
+      /*
+      return(
+      <div>
+        <form onSubmit= {this.onFormSubmit} className="input-group">
+          <input
+          placeholder= "Find a resource - search by author, title or keyword"
           className = "form-control"
           value={this.state.term}
           onChange={this.onInputChange}/>
 
           <span className="input-group-btn">
-            <button type="submit" className="btn btn-scondary">Search</button>
+            <button type="submit" className="btn btn-scondary">Search By Author or Title</button>
             </span>
         </form>
         <div className="">{results}</div>
         <br />
       </div>
-      );
+      )
+      */
     }
   }
 
@@ -83,4 +98,4 @@ const mapStateToProps = (state) => {
   return { "items": state.items }
 }
 
-export default connect(mapStateToProps)(SearchBar)
+export default connect(mapStateToProps)(FilterByKeyword)
