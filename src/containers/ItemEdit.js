@@ -1,19 +1,13 @@
 import React, { Component } from 'react'
-// import * as actions from '../actions'
+import { connect } from 'react-redux'
 
-class ItemEdit extends Component {
+
+class ItemEdit extends Component {  
   constructor(props){
+    console.log(props)
     super(props); 
-    this.state = { 'item': {
-        'name' : '',
-        'author': '',
-        'difficulty': null,
-        'linktext': '',
-        'linkurl': '',
-        'type': '',
-        'duration': '',
-        'description': '',
-        'selected': false },
+    this.state = {
+        'item': props.item,
         'success': false
     }  
     this.handleChange = this.handleChange.bind(this)
@@ -23,21 +17,22 @@ class ItemEdit extends Component {
     this.getTypeSelectStatus = this.getTypeSelectStatus.bind(this)     
   }
 
-  componentDidMount () {
-    if(this.props.params.id){
-      const id = this.props.params.id
-      const url = '/api/items/'+id
-      fetch(url).then((response) => {
-        if(response.status !== 200) {
-          throw new Error(response.status + ' ' + response.statusText)
-        }
-        return response.json()
-      }).then((json) => {
-        console.log(json)
-        this.setState({'item': json})
-      })
-    }
-  }
+  // alternative method getting item from persistent data, in that case set initial state to an empty item
+  // componentDidMount () {
+  //   if(this.props.params.id){
+  //     const id = this.props.params.id
+  //     const url = '/api/items/'+id
+  //     fetch(url).then((response) => {
+  //       if(response.status !== 200) {
+  //         throw new Error(response.status + ' ' + response.statusText)
+  //       }
+  //       return response.json()
+  //     }).then((json) => {
+  //       console.log(json)
+  //       this.setState({'item': json})
+  //     })
+  //   }    
+  // }
 
   handleChange (e) {
     let item_updates = Object.assign({}, this.state.item)
@@ -61,7 +56,7 @@ class ItemEdit extends Component {
       if(data.id == self.state.item.id) {
         self.setState({'success':'Data successfully updated'})
         setTimeout(function(){
-          if(self.state.sucess != ''){
+          if(self.state.success != ''){
             self.setState({'success': ''})
             }
           }, 2500
@@ -192,4 +187,26 @@ class ItemEdit extends Component {
   }
 }
 
-export default ItemEdit
+// not sure if necessary but might be good to have when using this component for adding, too
+let empty_item =  {
+        'name' : '',
+        'author': '',
+        'difficulty': null,
+        'linktext': '',
+        'linkurl': '',
+        'type': '',
+        'duration': '',
+        'description': '',
+        'selected': false 
+      }
+
+const mapStateToProps = (state, ownProps) => {
+  if(ownProps.params.id){
+    return {
+      'item': state.items.find((item) => {return item.id == ownProps.params.id})
+    }
+  } 
+  return {'item': empty_item}
+}
+
+export default connect(mapStateToProps)(ItemEdit)

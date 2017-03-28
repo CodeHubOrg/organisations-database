@@ -58,7 +58,6 @@ app.get("/api/items/:id", function(req,res){
 app.put("/api/items/:id", jsonParser, function(req,res){ 
    itempersist.update(req.body).then(
      function(resources){
-       //res.sendStatus(204);
        res.send(resources);
      },
      function(error){
