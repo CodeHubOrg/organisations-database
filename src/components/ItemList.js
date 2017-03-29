@@ -4,7 +4,6 @@ import { selectItem, deselectItem } from '../actions'
 import { connect } from 'react-redux'
 
 const ItemList = ({items, onSelectItem, onDeselectItem}) => {
-
   let rows = items.map(
     (item, index) => {
       return (
@@ -34,9 +33,10 @@ const ItemList = ({items, onSelectItem, onDeselectItem}) => {
       </table>
     )
 }
+/*
 
 const mapStateToProps = (state) => {
-  return { "items": state.items }
+  return { "items": state.searchResults.items }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -51,3 +51,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemList)
+*/
+
+export default ItemList

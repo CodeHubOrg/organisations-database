@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class FilterByKeyword extends Component {
-  constructor(props){
+  constructor (props){
     super(props);
-      // can be filtered in mapStateToProps 
       const items_data = this.props.items.map(
           (item, index) => {
             return {
@@ -42,6 +41,9 @@ class FilterByKeyword extends Component {
     onInputChange(event){
       this.filterData(event.target.value)
       this.setState({term:event.target.value}) 
+      /* ------- REFACTOR ------- */
+      this.props.callback(this.state.result_data)
+      /* ------- REFACTOR ------- */
     }
 
   render(){  
@@ -68,7 +70,7 @@ class FilterByKeyword extends Component {
           onChange={this.onInputChange}/>
 
         </form>
-        <div className="">{results}</div>
+       
         <br />
       </div>
       )

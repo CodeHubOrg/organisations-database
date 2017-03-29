@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ListOrTiles from '../components/ListOrTiles'
+import ResultsView from '../components/ResultsView'
 import ItemSelectionPanel from '../components/ItemSelectionPanel'
 import * as actions from '../actions'
 import { Link } from 'react-router'
@@ -16,7 +16,7 @@ class App extends Component {
         <Search />
         <SelectView />
         <p />
-        <ListOrTiles />
+        <ResultsView />
         <ItemSelectionPanel />
         <ul>
           <li><Link to={'/admin'}>Admin</Link></li>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { selectSearchFilter } from '../../actions'
+import { selectSearchFilter, setSearchResults } from '../../actions'
 import { connect } from 'react-redux'
 import * as FILTER_CATEGORIES from '../../constants/FilterCategories'
 import FilterByResource from './FilterByResource'
@@ -11,13 +11,14 @@ class Search extends Component {
   constructor (props) {
     super(props)
     this.handleSetFilter = this.handleSetFilter.bind(this)
+    this.handleSetSearchResults = this.handleSetSearchResults.bind(this)
   }
 
   render () {
     return (
       <div className='search-component'>
 
-        <FilterByKeyword />
+        <FilterByKeyword callback={this.handleSetSearchResults} />
         <FilterByResource
         defaultVal={this.props.filter}
         callback={this.handleSetFilter}
@@ -40,8 +41,13 @@ class Search extends Component {
     // Dispatch action which will set filter state in Redux
     // e.g. ResourceType: url
     const filter = event.target.value
-    this.props.selectSearchFilter({category, filter})
+    this.props.selectSearchFilter( category, filter )
   }
+
+  handleSetSearchResults (items) {
+    this.props.setSearchResults(items)
+  }
+
 }
 
 const mapStateToProps = (state) => {
@@ -52,8 +58,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectSearchFilter: (filter) => {
-      dispatch(selectSearchFilter(filter))
+    selectSearchFilter: (category, filter) => {
+      dispatch(selectSearchFilter( category, filter))
+    },
+    setSearchResults: (items) => {
+      dispatch(setSearchResults(items))
     }
   }
 }
