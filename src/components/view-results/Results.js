@@ -14,20 +14,21 @@ class Results extends Component {
 
   constructor (props) {
     super(props)
-    this.handleOnSelectItem = this.handleOnSelectItem.bind(this)
+    this.handleSelectItem = this.handleSelectItem.bind(this)
+    this.handleDeselectItem = this.handleDeselectItem.bind(this)
   }
 
   render () {
     const { items } = this.props
     const listView =  <ItemList
                         items={ items }
-                        onSelectItem={this.handleOnSelectItem}
-                        onDeselectItem={this.handleOnSelectItem}
+                        onSelectItem={this.handleSelectItem}
+                        onDeselectItem={this.handleDeselectItem}
                       />
     const tilesView = <ItemTiles
                         items={ items }
-                        onSelectItem={this.handleOnSelectItem}
-                        onDeselectItem={this.handleOnSelectItem}
+                        onSelectItem={this.handleSelectItem}
+                        onDeselectItem={this.handleDeselectItem}
                       />
 
     if (items) {
@@ -44,12 +45,10 @@ class Results extends Component {
     }
   }
 
-  handleOnSelectItem (id) {
-    console.log('handleOnSelectItem: ' + id)
-    // Dispatch action which will set filter state in Redux
-      // e.g. ResourceType: url
-      //const filter = event.target.value
-      //this.props.selectSearchFilter( category, filter )
+  handleSelectItem (id) {
+  }
+
+  handleDeselectItem (id) {
   }
 }
 

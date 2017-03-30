@@ -23,14 +23,14 @@ class FilterByKeyword extends Component {
       this.filterData =  this.filterData.bind(this)
     }
 
-    filterData(searchterm){
+    filterData(searchterm) {
         let results = this.state.initial_items.filter(
           (item) => {
             return item.name.toLowerCase().search(searchterm.toLowerCase()) !== -1 ||
             item.author.toLowerCase().search(searchterm.toLowerCase()) !== -1       
           }
         )
-        if(searchterm.length > 2){
+        if (searchterm.length > 1) {
           this.setState({result_data: results, result_orig: false})
         } else {
           this.setState({result_data: null, result_orig: false})
@@ -52,8 +52,8 @@ class FilterByKeyword extends Component {
       } else {
         if(this.state.result_data){
         let items_list = this.state.result_data.map(
-          (item) => {
-            return <li>{item.author} - {item.name}</li> 
+          (item, index) => {
+            return <li key={index}>{item.author} - {item.name}</li> 
            }
           )        
         results = <ul>{items_list}</ul>
@@ -69,34 +69,14 @@ class FilterByKeyword extends Component {
           onChange={this.onInputChange}/>
 
         </form>
-       
         <br />
       </div>
       )
-      /*
-      return(
-      <div>
-        <form onSubmit= {this.onFormSubmit} className="input-group">
-          <input
-          placeholder= "Find a resource - search by author, title or keyword"
-          className = "form-control"
-          value={this.state.term}
-          onChange={this.onInputChange}/>
-
-          <span className="input-group-btn">
-            <button type="submit" className="btn btn-scondary">Search By Author or Title</button>
-            </span>
-        </form>
-        <div className="">{results}</div>
-        <br />
-      </div>
-      )
-      */
     }
   }
 
 const mapStateToProps = (state) => {
-  return { "items": state.items }
+  return { 'items': state.items }
 }
 
 export default connect(mapStateToProps)(FilterByKeyword)

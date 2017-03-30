@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import ItemListRow from './ItemListRow'
-import { selectItem, deselectItem } from '../../actions'
-import { connect } from 'react-redux'
 
 const ItemList = ({items, onSelectItem, onDeselectItem}) => {
   let rows = items.map(
     (item, index) => {
-      console.log('item.id: ' + item.id)
       return (
         <ItemListRow
           name = {item.name}
@@ -16,11 +13,11 @@ const ItemList = ({items, onSelectItem, onDeselectItem}) => {
           onSelectItem = {() => onSelectItem(item.id)}
           onDeselectItem = {() => onDeselectItem()}
           />
-        )
-      }
-    )
+      )
+    }
+  )
 
-    return (
+  return (
       <table className="table table-striped table-bordered table-hover">
         <thead className="thead">
           <tr>
@@ -32,7 +29,7 @@ const ItemList = ({items, onSelectItem, onDeselectItem}) => {
           {rows}
         </tbody>
       </table>
-    )
+  )
 }
 
 export default ItemList

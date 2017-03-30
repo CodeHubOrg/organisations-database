@@ -12,10 +12,8 @@ class App extends Component {
       <div>
         <h1>JavaScript tools and resources</h1>
         <h4>Everything you need to get started with Javascript</h4>
-        <br />
         <Search />
         <SelectView />
-        <p />
         <Results/>
         <ItemSelectionPanel />
         <ul>

@@ -6,7 +6,7 @@ const SelectView = ({itemview, selectView}) => {
   let choice = (itemview === 'list') ? 'Tiles' : 'List'
   let changedview = (itemview === 'list') ? 'tiles' : 'list'
   return (
-    <div>
+    <div className='select-view'>
       <button onClick={() => selectView(changedview)} className="btn btn-info">View as {choice}</button>
     </div>
   )
