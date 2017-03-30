@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class FilterByKeyword extends Component {
-  constructor (props){
-    super(props);
+  constructor (props) {
+    super(props)
       const items_data = this.props.items.map(
           (item, index) => {
             return {
@@ -26,9 +26,8 @@ class FilterByKeyword extends Component {
     filterData(searchterm){
         let results = this.state.initial_items.filter(
           (item) => {
-            //console.log(item.name)
-            return item.name.toLowerCase().search(searchterm.toLowerCase()) !== -1 || 
-            item.author.toLowerCase().search(searchterm.toLowerCase()) !== -1            
+            return item.name.toLowerCase().search(searchterm.toLowerCase()) !== -1 ||
+            item.author.toLowerCase().search(searchterm.toLowerCase()) !== -1       
           }
         )
         if(searchterm.length > 2){

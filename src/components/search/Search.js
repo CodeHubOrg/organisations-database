@@ -41,7 +41,7 @@ class Search extends Component {
     // Dispatch action which will set filter state in Redux
     // e.g. ResourceType: url
     const filter = event.target.value
-    this.props.selectSearchFilter( category, filter )
+    this.props.selectSearchFilter(category, filter)
   }
 
   handleSetSearchResults (items) {
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectSearchFilter: (category, filter) => {
-      dispatch(selectSearchFilter( category, filter))
+      dispatch(selectSearchFilter(category, filter))
     },
     setSearchResults: (items) => {
       dispatch(setSearchResults(items))

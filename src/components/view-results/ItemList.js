@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import ItemListRow from './ItemListRow'
-import { selectItem, deselectItem } from '../actions'
+import { selectItem, deselectItem } from '../../actions'
 import { connect } from 'react-redux'
 
 const ItemList = ({items, onSelectItem, onDeselectItem}) => {
   let rows = items.map(
     (item, index) => {
+      console.log('item.id: ' + item.id)
       return (
         <ItemListRow
           name = {item.name}
@@ -13,7 +14,7 @@ const ItemList = ({items, onSelectItem, onDeselectItem}) => {
           id = {item.id}
           key = {index}
           onSelectItem = {() => onSelectItem(item.id)}
-          onDeselectItem = {() => onDeselectItem(item.id)}
+          onDeselectItem = {() => onDeselectItem()}
           />
         )
       }
@@ -33,24 +34,5 @@ const ItemList = ({items, onSelectItem, onDeselectItem}) => {
       </table>
     )
 }
-/*
-
-const mapStateToProps = (state) => {
-  return { "items": state.searchResults.items }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { 
-    onSelectItem: (id) => {
-      dispatch(selectItem(id))
-    },
-    onDeselectItem: (id) => {
-      dispatch(deselectItem(id))
-    }
-  } 
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemList)
-*/
 
 export default ItemList

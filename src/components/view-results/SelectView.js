@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { selectView } from '../actions'
+import { selectView } from '../../actions'
 import { connect } from 'react-redux'
 
 const SelectView = ({itemview, selectView}) => {
-  let choice = (itemview === "list") ? "Tiles" : "List"
-  let changedview = (itemview === "list") ? "tiles" : "list"  
+  let choice = (itemview === 'list') ? 'Tiles' : 'List'
+  let changedview = (itemview === 'list') ? 'tiles' : 'list'
   return (
     <div>
       <button onClick={() => selectView(changedview)} className="btn btn-info">View as {choice}</button>
@@ -13,7 +13,7 @@ const SelectView = ({itemview, selectView}) => {
 }
 
 const mapStateToProps = (state) => {
-  return {itemview : state.itemsview.view}
+  return { itemview: state.itemsview.view }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -22,7 +22,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(selectView(view))
     }
   }
-} 
-
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectView)

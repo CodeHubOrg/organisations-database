@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import ResultsView from '../components/ResultsView'
-import ItemSelectionPanel from '../components/ItemSelectionPanel'
+import Results from '../components/view-results/Results'
+import ItemSelectionPanel from '../components/selection/ItemSelectionPanel'
 import * as actions from '../actions'
 import { Link } from 'react-router'
 import Search from '../components/search/Search'
-import SelectView from '../components/SelectView'
+import SelectView from '../components/view-results/SelectView'
 
 class App extends Component {
   render () {
@@ -16,7 +16,7 @@ class App extends Component {
         <Search />
         <SelectView />
         <p />
-        <ResultsView />
+        <Results/>
         <ItemSelectionPanel />
         <ul>
           <li><Link to={'/admin'}>Admin</Link></li>
