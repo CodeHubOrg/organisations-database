@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import items from './items'
 import itemsview from './itemsview'
-import filter from './filter'
+import searchFilters from './searchFilters'
+import searchResults from './searchResults'
 
 const rootReducer = combineReducers({
-  filter,
+  searchFilters,
+  searchResults,
   items,
   itemsview
 })

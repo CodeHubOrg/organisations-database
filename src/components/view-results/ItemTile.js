@@ -2,26 +2,23 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 class ItemTile extends Component {
-    
+
     render() {
 
-      //console.log(typeof this.props.resource.linkurl)
-
-    let resource = this.props.resource;
-    let difficultyClass = "difficulty difficulty-"+resource.difficulty;
-    let typeClass = "resource--type resource--"+resource.type;
+    let resource = this.props.resource
+    let difficultyClass = 'difficulty difficulty-' + resource.difficulty
+    let typeClass = 'resource--type resource--' + resource.type
     let url = ''
     let linktext = ''
     let linkitem = ''
-    if(resource.linkurl !== undefined){
+    if (resource.linkurl !== undefined) {
        url = resource.linkurl
        linktext = (resource.linktext !== undefined) ? resource.linktext : url
-       linkitem = <li><a rel="external" target="_blank" href={url}>{linktext}</a></li>    
+       linkitem = <li><a rel="external" target="_blank" href={url}>{linktext}</a></li>
     }
     let editlink = '/edit/' + resource.id
-    // console.log(linkitem)
 
-    return(
+    return (
             <div className="grid__cell u-1/2--medium u-1/3--large">
                 <div className="resource">
                     <div className="resource--header text--centered">
@@ -47,23 +44,22 @@ class ItemTile extends Component {
                         {linkitem}
                         <li className="description">
                         {resource.description}
-                        </li>
-                    
+                        </li>              
                         <li>
                             <span className="key">Author:</span> {resource.author}
                         </li>
                         <li>
                             <span className="label">JS general</span>
-                        </li> 
+                        </li>
                         <li>
                         <Link to={editlink}>Edit</Link>
-                        </li>                     
+                        </li>                   
                     </ul>
                 </div>
 
             </div>
         )
     }
-} 
+}
 
 export default ItemTile

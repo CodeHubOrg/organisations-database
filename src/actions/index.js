@@ -7,6 +7,7 @@ import * as types from '../constants/ActionTypes'
 
 //Action creators
 export function selectItem(orgNum){
+  console.log('selectItem: ' + orgNum)
   return{
     type: types.SELECT_ITEM,
     id: orgNum
@@ -61,9 +62,17 @@ export function selectView(view){
   }
 }
 
-export function selectFilter(filter){
-    return{
+export function selectSearchFilter (category, filter) {
+  return {
     type: types.SELECT_FILTER,
-    filter:filter
+    category: category,
+    filter: filter
+  }
+}
+
+export function setSearchResults ( resultItems ) {
+  return {
+    type: types.SET_SEARCH_RESULTS,
+    resultItems: resultItems
   }
 }

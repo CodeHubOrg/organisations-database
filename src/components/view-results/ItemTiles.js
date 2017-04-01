@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import ItemTile from './ItemTile'
-import { connect } from 'react-redux'
 
 const ItemTiles = ({items}) => {
   let tiles = items.map(
-      (item,index) => {
+      (item, index) => {
         return (
           <ItemTile resource={item} key={index} />
         )
@@ -18,8 +17,4 @@ const ItemTiles = ({items}) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {"items": state.items}
-} 
-
-export default connect(mapStateToProps)(ItemTiles)
+export default ItemTiles

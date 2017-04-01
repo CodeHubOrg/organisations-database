@@ -22,14 +22,14 @@ const routes = [
 
 fetch('/api/items').then((response) => {
     // polyfill added in webpack loader
-    if(response.status !== 200) {
+    if (response.status !== 200) {
       throw new Error(response.status + ' ' + response.statusText)
     }
     return response.json()
   }).then((json) => {
     let initialState = {'items': json}
     let store = createStore(rootReducer, initialState)
-  
+
     ReactDOM.render((
         <Provider store={store}>
             <Router history={browserHistory} routes={routes}></Router>
