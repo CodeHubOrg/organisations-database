@@ -31,14 +31,11 @@ export function addItem(orgName){
 
 }
 
-
-export function editItem(orgNum, orgName){
+export function editItem(orgNum){
   return{
     type: types.EDIT_ITEM,
-    id: orgNum,
-    name: orgName
+    id: orgNum
   }
-
 }
 
 export function deleteItem(orgNum){
