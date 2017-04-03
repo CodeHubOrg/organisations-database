@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { Router, Route, browserHistory } from 'react-router'
-import App from './containers/App'
-import Admin from './containers/Admin'
-import ItemAdd from './containers/ItemAdd'
-import ItemEdit from './containers/ItemEdit'
-import rootReducer from './reducers/index'
+import App from 'App'
+import Admin from 'Admin'
+import ItemAdd from 'ItemAdd'
+import ItemEdit from 'ItemEdit'
+import rootReducer from 'index'
 import '../public/assets/css/bootstrap.css'
 import '../public/assets/css/grid.css'
 import '../public/assets/css/style.css'
@@ -22,14 +22,14 @@ const routes = [
 
 fetch('/api/items').then((response) => {
     // polyfill added in webpack loader
-    if(response.status !== 200) {
+    if (response.status !== 200) {
       throw new Error(response.status + ' ' + response.statusText)
     }
     return response.json()
   }).then((json) => {
     let initialState = {'items': json}
     let store = createStore(rootReducer, initialState)
-  
+
     ReactDOM.render((
         <Provider store={store}>
             <Router history={browserHistory} routes={routes}></Router>
