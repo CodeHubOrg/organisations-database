@@ -16,7 +16,7 @@ import '../public/assets/css/style.css'
 const routes = [
     { path: '/', component: App },
     { path: '/admin', component: Admin },
-    { path: '/new', component: ItemAdd },
+    { path: '/new', component: ItemEdit },
     { path: '/edit/:id', component: ItemEdit }
 ]
 

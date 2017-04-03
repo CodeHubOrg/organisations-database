@@ -18,6 +18,7 @@
   },
   "homepage": "http://www.codehub.org.uk",
   "dependencies": {
+    "axios": "^0.16.0",
     "babel-polyfill": "^6.3.14",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.6",

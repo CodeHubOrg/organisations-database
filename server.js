@@ -66,14 +66,31 @@ app.put("/api/items/:id", jsonParser, function(req,res){
    )
 });
 
-// // add a resource, then return all resources
+
+// delete by id
+app.delete("/api/items/:id", function(req, res){
+  itempersist.deleteByID(req.params.id).then(
+    function(resources){
+      res.send(resources);
+    },
+    function(error){
+        console.log(error.message);
+    }
+  )
+})
+
+
+// add a resource, send back "No content"
 app.post("/api/items/", jsonParser, function(req,res){
     itempersist.add(req.body).then(
     function(resources){
-      res.sendStatus(204);
-      //res.send(resources);
+      res.sendStatus(204),
+      function(error){
+        console.log(error.message);
+      }
     })
 });
+
 
 // console.log(app)
 

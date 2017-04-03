@@ -2,6 +2,26 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 class ItemTile extends Component {
+    constructor (props){
+      super(props)
+      this.handleDelete = this.handleDelete.bind(this)
+    }
+
+    handleDelete(e) {
+      e.preventDefault()
+      let xhr = new XMLHttpRequest()
+      xhr.open('DELETE',
+      encodeURI('/api/items/'+this.props.resource.id))
+      xhr.setRequestHeader('Content-Type', 'application/json')
+      xhr.send()
+    
+      xhr.onload = function(){
+        console.log(xhr)        
+      }
+      xhr.onerror = function(error){
+        console.log(error.message)
+      }
+    }
 
     render() {
 
@@ -52,7 +72,8 @@ class ItemTile extends Component {
                             <span className="label">JS general</span>
                         </li>
                         <li>
-                        <Link to={editlink}>Edit</Link>
+                        <Link to={editlink}>Edit</Link>&nbsp;&nbsp;
+                        <a href="" onClick={this.handleDelete}>Delete</a>
                         </li>                   
                     </ul>
                 </div>

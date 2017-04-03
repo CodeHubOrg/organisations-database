@@ -1,33 +1,33 @@
 import React, { Component } from 'react'
 import { selectSearchFilter, setSearchResults } from '../../actions'
 import { connect } from 'react-redux'
-import * as FILTER_CATEGORIES from '../../constants/FilterCategories'
+import {RESOURCE_TYPE, DIFFICULTY} from '../../constants/FilterCategories'
 import FilterByResource from './FilterByResource'
 import FilterByDifficulty from './FilterByDifficulty'
 import FilterByKeyword from './FilterByKeyword'
 
 class Search extends Component {
-
-  constructor (props) {
+  constructor (props) {    
     super(props)
     this.handleSetFilter = this.handleSetFilter.bind(this)
     this.handleSetSearchResults = this.handleSetSearchResults.bind(this)
   }
 
   render () {
+    const {filter} = this.props
     return (
       <div className='search-component'>
 
         <FilterByKeyword callback={this.handleSetSearchResults} />
         <FilterByResource
-        defaultVal={this.props.filter}
+        defaultVal={filter.RESOURCE_TYPE}
         callback={this.handleSetFilter}
-        category={FILTER_CATEGORIES.RESOURCE_TYPE}
+        category={RESOURCE_TYPE}
       />
       <FilterByDifficulty
-        defaultVal={this.props.filter}
+        defaultVal={filter.DIFFICULTY}
         callback={this.handleSetFilter}
-        category={FILTER_CATEGORIES.DIFFICULTY}
+        category={DIFFICULTY}
       />
 
        <span className="input-group-btn">
@@ -40,7 +40,7 @@ class Search extends Component {
   handleSetFilter (event, category) {
     // Dispatch action which will set filter state in Redux
     // e.g. ResourceType: url
-    const filter = event.target.value
+    let filter = event.target.value
     this.props.selectSearchFilter(category, filter)
   }
 
@@ -51,8 +51,9 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("mapStateToProps", state)
   return {
-    filter: state.filter
+    filter: state.searchFilters
   }
 }
 
