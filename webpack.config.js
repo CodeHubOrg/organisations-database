@@ -12,6 +12,15 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
+
+  //resolve:{
+  //  root:__dirname,
+  //  alias: {
+  //    FilterBar:'src/components/FilterBar.js'
+  //  },
+  //  extensions:['','.js']
+  //},
+
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
