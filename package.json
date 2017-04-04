@@ -31,6 +31,7 @@
     "react-redux": "^4.2.1",
     "react-router": "^2.4.1",
     "redux": "^3.2.1",
+    "redux-promise": "^0.5.3",
     "resource-router-middleware": "^0.6.0",
     "whatwg-fetch": "^2.0.2"
   },
@@ -58,6 +59,7 @@
     "node-libs-browser": "^0.5.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^0.14.7",
+    "redux-promise": "^0.5.3",
     "style-loader": "^0.12.3",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",

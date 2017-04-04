@@ -82,13 +82,13 @@ app.delete("/api/items/:id", function(req, res){
 
 // add a resource, send back "No content"
 app.post("/api/items/", jsonParser, function(req,res){
+    // console.log("body", req.body)
     itempersist.add(req.body).then(
-    function(resources){
-      res.sendStatus(204),
-      function(error){
-        console.log(error.message);
+      function(newitem){
+        // console.log("Resources", newitem)
+        res.send(newitem)
       }
-    })
+    ).catch(console.log)
 });
 
 

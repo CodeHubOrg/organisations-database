@@ -25,49 +25,57 @@ class ItemEdit extends Component {
   }
 
   handleSubmit(e) {
+    
+
     let self = this
     e.preventDefault();
-    let xhr = new XMLHttpRequest()
-
-    let url_update = '/api/items/'
-    let http_verb = 'POST'
-    if(this.state.item.id){
-      url_update += this.state.item.id
-      http_verb = 'PUT'
+    
+    if(this.state.item.id == undefined){
+      
+      this.props.addItem(this.state.item)  
     }
 
-    xhr.open(http_verb,
-    encodeURI(url_update))
-    xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.send(JSON.stringify(
-      this.state.item
-    ))
+    // let xhr = new XMLHttpRequest()
 
-    xhr.onload = function(){
-      if(xhr.responseText != ''){
-        let data = JSON.parse(xhr.responseText)     
-        self.setState({'success':'Data successfully updated'})
-        setTimeout(function(){
-          if(self.state.success != ''){
-            self.setState({'success': ''})
-            }
-          }, 2500
-        )
-      } else {
-        if(xhr.status == 204){
-          self.setState({'success':'Item added successfully'})
-            setTimeout(function(){
-              if(self.state.success != ''){
-                self.setState({'success': ''})
-                }
-              }, 2500
-          )
-        }
-      }
-    }
-    xhr.onerror = function(error){
-      console.log(error.message)
-    }
+    // let url_update = '/api/items/'
+    // let http_verb = 'POST'
+    // if(this.state.item.id){
+    //   url_update += this.state.item.id
+    //   http_verb = 'PUT'
+    // }
+
+    // xhr.open(http_verb,
+    // encodeURI(url_update))
+    // xhr.setRequestHeader('Content-Type', 'application/json')
+    // xhr.send(JSON.stringify(
+    //   this.state.item
+    // ))
+
+    // xhr.onload = function(){
+    //   if(xhr.responseText != ''){
+    //     let data = JSON.parse(xhr.responseText)     
+    //     self.setState({'success':'Data successfully updated'})
+    //     setTimeout(function(){
+    //       if(self.state.success != ''){
+    //         self.setState({'success': ''})
+    //         }
+    //       }, 2500
+    //     )
+    //   } else {
+    //     if(xhr.status == 204){
+    //       self.setState({'success':'Item added successfully'})
+    //         setTimeout(function(){
+    //           if(self.state.success != ''){
+    //             self.setState({'success': ''})
+    //             }
+    //           }, 2500
+    //       )
+    //     }
+    //   }
+    // }
+    // xhr.onerror = function(error){
+    //   console.log(error.message)
+    // }
   }
   
   // higher order functions! :) 
@@ -125,7 +133,7 @@ class ItemEdit extends Component {
     const getRadioButtons = (radio_options) => {
       return radio_options.map((option, index) => {
         const label = option.replace(' ','_').toLowerCase()
-        console.log("checked",this.checkIsDifficulty(index))
+        // console.log("checked",this.checkIsDifficulty(index))
         return (<div key={index} className="grid__cell u-1/3">
                     <label htmlFor={label}><input id={label} type="radio" value={index} name="difficulty" checked={this.checkIsDifficulty(index)} onChange={this.handleChange} />{option}</label>
                 </div>)
@@ -211,17 +219,4 @@ const mapStateToProps = (state, ownProps) => {
   return {'item': empty_item}
 }
 
-// this is not being used yet
-const mapDispatchToProps = (dispatch) => {
-  return {
-    itemAdd: (item) => {
-      dispatch(itemAdd(item))
-    },
-    itemEdit: (item) => {
-      dispatch(itemEdit(item))
-    }
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemEdit)
+export default connect(mapStateToProps, {addItem, editItem})(ItemEdit)

@@ -26,7 +26,7 @@ export function deselectItem(itemID){
 
 export function addItem(item){
 const url = '/api/items/'
-const request = axios.post(item)
+const request = axios.post(url,item)
 
   return{
     type: types.ADD_ITEM,

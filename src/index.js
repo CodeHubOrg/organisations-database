@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Router, Route, browserHistory } from 'react-router'
 import App from 'App'
 import Admin from 'Admin'
@@ -11,6 +11,7 @@ import rootReducer from 'index'
 import '../public/assets/css/bootstrap.css'
 import '../public/assets/css/grid.css'
 import '../public/assets/css/style.css'
+import reduxPromise from 'redux-promise'
 
 const routes = [
     { path: '/', component: App },
@@ -27,7 +28,7 @@ fetch('/api/items').then((response) => {
     return response.json()
   }).then((json) => {
     let initialState = {'items': json}
-    let store = createStore(rootReducer, initialState)
+    let store = createStore(rootReducer, initialState, applyMiddleware(reduxPromise))
 
     ReactDOM.render((
         <Provider store={store}>

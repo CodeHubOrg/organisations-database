@@ -1,4 +1,3 @@
-
 import { 
     SELECT_ITEM, 
     DESELECT_ITEM, 
@@ -38,11 +37,16 @@ export default function items ( state = initialState, action ) {
             })
 
         case ADD_ITEM:
-            return state.concat([{
-                name: action.name,
-                selected: false,
-                id: state.reduce((maxId, todo) => Math.max(maxId, todo.id), 0) +1
-            }])
+            console.log(action)
+            return state.concat([                
+                  action.payload.data
+                ])
+
+            // return state.concat([{
+            //     name: action.name,
+            //     selected: false,
+            //     id: state.reduce((maxId, todo) => Math.max(maxId, todo.id), 0) +1
+            // }])
 
         case EDIT_ITEM:
             return state.map(item => {
