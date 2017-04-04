@@ -21,19 +21,19 @@ const initialState = [
 export default function items ( state = initialState, action ) {
     switch (action.type) {
         case SELECT_ITEM:
-            return  state.map(org => {
-                if (org.id === action.id) {
-                    return Object.assign({}, org, {selected: true})
+            return  state.map(item => {
+                if (item.id === action.id) {
+                    return Object.assign({}, item, {selected: true})
                 }
-                return Object.assign({}, org, {selected: false})
+                return Object.assign({}, item, {selected: false})
             })
 
         case DESELECT_ITEM:
-            return  state.map(org => {
-                if (org.id === action.id) {
-                    return Object.assign({}, org, {selected: false})
+            return  state.map(item => {
+                if (item.id === action.id) {
+                    return Object.assign({}, item, {selected: false})
                 }
-                return org
+                return item
             })
 
         case ADD_ITEM:
@@ -44,16 +44,16 @@ export default function items ( state = initialState, action ) {
             }])
 
         case EDIT_ITEM:
-            return state.map(org => {
-                if (org.id === action.id) {
-                    return Object.assign({}, org, {name: action.name})
+            return state.map(item => {
+                if (item.id === action.id) {
+                    return Object.assign({}, item, {name: action.name})
                 }
-                return org;
+                return item;
             })
 
         case DELETE_ITEM:
-            return state.filter(org => {
-                if (org.id !== action.id) return org;
+            return state.filter(item => {
+                if (item.id !== action.id) return item;
             })
 
         default:

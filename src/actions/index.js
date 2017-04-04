@@ -4,44 +4,51 @@
 // 4) editItem should create EDIT_ITEM action
 // 5) deleteItem should create DELETE_ITEM action
 import * as types from '../constants/ActionTypes'
+import axios from 'axios'
 
 //Action creators
-export function selectItem(orgNum){
-  console.log('selectItem: ' + orgNum)
+export function selectItem(itemID){
+  console.log('selectItem: ' + itemID)
   return{
     type: types.SELECT_ITEM,
-    id: orgNum
+    id: itemID
   }
 
 }
 
-export function deselectItem(orgNum){
+export function deselectItem(itemID){
   return{
     type: types.DESELECT_ITEM,
-    id: orgNum
+    id: itemID
   }
 
 }
 
-export function addItem(orgName){
+export function addItem(item){
+const url = '/api/items/'
+const request = axios.post(item)
+
   return{
     type: types.ADD_ITEM,
-    name: orgName
+    payload: request
   }
 
 }
 
-export function editItem(orgNum){
+export function editItem(item){
+const url = '/api/items/'+item.id
+const request = axios.put(url, item)
+
   return{
     type: types.EDIT_ITEM,
-    id: orgNum
+    payload: request
   }
 }
 
-export function deleteItem(orgNum){
+export function deleteItem(itemID){
   return{
     type: types.DELETE_ITEM,
-    id: orgNum
+    id: itemID
   }
 }
 

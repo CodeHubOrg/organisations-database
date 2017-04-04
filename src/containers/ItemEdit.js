@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Select from '../components/form/Select'
+import {addItem, editItem} from '../actions'
 
 
 class ItemEdit extends Component {  
@@ -199,6 +200,8 @@ let empty_item =  {
         'selected': false
       }
 
+
+
 const mapStateToProps = (state, ownProps) => {
   if(ownProps.params.id){
     return {
@@ -208,4 +211,17 @@ const mapStateToProps = (state, ownProps) => {
   return {'item': empty_item}
 }
 
-export default connect(mapStateToProps)(ItemEdit)
+// this is not being used yet
+const mapDispatchToProps = (dispatch) => {
+  return {
+    itemAdd: (item) => {
+      dispatch(itemAdd(item))
+    },
+    itemEdit: (item) => {
+      dispatch(itemEdit(item))
+    }
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemEdit)
