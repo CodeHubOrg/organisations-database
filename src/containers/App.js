@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import Results from '../components/view-results/Results'
+
+import Results from 'Results'
 import ItemTilesAll from '../components/view-results/ItemTilesAll'
-import ItemSelectionPanel from '../components/selection/ItemSelectionPanel'
+import ItemSelectionPanel from 'ItemSelectionPanel'
 import * as actions from '../actions'
 import { Link } from 'react-router'
-import Search from '../components/search/Search'
-import SelectView from '../components/view-results/SelectView'
+import Search from 'Search'
+import SelectView from 'SelectView'
 
 class App extends Component {
   render () {
