@@ -22,7 +22,7 @@ class Search extends Component {
     return (
       <div className='search-component'>
 
-        <FilterByKeyword callback={this.handleSetSearchResults} />
+        <FilterByKeyword setSearchResults={this.handleSetSearchResults} />
         <FilterByResource
         defaultVal={filter.RESOURCE_TYPE}
         callback={this.handleSetFilter}
