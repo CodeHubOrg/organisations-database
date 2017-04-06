@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ItemListRow from 'ItemListRow'
+import ItemListRow from './ItemListRow'
 
 const ItemList = ({items, onSelectItem, onDeselectItem}) => {
   let rows = items.map(

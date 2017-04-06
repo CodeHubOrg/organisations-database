@@ -2,3 +2,4 @@ node_modules
 npm-debug.log
 public/bundle.js
 testdb.js
+.DS_Store

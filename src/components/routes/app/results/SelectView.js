@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { selectView } from '../../actions'
+import { selectView } from '../../../../actions'
 import { connect } from 'react-redux'
 
 const SelectView = ({itemview, selectView}) => {
