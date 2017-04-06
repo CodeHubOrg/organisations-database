@@ -22,7 +22,7 @@ h1 {
     padding: 5px 0 8px 0;
     display: inline-block;
     color: #555;
-    border-bottom: 3px solid #89f;
+    border-bottom: 3px solid goldenrod;
     margin-bottom: 1em;
 }
 
@@ -183,7 +183,7 @@ h1.title {
 }
 
 .dummy {
-     color: #605b56;
+    color: #605b56;
     color: #837a75;
     color: #95c14f;
     color: #edff7a;
@@ -250,7 +250,7 @@ h1.title {
 .label {
     color: #635147;  
     background: #edff7a
-;    padding-right: 5px; 
+;   padding-right: 5px; 
     padding-left: 5px;
     border-radius: 2px;
     margin-right: 5px;          

@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import { selectSearchFilter, setSearchResults } from '../../../../actions'
 import { connect } from 'react-redux'
+import { selectSearchFilter, setSearchResults } from '../../../../actions'
 import {RESOURCE_TYPE, DIFFICULTY} from '../../../../constants/FilterCategories'
 import FilterByResource from './FilterByResource'
 import FilterByDifficulty from './FilterByDifficulty'
 import FilterByKeyword from './FilterByKeyword'
 
 class Search extends Component {
-  constructor (props) {    
+  constructor (props) {
     super(props)
     this.handleSetFilter = this.handleSetFilter.bind(this)
     this.handleSetSearchResults = this.handleSetSearchResults.bind(this)
+  }
+
+  componentDidMount () {
+   this.handleSetSearchResults(this.props.allItems)
   }
 
   render () {
@@ -18,7 +22,7 @@ class Search extends Component {
     return (
       <div className='search-component'>
 
-        <FilterByKeyword callback={this.handleSetSearchResults} />
+        <FilterByKeyword setSearchResults={this.handleSetSearchResults} />
         <FilterByResource
         defaultVal={filter.RESOURCE_TYPE}
         callback={this.handleSetFilter}
@@ -51,9 +55,9 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps", state)
   return {
-    filter: state.searchFilters
+    filter: state.searchFilters,
+    allItems: state.items
   }
 }
 

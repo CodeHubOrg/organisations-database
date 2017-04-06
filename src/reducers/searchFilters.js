@@ -9,10 +9,9 @@ resourceType: 'book',
 import { SELECT_FILTER } from '../constants/ActionTypes.js'
 import * as CATEGORIES from '../constants/FilterCategories'
 
-
-const initialState = { 
-	  [CATEGORIES.RESOURCE_TYPE]: 'all',
-	  [CATEGORIES.DIFFICULTY]: 'beginner'
+const initialState = {
+  [ CATEGORIES.RESOURCE_TYPE ]: 'all',
+  [ CATEGORIES.DIFFICULTY ]: 'beginner'
 }
 
 function searchFilters (state = initialState, action) {
