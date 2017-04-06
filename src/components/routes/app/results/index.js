@@ -5,10 +5,10 @@
 */
 
 import React, { Component } from 'react'
-import ItemList from 'ItemList'
-import ItemTiles from 'ItemTiles'
+import ItemList from './ItemList'
+import ItemTiles from './ItemTiles'
 import { connect } from 'react-redux'
-import { selectItem, deselectItem } from '../../actions'
+import { selectItem, deselectItem } from '../../../../actions'
 
 class Results extends Component {
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ItemTile from 'ItemTile'
+import ItemTile from './ItemTile'
 
 const ItemTiles = ({items}) => {
   let tiles = items.map(

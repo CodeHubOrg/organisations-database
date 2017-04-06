@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Select from '../components/form/Select'
-import {addItem, editItem} from '../actions'
+import Select from './form/Select'
+import {addItem, editItem} from '../../../actions'
 
 
 class ItemEdit extends Component {  
