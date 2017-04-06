@@ -30,4 +30,5 @@ Too many to name individually, but key contributers include:
 Katja Durrani & Gicela Morales (organisers of CodeHub)      
 Paul Grimshaw (founder of this project in its original form: Items Database)     
 Michael Gray (initiator of backend using lokiJS)    
-Dave Thomson (initiator of frontend using React and Redux)     
+Dave Thomson (initiator of frontend using React and Redux)  
+Anne Kotecha (continuing React and Redux work on frontend)  

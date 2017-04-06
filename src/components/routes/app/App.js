@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-
-import Results from './results'
-import ItemTilesAll from './results/ItemTilesAll'
-import * as actions from '../../../actions'
 import { Link } from 'react-router'
+import * as actions from '../../../actions'
 import Search from './search'
 import SelectView from './results/SelectView'
+import Results from './results'
 
 class App extends Component {
   render () {
@@ -16,11 +14,7 @@ class App extends Component {
         <Search />
         <SelectView />
         <Results/>
-        <br />&nbsp;<br />
-        <ItemTilesAll />
-        <ul>
-          <li><Link to={'/admin'}>Admin</Link></li>
-        </ul>
+        <Link className="btn btn-info" to={'/admin'}>Admin</Link>
       </div>
     )
   }
