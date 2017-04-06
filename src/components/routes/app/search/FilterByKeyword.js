@@ -37,40 +37,15 @@ class FilterByKeyword extends Component {
           item.author.toLowerCase().search(searchterm.toLowerCase()) !== -1 
       }
     )
-    //if (searchterm.length > 0) {
-     // console.log('setting to search results')
-     // this.setState({result_data: results, result_orig: false})
-    //} else {
-    //  console.log('setting to orig items')
-    //  this.setState({result_data: this.props.items, result_orig: false})
-    //}
     this.props.setSearchResults(results)
-  
   }
 
   onInputChange (event) {
     this.setState({term: event.target.value})
     this.filterData(event.target.value)
-    console.log('onInputChange ', this.state.result_data)
-    //this.props.setSearchResults(this.state.result_data)
   }
 
   render () {
-    /*
-    let results
-    if (this.state.result_orig) {
-      results = this.state.result_orig
-    } else {
-      if (this.state.result_data) {
-        let items_list = this.state.result_data.map(
-        (item, index) => {
-          return <li key={index}>{item.author} - {item.name}</li>
-        }
-      )
-        results = <ul>{items_list}</ul>
-      }
-    }
-    */
     return (
       <div>
         <form onSubmit= {this.onFormSubmit} className="input-group">
