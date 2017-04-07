@@ -4,11 +4,9 @@
   "description": "Bristol Local Business Directory",
   "scripts": {
     "lint": "eslint .",
-    "dev-start": "babel-node server.js",
+    "start": "babel-node server.js",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
-    "test:watch": "npm test -- --watch",
-    "postinstall": "webpack -p",
-    "start": "node server.js"
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
