@@ -1,12 +1,12 @@
 import React from 'react'
 
-const FilterByResource = ({defaultVal, callback, category}) => {
+const FilterByResource = ({defaultVal, setFilter, category}) => {
   return (
     <div className="form--control">
         <div>Search By Resource Type</div>
         <select
             id="type"
-            onChange={(e) => callback(e, category)}
+            onChange={(e) => setFilter(e, category)}
             defaultValue={defaultVal}
         >
             <option value="all">All</option>
@@ -17,7 +17,6 @@ const FilterByResource = ({defaultVal, callback, category}) => {
             <option value="online-interactive">Online interactive</option>
             <option value="reference">Reference</option>
         </select>
-        
     </div>
   )
 }

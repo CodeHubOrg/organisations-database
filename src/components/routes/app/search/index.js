@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { selectSearchFilter, setSearchResults } from '../../../../actions'
+import { setSearchFilter, setSearchResults, setKeyword } from '../../../../actions'
 import {RESOURCE_TYPE, DIFFICULTY} from '../../../../constants/FilterCategories'
 import FilterByResource from './FilterByResource'
 import FilterByDifficulty from './FilterByDifficulty'
@@ -10,27 +10,30 @@ class Search extends Component {
   constructor (props) {
     super(props)
     this.handleSetFilter = this.handleSetFilter.bind(this)
-    this.handleSetSearchResults = this.handleSetSearchResults.bind(this)
+    this.handleSetKeyword = this.handleSetKeyword.bind(this)
+    this.setSearchResults = this.setSearchResults.bind(this)
   }
 
   componentDidMount () {
-   this.handleSetSearchResults(this.props.allItems)
+    this.setSearchResults(this.props.items)
   }
 
   render () {
-    const {filter} = this.props
+    const {filters} = this.props
     return (
       <div className='search-component'>
 
-        <FilterByKeyword setSearchResults={this.handleSetSearchResults} />
+        <FilterByKeyword
+        setKeyword={this.handleSetKeyword}
+        />
         <FilterByResource
-        defaultVal={filter.RESOURCE_TYPE}
-        callback={this.handleSetFilter}
+        defaultVal={filters.RESOURCE_TYPE}
+        setFilter={this.handleSetFilter}
         category={RESOURCE_TYPE}
       />
       <FilterByDifficulty
-        defaultVal={filter.DIFFICULTY}
-        callback={this.handleSetFilter}
+        defaultVal={filters.DIFFICULTY}
+        setFilter={this.handleSetFilter}
         category={DIFFICULTY}
       />
 
@@ -41,33 +44,51 @@ class Search extends Component {
     )
   }
 
-  handleSetFilter (event, category) {
-    // Dispatch action which will set filter state in Redux
-    // e.g. ResourceType: url
-    let filter = event.target.value
-    this.props.selectSearchFilter(category, filter)
+  handleSetKeyword (event) {
+    let keyword = event.target.value
+    this.props.setKeyword(keyword)
+    this.searchData(keyword)
   }
 
-  handleSetSearchResults (items) {
+  handleSetFilter (event, category) {
+    let filter = event.target.value
+    this.props.setSearchFilter(category, filter)
+  }
+
+  setSearchResults (items) {
     this.props.setSearchResults(items)
+  }
+
+  searchData (searchterm) {
+    const {items} = this.props
+    let results = items.filter(
+      (item) => {
+        return item.name.toLowerCase().search(searchterm.toLowerCase()) !== -1 ||
+          item.author.toLowerCase().search(searchterm.toLowerCase()) !== -1
+      }
+    )
+    this.setSearchResults(results)
   }
 
 }
 
 const mapStateToProps = (state) => {
   return {
-    filter: state.searchFilters,
-    allItems: state.items
+    filters: state.searchFilters,
+    items: state.items
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectSearchFilter: (category, filter) => {
-      dispatch(selectSearchFilter(category, filter))
+    setSearchFilter: (category, filter) => {
+      dispatch(setSearchFilter(category, filter))
     },
     setSearchResults: (items) => {
       dispatch(setSearchResults(items))
+    },
+    setKeyword: (keyword) => {
+      dispatch(setKeyword(keyword))
     }
   }
 }

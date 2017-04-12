@@ -16,7 +16,7 @@ const initialState = {
 
 function searchFilters (state = initialState, action) {
   if (action.type === SELECT_FILTER) {
-    return Object.assign({}, state, { [action.category]: action.filter})
+    return Object.assign({}, state, { [action.category]: action.filter })
   }
   return state
 }

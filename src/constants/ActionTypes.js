@@ -8,4 +8,4 @@ export const UPDATE_ITEMS = 'UPDATE_ITEMS'
 export const SELECT_VIEW = 'SELECT_VIEW'
 export const SELECT_FILTER = 'SELECT_FILTER'
 export const SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS'
-
+export const SET_KEYWORD = 'SET_KEYWORD'

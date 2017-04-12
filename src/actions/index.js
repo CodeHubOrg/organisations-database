@@ -52,21 +52,28 @@ export function deleteItem(itemID){
   }
 }
 
-export function searchItem(searchTerm){
+export function searchItem(searchTerm) {
   return{
     type: types.SEARCH_ITEM,
     term: searchTerm
   }
 }
 
-export function selectView(view){
+export function selectView(view) {
   return{
     type: types.SELECT_VIEW,
     view: view
   }
 }
 
-export function selectSearchFilter (category, filter) {
+export function setKeyword (keyword) {
+  return {
+    type: types.SET_KEYWORD,
+    keyword: keyword
+  }
+}
+
+export function setSearchFilter (category, filter) {
   return {
     type: types.SELECT_FILTER,
     category: category,
