@@ -91,9 +91,6 @@ app.post("/api/items/", jsonParser, function(req,res){
     ).catch(console.log)
 });
 
-
-// console.log(app)
-
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/index.html')
 })
