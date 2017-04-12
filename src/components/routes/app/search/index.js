@@ -36,10 +36,7 @@ class Search extends Component {
         setFilter={this.handleSetFilter}
         category={DIFFICULTY}
       />
-
-       <span className="input-group-btn">
-            <button type="submit" className="btn btn-scondary">Search</button>
-            </span>
+      
       </div>
     )
   }
