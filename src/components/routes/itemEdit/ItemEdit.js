@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Select from './form/Select'
+import SelectFormField from '../../core/SelectFormField'
 import {addItem, editItem} from '../../../actions'
 
 
@@ -106,19 +106,17 @@ class ItemEdit extends Component {
     } = this.state.item
 
     let title = (this.state.item.id === undefined)? 'Add Item': 'Edit Item'
-
-
         
     // wonder if there is a better way of doing this!
-    const fields_with_labels = [
+    const fieldsWithLabels = [
       {'itemkey':'name','value':name,'label':'Title:'},
       {'itemkey':'author','value':author,'label':'Author (if known):'},
       {'itemkey':'linktext','value':linktext,'label':'Link text:'},
       {'itemkey':'linkurl','value':linkurl,'label':'Link URL:'}
     ]
-    const radio_options = ['Beginner','Advanced Beginner','Intermediate','Advanced','Very complex','All levels']
-    const select_type = ['Book','Video','Podcast','Online written tutorial','Online interactive','Reference']
-    const select_duration = ['< 3hrs','3 hrs to a day','about a week','several weeks','long','ongoing']
+    const radioOptions = ['Beginner','Advanced Beginner','Intermediate','Advanced','Very complex','All levels']
+    const selectType = ['Book','Video','Podcast','Online written tutorial','Online interactive','Reference']
+    const selectDuration = ['< 3hrs','3 hrs to a day','about a week','several weeks','long','ongoing']
 
     const getInputFields = (textfield_items) => {
       return textfield_items.map((item, index) => {
@@ -130,8 +128,8 @@ class ItemEdit extends Component {
       })
     }
 
-    const getRadioButtons = (radio_options) => {
-      return radio_options.map((option, index) => {
+    const getRadioButtons = (radioOptions) => {
+      return radioOptions.map((option, index) => {
         const label = option.replace(' ','_').toLowerCase()
         // console.log("checked",this.checkIsDifficulty(index))
         return (<div key={index} className="grid__cell u-1/3">
@@ -141,10 +139,10 @@ class ItemEdit extends Component {
     }
 
     // preparing fields and options to be rendered in the form
-    const text_fields = getInputFields(fields_with_labels)
-    const radio_buttons = getRadioButtons(radio_options)
-    const select_options_type = select_type.map((option) => { return [option, option]})
-    const select_options_duration = select_duration.map((option) => { return [option, option]})
+    const textFields = getInputFields(fieldsWithLabels)
+    const radioButtons = getRadioButtons(radioOptions)
+    const selectOptionsType = selectType.map((option) => { return [option, option]})
+    const selectOptionsDuration = selectDuration.map((option) => { return [option, option]})
        
     return ( 
         <div>
@@ -155,28 +153,28 @@ class ItemEdit extends Component {
               <span className="success">{this.state.success}</span>
             </div>
 
-            {text_fields}              
+            {textFields}              
 
             <div className="outer-label">Difficulty:</div>
             <div className="form--control marg-left">
                 <radiogroup className="grid"> 
-                  {radio_buttons}                      
+                  {radioButtons}                      
                 </radiogroup>
             </div>
 
-            <Select 
+            <SelectFormField 
               name="type"
               labelName="Type:"
-              options={select_options_type}
+              options={selectOptionsType}
               defaultVal="Select a resource type"
               val={type}
               callback={this.handleChange}
             />
 
-            <Select 
+            <SelectFormField 
               name="duration"
               labelName="Duration:"
-              options={select_options_duration}
+              options={selectOptionsDuration}
               defaultVal="Select a duration"
               val={duration}
               callback={this.handleChange}

@@ -13,7 +13,7 @@ class App extends Component {
         <h4>Everything you need to get started with Javascript</h4>
         <Search />
         <SelectView />
-        <Results/>
+        <Results />
         <Link className="btn btn-info" to={'/admin'}>Admin</Link>
       </div>
     )

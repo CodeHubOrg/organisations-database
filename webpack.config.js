@@ -17,29 +17,15 @@ module.exports = {
     root:__dirname,
 
     alias: {
-      Results:'src/components/view-results/Results.js',
-      ItemList:'src/components/view-results/ItemList.js',
-      ItemListRow:'src/components/view-results/ItemListRow.js',
-      ItemTile:'src/components/view-results/ItemTile.js',
-      ItemTiles:'src/components/view-results/ItemTiles.js',
-      SelectView:'src/components/view-results/SelectView.js',
-      Search:'src/components/search/Search.js',
-
+    
       index:'src/reducers/index.js',
       items:'src/reducers/items.js',
       itemsview:'src/reducers/itemsview.js',
       searchFilters:'src/reducers/searchFilters.js',
       searchResults:'src/reducers/searchResults.js',
+      searchKeyword:'src/reducers/searchKeyword.js',
       
-      App:'src/containers/App.js',
-      Admin:'src/containers/Admin',
-      ItemAdd:'src/containers/ItemAdd',
-      ItemEdit:'src/containers/ItemEdit',
-
-
-      ItemSelectionPanel:'src/components/selection/ItemSelectionPanel'
-
-      //ActionTypes: 'src/constants/ActionTypes.js'
+      ActionTypes: 'src/constants/ActionTypes.js'
       
 
     },
