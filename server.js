@@ -56,9 +56,10 @@ app.get("/api/items/:id", function(req,res){
 
 // update resource with given id
 app.put("/api/items/:id", jsonParser, function(req,res){ 
+   
    itempersist.update(req.body).then(
-     function(resources){
-       res.send(resources);
+     function(resource){
+       res.send(resource);
      },
      function(error){
         console.log(error.message);

@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
+import reduxPromise from 'redux-promise'
+import reduxThunk from 'redux-thunk'
 import { Router, Route, browserHistory } from 'react-router'
 import App from './components/routes/app/App'
 import Admin from './components/routes/admin/Admin'
@@ -11,7 +13,6 @@ import rootReducer from './reducers'
 import '../public/assets/css/bootstrap.css'
 import '../public/assets/css/grid.css'
 import '../public/assets/css/style.css'
-import reduxPromise from 'redux-promise'
 
 const routes = [
     { path: '/', component: App },
@@ -28,7 +29,7 @@ fetch('/api/items').then((response) => {
     return response.json()
   }).then((json) => {
     let initialState = {'items': json}
-    let store = createStore(rootReducer, initialState, applyMiddleware(reduxPromise))
+    let store = createStore(rootReducer, initialState, applyMiddleware(reduxThunk, reduxPromise))
 
     ReactDOM.render((
         <Provider store={store}>

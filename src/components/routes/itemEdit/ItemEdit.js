@@ -1,84 +1,68 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {browserHistory} from 'react-router'
 
 import SelectFormField from '../../core/SelectFormField'
-import {addItem, editItem} from '../../../actions'
+import {addItem, editItem, setMessage} from '../../../actions'
 
 
 class ItemEdit extends Component {  
   constructor(props){
-    super(props); 
+    super(props)
+    console.log("the props", props)
     this.state = {
         'item': props.item,
-        'success': false
+        'message': props.message['message']
     }  
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.makePropertyChecker = this.makePropertyChecker.bind(this)
   }
 
+
   handleChange(e) {
-    let item_updates = Object.assign({}, this.state.item)
+    let itemUpdates = Object.assign({}, this.state.item)
     let feature = e.target.name
-    item_updates[feature] = e.target.value
-    this.setState({item: item_updates})
+    itemUpdates[feature] = e.target.value
+    this.setState({item: itemUpdates})
   }
 
   handleSubmit(e) {
-    
-
-    let self = this
     e.preventDefault();
-    
+
     if(this.state.item.id == undefined){
       
-      this.props.addItem(this.state.item)  
+      this.props.addItem(this.state.item)
+      setTimeout(() => {
+        if(this.props.message['message'] == 'Success!'){
+            this.setState({message: "Item successfully added"})
+        }
+      }, 400)
+      setTimeout(() => {
+        if(this.props.message['message'] == 'Success!'){
+          this.props.setMessage('') 
+          browserHistory.push('/')
+        }
+      }, 1200)
+    } 
+
+    else {
+
+      this.props.editItem(this.state.item)
+      setTimeout(() => {
+        if(this.props.message['message'] == 'Updated!'){
+            this.setState({message: "Item successfully updated"})
+        }
+      }, 400)
+      setTimeout(() => {
+        if(this.props.message['message'] == 'Updated!'){
+          this.props.setMessage('') 
+          browserHistory.push('/')
+        }
+      }, 1200)
     }
-
-    // let xhr = new XMLHttpRequest()
-
-    // let url_update = '/api/items/'
-    // let http_verb = 'POST'
-    // if(this.state.item.id){
-    //   url_update += this.state.item.id
-    //   http_verb = 'PUT'
-    // }
-
-    // xhr.open(http_verb,
-    // encodeURI(url_update))
-    // xhr.setRequestHeader('Content-Type', 'application/json')
-    // xhr.send(JSON.stringify(
-    //   this.state.item
-    // ))
-
-    // xhr.onload = function(){
-    //   if(xhr.responseText != ''){
-    //     let data = JSON.parse(xhr.responseText)     
-    //     self.setState({'success':'Data successfully updated'})
-    //     setTimeout(function(){
-    //       if(self.state.success != ''){
-    //         self.setState({'success': ''})
-    //         }
-    //       }, 2500
-    //     )
-    //   } else {
-    //     if(xhr.status == 204){
-    //       self.setState({'success':'Item added successfully'})
-    //         setTimeout(function(){
-    //           if(self.state.success != ''){
-    //             self.setState({'success': ''})
-    //             }
-    //           }, 2500
-    //       )
-    //     }
-    //   }
-    // }
-    // xhr.onerror = function(error){
-    //   console.log(error.message)
-    // }
   }
   
-  // higher order functions! :) 
   makePropertyChecker (property) {
     return (value) => {
        if(value == this.state.item[property]){
@@ -144,13 +128,14 @@ class ItemEdit extends Component {
     const selectOptionsType = selectType.map((option) => { return [option, option]})
     const selectOptionsDuration = selectDuration.map((option) => { return [option, option]})
        
-    return ( 
+    return (
+
         <div>
           <h1>{title}</h1>
           <form onSubmit={this.handleSubmit} className="form--add" >
             <div className="form--control">
               <label></label>
-              <span className="success">{this.state.success}</span>
+              <span className="success">{this.state.message}</span>
             </div>
 
             {textFields}              
@@ -211,10 +196,14 @@ let empty_item =  {
 const mapStateToProps = (state, ownProps) => {
   if(ownProps.params.id){
     return {
-      'item': state.items.find((item) => {return item.id == ownProps.params.id})
+      'item': state.items.find((item) => {return item.id == ownProps.params.id}),
+      'message': state.message
     }
   } 
-  return {'item': empty_item}
+  return {   
+    'item': empty_item, 
+    'message':state.message
+  }
 }
 
-export default connect(mapStateToProps, {addItem, editItem})(ItemEdit)
+export default connect(mapStateToProps, {addItem, editItem, setMessage})(ItemEdit)
