@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Select = ({name, labelName, options, defaultVal, val, callback}) => {
+const SelectFormField = ({name, labelName, options, defaultVal, val, callback}) => {
   const selectOptions = options.map((option, index) => {
     const [value, label] = option
     return (<option key={index} value={value}>{label}</option>) 
@@ -21,4 +21,4 @@ const Select = ({name, labelName, options, defaultVal, val, callback}) => {
   )
 }
 
-export default Select
+export default SelectFormField

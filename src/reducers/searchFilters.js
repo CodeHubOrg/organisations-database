@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
-/*
-searchFilters = {
-keyword: ['react', 'redux'],
-resourceType: 'book',
-}
 
-*/
 import { SELECT_FILTER } from '../constants/ActionTypes.js'
 import * as CATEGORIES from '../constants/FilterCategories'
 
 const initialState = {
-  [ CATEGORIES.RESOURCE_TYPE ]: 'all',
-  [ CATEGORIES.DIFFICULTY ]: 'beginner'
+  [ CATEGORIES.RESOURCE_TYPE ]: 'All',
+  [ CATEGORIES.DIFFICULTY ]: 5
 }
 
 function searchFilters (state = initialState, action) {

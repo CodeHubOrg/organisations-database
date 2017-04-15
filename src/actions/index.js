@@ -25,23 +25,38 @@ export function deselectItem(itemID){
 }
 
 export function addItem(item){
-const url = '/api/items/'
-const request = axios.post(url,item)
+  const url = '/api/items/'
+  const request = axios.post(url,item)
+  return dispatch => {
+    dispatch({ 
+      type: types.ADD_ITEM,
+      payload: request
+    })
 
-  return{
-    type: types.ADD_ITEM,
-    payload: request
+    return request.then(
+      dispatch({
+        type: types.SET_MESSAGE,
+        payload: 'Success!'
+      })
+    )
   }
-
 }
 
 export function editItem(item){
-const url = '/api/items/'+item.id
-const request = axios.put(url, item)
+  const url = '/api/items/'+item.id
+  const request = axios.put(url, item)
+  return dispatch => {
+    dispatch({
+      type: types.EDIT_ITEM,
+      payload: request
+    })
 
-  return{
-    type: types.EDIT_ITEM,
-    payload: request
+    return request.then(
+      dispatch({
+        type: types.SET_MESSAGE,
+        payload: 'Updated!'
+      })
+    )
   }
 }
 
@@ -49,6 +64,20 @@ export function deleteItem(itemID){
   return{
     type: types.DELETE_ITEM,
     id: itemID
+  }
+}
+
+export function handleError(error){  
+  return {
+    type: types.HANDLE_XHR_ERROR,
+    error: error
+  }
+}
+
+export function setMessage(message){
+  return {
+    type: types.SET_MESSAGE,
+    payload: message
   }
 }
 

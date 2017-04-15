@@ -6,14 +6,17 @@ import SelectView from './results/SelectView'
 import Results from './results'
 
 class App extends Component {
+
   render () {
     return (
       <div>
         <h1>JavaScript tools and resources</h1>
         <h4>Everything you need to get started with Javascript</h4>
-        <Search />
+        <Search />      
+        <Link to={'/new'}><button>Add a Resource</button></Link>
+        <p>&nbsp;</p>
         <SelectView />
-        <Results/>
+        <Results />
         <Link className="btn btn-info" to={'/admin'}>Admin</Link>
       </div>
     )

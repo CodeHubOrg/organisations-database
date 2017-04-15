@@ -52,7 +52,7 @@ class Results extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {  
   return {
     view: state.itemsview.view,
     items: state.searchResults.items

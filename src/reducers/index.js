@@ -3,14 +3,16 @@ import items from 'items'
 import itemsview from 'itemsview'
 import searchFilters from 'searchFilters'
 import searchResults from 'searchResults'
-import searchKeyword from './searchKeyword'
+import searchKeyword from 'searchKeyword'
+import message from './message'
 
 const rootReducer = combineReducers({
   searchFilters,
   searchResults,
   searchKeyword,
   items,
-  itemsview
+  itemsview,
+  message
 })
 
 export default rootReducer
