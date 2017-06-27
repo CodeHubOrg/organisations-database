@@ -80,6 +80,7 @@ class ItemEdit extends Component {
     const {
         name,
         author,
+        keyword,
         difficulty,
         linktext,
         linkurl,
@@ -95,6 +96,7 @@ class ItemEdit extends Component {
     const fieldsWithLabels = [
       {'itemkey':'name','value':name,'label':'Title:'},
       {'itemkey':'author','value':author,'label':'Author (if known):'},
+      {'itemkey':'keyword','value':keyword,'label':'keyword:'},
       {'itemkey':'linktext','value':linktext,'label':'Link text:'},
       {'itemkey':'linkurl','value':linkurl,'label':'Link URL:'}
     ]
@@ -182,6 +184,7 @@ class ItemEdit extends Component {
 let empty_item =  {
         'name' : '',
         'author': '',
+        'keyword':'',
         'difficulty': null,
         'linktext': '',
         'linkurl': '',
