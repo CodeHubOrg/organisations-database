@@ -6,7 +6,8 @@
     "lint": "eslint .",
     "start": "babel-node server.js",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -62,7 +63,7 @@
     "react-addons-test-utils": "^0.14.7",
     "redux-promise": "^0.5.3",
     "style-loader": "^0.12.3",
-    "webpack": "^1.9.11",
+    "webpack": "^2.6.1",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.9.1",
     "whatwg-fetch": "^2.0.3"
