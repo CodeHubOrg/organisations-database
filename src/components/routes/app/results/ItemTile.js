@@ -69,7 +69,7 @@ class ItemTile extends Component {
                             <span className="key">Author:</span> {resource.author}
                         </li>
                         <li>
-                            <span className="label">{resource.keyword}</span>
+                            <span className="label">{resource.tags}</span>
                         </li>
                         <li>
                         <Link to={editlink}>Edit</Link>&nbsp;&nbsp;
