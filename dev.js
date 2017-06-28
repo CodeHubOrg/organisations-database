@@ -2,16 +2,21 @@
 
 import express from 'express';
 import path from 'path';
-import bodyParser from 'body-parser';
+
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import config from './webpack.config';
 import routes from './routes';
 
 const app = express();
-const port = 8080;
+const port = 3000;
 
+const compiler = webpack(config)
 app.use(express.static(path.join(__dirname + '/public')));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+app.use(webpackHotMiddleware(compiler));
 
 app.use(routes);
 
