@@ -25,9 +25,13 @@ class ItemEdit extends Component {
     let feature = e.target.name
     itemUpdates[feature] = e.target.value
     this.setState({item: itemUpdates})
+
+    // client-side validation on form change
+    this.validateForm()
   }
 
   handleSubmit(e) {
+    // prevent default submission behaviour
     e.preventDefault();
 
     if(this.state.item.id == undefined){
@@ -44,10 +48,8 @@ class ItemEdit extends Component {
           browserHistory.push('/')
         }
       }, 1200)
-    } 
-
+    }
     else {
-
       this.props.editItem(this.state.item)
       setTimeout(() => {
         if(this.props.message['message'] == 'Updated!'){
@@ -62,7 +64,50 @@ class ItemEdit extends Component {
       }, 1200)
     }
   }
-  
+
+  validateForm() {
+    var valid = true
+    // Validate all fields
+    if (!this.validateName()) {
+      valid = false
+    }
+
+    // Pass when all valid
+    if (valid) {
+      this.enablePost()
+    } else {
+      this.disablePost()
+    }
+  }
+
+  validateName() {
+    // get target element
+    var nameElement = document.getElementById("name")
+    var nameNoteElement = document.getElementById("name-note")
+
+    var value = nameElement.value
+    var regex = /^(\w{0,10})$/
+    if (value.length == 0) {
+      nameNoteElement.innerHTML = ""
+    }
+    if (regex.test(value)) {
+      return true
+    } else {
+      nameNoteElement.innerHTML = "Maximum 10 characters"
+      return false
+    }
+  }
+
+  enablePost() {
+    var postButton = document.getElementById('post-button');
+    postButton.disabled = false;
+  }
+
+  disablePost() {
+    var postButton = document.getElementById('post-button');
+    postButton.disabled = true;
+  }
+
   makePropertyChecker (property) {
     return (value) => {
        if(value == this.state.item[property]){
@@ -110,6 +155,7 @@ class ItemEdit extends Component {
         return (<div key={index} className="form--control">
                     <label htmlFor={itemkey}>{label}</label>
                     <input value={value} type="text" name={itemkey} id={itemkey} onChange={this.handleChange} />
+                    <label id={itemkey+'-note'}></label>
                 </div>)
       })
     }
@@ -172,7 +218,7 @@ class ItemEdit extends Component {
                 <textarea col="10" rows="5" name="description" id="description" value={description} onChange={this.handleChange}  />                    
             </div>
             <div className="form--control marg-left">
-                <input className="btn btn--submit" type="submit" value="Post" />
+                <input className="btn btn--submit" type="submit" id="post-button" value="Post" disabled/>
             </div>
           </form>
         </div>
