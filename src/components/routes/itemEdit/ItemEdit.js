@@ -68,7 +68,7 @@ class ItemEdit extends Component {
   validateForm() {
     var valid = true
     // Validate all fields
-    if (!this.validateName()) {
+    if (!this.validateField("name", /^[a-zA-Z0-9]{4,32}$/, "Titles must be between 4 to 32 alphanumeric characters without any special symbols!")) {
       valid = false
     }
 
@@ -80,20 +80,20 @@ class ItemEdit extends Component {
     }
   }
 
-  validateName() {
+  validateField(target, regex, message) {
     // get target element
-    var nameElement = document.getElementById("name")
-    var nameNoteElement = document.getElementById("name-note")
+    var element = document.getElementById(target)
+    var noteElement = document.getElementById(target+"-note")
 
-    var value = nameElement.value
-    var regex = /^(\w{0,10})$/
+    var value = element.value
     if (value.length == 0) {
-      nameNoteElement.innerHTML = ""
+      noteElement.innerHTML = ""
     }
     if (regex.test(value)) {
+      noteElement.innerHTML = ""
       return true
     } else {
-      nameNoteElement.innerHTML = "Maximum 10 characters"
+      noteElement.innerHTML = message
       return false
     }
   }
