@@ -36,7 +36,8 @@ class ItemEdit extends Component {
     this.setState({item: itemUpdates})
 
     // client-side validation on form change
-    this.validateField(feature)
+    //this.validateField(feature)
+    this.validateForm()
   }
 
   handleSubmit(e) {
