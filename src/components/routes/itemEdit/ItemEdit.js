@@ -17,6 +17,15 @@ class ItemEdit extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.makePropertyChecker = this.makePropertyChecker.bind(this)
+
+    // uing parameters used to validate for consistency
+    this.validation = {
+      "name":{"regex":/^([a-zA-Z0-9]){4,32}$/, "message":"Title must be between 4 to 32 alphanumeric characters without any special symbols!"},
+      "author":{"regex":/^([a-zA-Z0-9]){0,32}$/, "message":"Author must be between 0 to 32 alphanumeric characters without any special symbols!"},
+      "linktext":{"regex":/^([a-zA-Z0-9]){0,128}$/, "message":"Link text must be between 0 to 128 alphanumeric characters without any special symbols!"},
+      "linkurl":{"regex":/^([a-zA-Z0-9]){0,128}$/, "message":"Link URL must be between 0 to 128 alphanumeric characters without any special symbols!"},
+      "description":{"regex":/^([a-zA-Z0-9]){0,256}$/, "message":"Description must be between 0 to 256 alphanumeric characters without any special symbols!"}
+    }
   }
 
 
@@ -27,7 +36,7 @@ class ItemEdit extends Component {
     this.setState({item: itemUpdates})
 
     // client-side validation on form change
-    this.validateForm()
+    this.validateField(feature)
   }
 
   handleSubmit(e) {
@@ -68,7 +77,11 @@ class ItemEdit extends Component {
   validateForm() {
     var valid = true
     // Validate all fields
-    if (!this.validateField("name", /^[a-zA-Z0-9]{4,32}$/, "Titles must be between 4 to 32 alphanumeric characters without any special symbols!")) {
+    if (!this.validateField("name") ||
+    !this.validateField("author") ||
+    !this.validateField("linktext") ||
+    !this.validateField("linkurl") ||
+    !this.validateField("description") ) {
       valid = false
     }
 
@@ -80,20 +93,22 @@ class ItemEdit extends Component {
     }
   }
 
-  validateField(target, regex, message) {
+  validateField(target) {
+    var targetData = this.validation[target]
+    var regex = this.validation[target]["regex"]
+    var message = this.validation[target]["message"]
     // get target element
     var element = document.getElementById(target)
     var noteElement = document.getElementById(target+"-note")
 
     var value = element.value
-    if (value.length == 0) {
-      noteElement.innerHTML = ""
-    }
     if (regex.test(value)) {
       noteElement.innerHTML = ""
       return true
     } else {
-      noteElement.innerHTML = message
+      if (value.length != 0) {
+        noteElement.innerHTML = message
+      }
       return false
     }
   }
@@ -215,7 +230,8 @@ class ItemEdit extends Component {
 
             <div className="form--control">
                 <label className="v-top" htmlFor="description">Description:</label>
-                <textarea col="10" rows="5" name="description" id="description" value={description} onChange={this.handleChange}  />                    
+                <textarea col="10" rows="5" name="description" id="description" value={description} onChange={this.handleChange}  />
+                <label id="description-note"></label>                      
             </div>
             <div className="form--control marg-left">
                 <input className="btn btn--submit" type="submit" id="post-button" value="Post" disabled/>
