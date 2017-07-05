@@ -17,6 +17,15 @@ class ItemEdit extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.makePropertyChecker = this.makePropertyChecker.bind(this)
+
+    // uing parameters used to validate for consistency, see http://regexr.com/ to test expressions
+    this.validation = {
+      "name":{"regex":/\w{4,32}/, "message":"Title must be between 4 to 32 alphanumeric characters"},
+      "author":{"regex":/\w{0,32}/, "message":"Author must be between 0 to 32 alphanumeric characters"},
+      "linktext":{"regex":/\w{0,128}/, "message":"Link text must be between 0 to 128 alphanumeric characters"},
+      "linkurl":{"regex":/^$|[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/, "message":"Invalid URL"},
+      "description":{"regex":/\w{0,256}/, "message":"Description must be between 0 to 256 alphanumeric characters"}
+    }
   }
 
 
@@ -25,44 +34,83 @@ class ItemEdit extends Component {
     let feature = e.target.name
     itemUpdates[feature] = e.target.value
     this.setState({item: itemUpdates})
+
+    // client-side validation on form change
+    this.validateField(feature)
+    //this.validateForm()
   }
 
   handleSubmit(e) {
+    // prevent default submission behaviour
     e.preventDefault();
 
-    if(this.state.item.id == undefined){
-      
-      this.props.addItem(this.state.item)
-      setTimeout(() => {
-        if(this.props.message['message'] == 'Success!'){
-            this.setState({message: "Item successfully added"})
-        }
-      }, 400)
-      setTimeout(() => {
-        if(this.props.message['message'] == 'Success!'){
-          this.props.setMessage('') 
-          browserHistory.push('/')
-        }
-      }, 1200)
-    } 
-
-    else {
-
-      this.props.editItem(this.state.item)
-      setTimeout(() => {
-        if(this.props.message['message'] == 'Updated!'){
-            this.setState({message: "Item successfully updated"})
-        }
-      }, 400)
-      setTimeout(() => {
-        if(this.props.message['message'] == 'Updated!'){
-          this.props.setMessage('') 
-          browserHistory.push('/')
-        }
-      }, 1200)
+    if (this.validateForm())
+    {
+      if(this.state.item.id == undefined){
+        
+        this.props.addItem(this.state.item)
+        setTimeout(() => {
+          if(this.props.message['message'] == 'Success!'){
+              this.setState({message: "Item successfully added"})
+          }
+        }, 400)
+        setTimeout(() => {
+          if(this.props.message['message'] == 'Success!'){
+            this.props.setMessage('') 
+            browserHistory.push('/')
+          }
+        }, 1200)
+      }
+      else {
+        this.props.editItem(this.state.item)
+        setTimeout(() => {
+          if(this.props.message['message'] == 'Updated!'){
+              this.setState({message: "Item successfully updated"})
+          }
+        }, 400)
+        setTimeout(() => {
+          if(this.props.message['message'] == 'Updated!'){
+            this.props.setMessage('') 
+            browserHistory.push('/')
+          }
+        }, 1200)
+      }
     }
   }
-  
+
+  validateForm() {
+    var valid = true
+    // Validate all fields
+    if (!this.validateField("name") ||
+    !this.validateField("author") ||
+    !this.validateField("linktext") ||
+    !this.validateField("linkurl") ||
+    !this.validateField("description") ) {
+      valid = false
+    }
+    return valid
+  }
+
+  validateField(target) {
+    var targetData = this.validation[target]
+    var regex = this.validation[target]["regex"]
+    var message = this.validation[target]["message"]
+    // get target element
+    var element = document.getElementById(target)
+    var noteElement = document.getElementById(target+"-note")
+
+
+    var value = element.value
+    console.log(regex)
+    if (regex.test(value)) {
+      noteElement.innerHTML = ""
+      return true
+    } else {
+      noteElement.innerHTML = message
+      return false
+    }
+  }
+
   makePropertyChecker (property) {
     return (value) => {
        if(value == this.state.item[property]){
@@ -110,6 +158,7 @@ class ItemEdit extends Component {
         return (<div key={index} className="form--control">
                     <label htmlFor={itemkey}>{label}</label>
                     <input value={value} type="text" name={itemkey} id={itemkey} onChange={this.handleChange} />
+                    <label id={itemkey+'-note'}></label>
                 </div>)
       })
     }
@@ -169,10 +218,11 @@ class ItemEdit extends Component {
 
             <div className="form--control">
                 <label className="v-top" htmlFor="description">Description:</label>
-                <textarea col="10" rows="5" name="description" id="description" value={description} onChange={this.handleChange}  />                    
+                <textarea col="10" rows="5" name="description" id="description" value={description} onChange={this.handleChange}  />
+                <label id="description-note"></label>                      
             </div>
             <div className="form--control marg-left">
-                <input className="btn btn--submit" type="submit" value="Post" />
+                <input className="btn btn--submit" type="submit" id="post-button" value="Post"/>
             </div>
           </form>
         </div>
