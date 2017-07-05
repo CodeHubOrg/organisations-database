@@ -18,13 +18,13 @@ class ItemEdit extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.makePropertyChecker = this.makePropertyChecker.bind(this)
 
-    // uing parameters used to validate for consistency
+    // uing parameters used to validate for consistency, see http://regexr.com/ to test expressions
     this.validation = {
-      "name":{"regex":/^([a-zA-Z0-9]){4,32}$/, "message":"Title must be between 4 to 32 alphanumeric characters without any special symbols!"},
-      "author":{"regex":/^([a-zA-Z0-9]){0,32}$/, "message":"Author must be between 0 to 32 alphanumeric characters without any special symbols!"},
-      "linktext":{"regex":/^([a-zA-Z0-9]){0,128}$/, "message":"Link text must be between 0 to 128 alphanumeric characters without any special symbols!"},
-      "linkurl":{"regex":/^([a-zA-Z0-9]){0,128}$/, "message":"Link URL must be between 0 to 128 alphanumeric characters without any special symbols!"},
-      "description":{"regex":/^([a-zA-Z0-9]){0,256}$/, "message":"Description must be between 0 to 256 alphanumeric characters without any special symbols!"}
+      "name":{"regex":/\w{4,32}/, "message":"Title must be between 4 to 32 alphanumeric characters"},
+      "author":{"regex":/\w{0,32}/, "message":"Author must be between 0 to 32 alphanumeric characters"},
+      "linktext":{"regex":/\w{0,128}/, "message":"Link text must be between 0 to 128 alphanumeric characters"},
+      "linkurl":{"regex":/^$|[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/, "message":"Invalid URL"},
+      "description":{"regex":/\w{0,256}/, "message":"Description must be between 0 to 256 alphanumeric characters"}
     }
   }
 
@@ -36,42 +36,45 @@ class ItemEdit extends Component {
     this.setState({item: itemUpdates})
 
     // client-side validation on form change
-    //this.validateField(feature)
-    this.validateForm()
+    this.validateField(feature)
+    //this.validateForm()
   }
 
   handleSubmit(e) {
     // prevent default submission behaviour
     e.preventDefault();
 
-    if(this.state.item.id == undefined){
-      
-      this.props.addItem(this.state.item)
-      setTimeout(() => {
-        if(this.props.message['message'] == 'Success!'){
-            this.setState({message: "Item successfully added"})
-        }
-      }, 400)
-      setTimeout(() => {
-        if(this.props.message['message'] == 'Success!'){
-          this.props.setMessage('') 
-          browserHistory.push('/')
-        }
-      }, 1200)
-    }
-    else {
-      this.props.editItem(this.state.item)
-      setTimeout(() => {
-        if(this.props.message['message'] == 'Updated!'){
-            this.setState({message: "Item successfully updated"})
-        }
-      }, 400)
-      setTimeout(() => {
-        if(this.props.message['message'] == 'Updated!'){
-          this.props.setMessage('') 
-          browserHistory.push('/')
-        }
-      }, 1200)
+    if (this.validateForm())
+    {
+      if(this.state.item.id == undefined){
+        
+        this.props.addItem(this.state.item)
+        setTimeout(() => {
+          if(this.props.message['message'] == 'Success!'){
+              this.setState({message: "Item successfully added"})
+          }
+        }, 400)
+        setTimeout(() => {
+          if(this.props.message['message'] == 'Success!'){
+            this.props.setMessage('') 
+            browserHistory.push('/')
+          }
+        }, 1200)
+      }
+      else {
+        this.props.editItem(this.state.item)
+        setTimeout(() => {
+          if(this.props.message['message'] == 'Updated!'){
+              this.setState({message: "Item successfully updated"})
+          }
+        }, 400)
+        setTimeout(() => {
+          if(this.props.message['message'] == 'Updated!'){
+            this.props.setMessage('') 
+            browserHistory.push('/')
+          }
+        }, 1200)
+      }
     }
   }
 
@@ -85,13 +88,7 @@ class ItemEdit extends Component {
     !this.validateField("description") ) {
       valid = false
     }
-
-    // Pass when all valid
-    if (valid) {
-      this.enablePost()
-    } else {
-      this.disablePost()
-    }
+    return valid
   }
 
   validateField(target) {
@@ -102,26 +99,16 @@ class ItemEdit extends Component {
     var element = document.getElementById(target)
     var noteElement = document.getElementById(target+"-note")
 
+
     var value = element.value
+    console.log(regex)
     if (regex.test(value)) {
       noteElement.innerHTML = ""
       return true
     } else {
-      if (value.length != 0) {
-        noteElement.innerHTML = message
-      }
+      noteElement.innerHTML = message
       return false
     }
-  }
-
-  enablePost() {
-    var postButton = document.getElementById('post-button');
-    postButton.disabled = false;
-  }
-
-  disablePost() {
-    var postButton = document.getElementById('post-button');
-    postButton.disabled = true;
   }
 
   makePropertyChecker (property) {
@@ -235,7 +222,7 @@ class ItemEdit extends Component {
                 <label id="description-note"></label>                      
             </div>
             <div className="form--control marg-left">
-                <input className="btn btn--submit" type="submit" id="post-button" value="Post" disabled/>
+                <input className="btn btn--submit" type="submit" id="post-button" value="Post"/>
             </div>
           </form>
         </div>
