@@ -2,56 +2,36 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
     './src/index.js'
   ],
   output: {
-    path: __dirname,
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: path.join(__dirname,'public'),
+    filename: 'bundle.js'
   },
-
-  resolve:{
-    root:__dirname,
-
-    alias: {
-    
-      index:'src/reducers/index.js',
-      items:'src/reducers/items.js',
-      itemsview:'src/reducers/itemsview.js',
-      searchFilters:'src/reducers/searchFilters.js',
-      searchResults:'src/reducers/searchResults.js',
-      searchKeyword:'src/reducers/searchKeyword.js',
-      
-      ActionTypes: 'src/constants/ActionTypes.js'
-      
-
-    },
-    extensions:['','.js']
-  },
-
+  
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
-       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'     
+       'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'     
     })
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: [ 'babel' ],
+        loader: "babel-loader",
         exclude: /node_modules/,
         include: __dirname
       },
       {
         test: /\.css?$/,
-        loaders: [ 'style', 'raw' ],
-        include:__dirname,
-        
+        use: [
+          "style-loader", 
+          "css-loader"
+        ]
       }
     ]
   }
