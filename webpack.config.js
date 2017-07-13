@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: [
@@ -17,6 +18,14 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
        'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'JavaScript tools and resources',
+      minify: {
+        collapseWhitespace: true
+      },
+      hash: true,
+      template: './src/index.html'
     }),
     new ExtractTextPlugin({
       filename: 'styles.css',
