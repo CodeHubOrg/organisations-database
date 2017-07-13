@@ -10,9 +10,9 @@ import App from './components/routes/app/App'
 import Admin from './components/routes/admin/Admin'
 import ItemEdit from './components/routes/itemEdit/ItemEdit'
 import rootReducer from './reducers'
-import '../public/assets/css/bootstrap.css'
-import '../public/assets/css/grid.css'
-import '../public/assets/css/style.css'
+import '../public/assets/sass/bootstrap.scss'
+import '../public/assets/sass/grid.scss'
+import '../public/assets/sass/style.scss'
 
 const routes = [
     { path: '/', component: App },
