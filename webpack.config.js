@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
   entry: [
@@ -10,12 +11,17 @@ module.exports = {
     path: path.join(__dirname,'public'),
     filename: 'bundle.js'
   },
-  
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
-       'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'     
+       'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+    }),
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      disable: false,
+      allChunks: true
     })
   ],
   module: {
@@ -27,11 +33,12 @@ module.exports = {
         include: __dirname
       },
       {
-        test: /\.css?$/,
-        use: [
-          "style-loader", 
-          "css-loader"
-        ]
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"],
+          publicPath: "/public"
+        })
       }
     ]
   }
