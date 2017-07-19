@@ -11,7 +11,7 @@ const ItemTiles = ({items}) => {
     )
 
   return (
-    <div className = "grid">
+    <div className = "grid_container">
       { tiles }
     </div>
   )
