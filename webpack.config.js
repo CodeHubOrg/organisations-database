@@ -9,8 +9,10 @@ var cssProd = ExtractTextPlugin.extract({
   fallback: 'style-loader',
   loader: ['css-loader', 'sass-loader'],
   publicPath: '/public'
-  })
+})
 var cssConfig = isProd ? cssProd : cssDev
+
+console.log(cssConfig, isProd);
 
 module.exports = {
   entry: [
