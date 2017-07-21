@@ -6,14 +6,14 @@ import SelectFormField from '../../core/SelectFormField'
 import {addItem, editItem, setMessage} from '../../../actions'
 
 
-class ItemEdit extends Component {  
+class ItemEdit extends Component {
   constructor(props){
     super(props)
     console.log("the props", props)
     this.state = {
         'item': props.item,
         'message': props.message['message']
-    }  
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.makePropertyChecker = this.makePropertyChecker.bind(this)
@@ -47,7 +47,7 @@ class ItemEdit extends Component {
     if (this.validateForm())
     {
       if(this.state.item.id == undefined){
-        
+
         this.props.addItem(this.state.item)
         setTimeout(() => {
           if(this.props.message['message'] == 'Success!'){
@@ -56,7 +56,7 @@ class ItemEdit extends Component {
         }, 400)
         setTimeout(() => {
           if(this.props.message['message'] == 'Success!'){
-            this.props.setMessage('') 
+            this.props.setMessage('')
             browserHistory.push('/')
           }
         }, 1200)
@@ -70,7 +70,7 @@ class ItemEdit extends Component {
         }, 400)
         setTimeout(() => {
           if(this.props.message['message'] == 'Updated!'){
-            this.props.setMessage('') 
+            this.props.setMessage('')
             browserHistory.push('/')
           }
         }, 1200)
@@ -117,14 +117,14 @@ class ItemEdit extends Component {
         return true
       }
       return false
-    }    
+    }
   }
   checkIsDifficulty (value) {
     return this.makePropertyChecker('difficulty')(value)
   }
 
   render () {
-    
+
     const {
         name,
         author,
@@ -132,14 +132,14 @@ class ItemEdit extends Component {
         difficulty,
         linktext,
         linkurl,
-        type,       
+        type,
         duration,
         description,
         selected
     } = this.state.item
 
     let title = (this.state.item.id === undefined)? 'Add Item': 'Edit Item'
-        
+
     // wonder if there is a better way of doing this!
     const fieldsWithLabels = [
       {'itemkey':'name','value':name,'label':'Title:'},
@@ -167,7 +167,7 @@ class ItemEdit extends Component {
       return radioOptions.map((option, index) => {
         const label = option.replace(' ','_').toLowerCase()
         // console.log("checked",this.checkIsDifficulty(index))
-        return (<div key={index} className="grid__cell u-1/3">
+        return (<div key={index}>
                     <label htmlFor={label}><input id={label} type="radio" value={index} name="difficulty" checked={this.checkIsDifficulty(index)} onChange={this.handleChange} />{option}</label>
                 </div>)
       })
@@ -178,7 +178,7 @@ class ItemEdit extends Component {
     const radioButtons = getRadioButtons(radioOptions)
     const selectOptionsType = selectType.map((option) => { return [option, option]})
     const selectOptionsDuration = selectDuration.map((option) => { return [option, option]})
-       
+
     return (
 
         <div>
@@ -189,16 +189,16 @@ class ItemEdit extends Component {
               <span className="success">{this.state.message}</span>
             </div>
 
-            {textFields}              
+            {textFields}
 
             <div className="outer-label">Difficulty:</div>
             <div className="form--control marg-left">
-                <radiogroup className="grid"> 
-                  {radioButtons}                      
+                <radiogroup className="grid_container">
+                  {radioButtons}
                 </radiogroup>
             </div>
 
-            <SelectFormField 
+            <SelectFormField
               name="type"
               labelName="Type:"
               options={selectOptionsType}
@@ -207,7 +207,7 @@ class ItemEdit extends Component {
               callback={this.handleChange}
             />
 
-            <SelectFormField 
+            <SelectFormField
               name="duration"
               labelName="Duration:"
               options={selectOptionsDuration}
@@ -219,7 +219,7 @@ class ItemEdit extends Component {
             <div className="form--control">
                 <label className="v-top" htmlFor="description">Description:</label>
                 <textarea col="10" rows="5" name="description" id="description" value={description} onChange={this.handleChange}  />
-                <label id="description-note"></label>                      
+                <label id="description-note"></label>
             </div>
             <div className="form--control marg-left">
                 <input className="btn btn--submit" type="submit" id="post-button" value="Post"/>
@@ -252,9 +252,9 @@ const mapStateToProps = (state, ownProps) => {
       'item': state.items.find((item) => {return item.id == ownProps.params.id}),
       'message': state.message
     }
-  } 
-  return {   
-    'item': empty_item, 
+  }
+  return {
+    'item': empty_item,
     'message':state.message
   }
 }
