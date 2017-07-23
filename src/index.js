@@ -11,7 +11,6 @@ import Admin from './components/routes/admin/Admin'
 import ItemEdit from './components/routes/itemEdit/ItemEdit'
 import rootReducer from './reducers'
 import '../public/assets/sass/bootstrap.scss'
-import '../public/assets/sass/grid.scss'
 import '../public/assets/sass/style.scss'
 
 const routes = [

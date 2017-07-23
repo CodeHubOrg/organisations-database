@@ -14,9 +14,9 @@ class ItemTile extends Component {
       encodeURI('/api/items/'+this.props.resource.id))
       xhr.setRequestHeader('Content-Type', 'application/json')
       xhr.send()
-    
+
       xhr.onload = function(){
-        console.log(xhr)        
+        console.log(xhr)
       }
       xhr.onerror = function(error){
         console.log(error.message)
@@ -39,21 +39,21 @@ class ItemTile extends Component {
     let editlink = '/edit/' + resource.id
 
     return (
-            <div className="grid__cell u-1/2--medium u-1/3--large">
+            <div className="grid_cell">
                 <div className="resource">
                     <div className="resource--header text--centered">
                         <h3>{resource.name}</h3>
                     </div>
                     <ul className="resource--info-lines">
                         <li className="top">
-                            <div className="grid grid--full">
-                                <div className="grid__cell u-1/4">
+                            <div className="grid_container info">
+                                <div>
                                     <div className={difficultyClass}></div>
                                 </div>
-                                <div className="grid__cell u-1/4">
+                                <div>
                                     <div className="duration">{ resource.duration }</div>
                                 </div>
-                                <div className="grid__cell u-1/2">
+                                <div>
                                     <div className={typeClass} >
                                     {resource.type}
                                     </div>
@@ -64,7 +64,7 @@ class ItemTile extends Component {
                         {linkitem}
                         <li className="description">
                         {resource.description}
-                        </li>              
+                        </li>
                         <li>
                             <span className="key">Author:</span> {resource.author}
                         </li>
@@ -74,7 +74,7 @@ class ItemTile extends Component {
                         <li>
                         <Link to={editlink}>Edit</Link>&nbsp;&nbsp;
                         <a href="" onClick={this.handleDelete}>Delete</a>
-                        </li>                   
+                        </li>
                     </ul>
                 </div>
 
