@@ -9,6 +9,7 @@ import { Router, Route, browserHistory } from 'react-router'
 import App from './components/routes/app/App'
 import Admin from './components/routes/admin/Admin'
 import ItemEdit from './components/routes/itemEdit/ItemEdit'
+import Profile from './components/routes/profile/Profile'
 import rootReducer from './reducers'
 import '../public/assets/sass/bootstrap.scss'
 import '../public/assets/sass/style.scss'
@@ -17,7 +18,8 @@ const routes = [
     { path: '/', component: App },
     { path: '/admin', component: Admin },
     { path: '/new', component: ItemEdit },
-    { path: '/edit/:id', component: ItemEdit }
+    { path: '/edit/:id', component: ItemEdit },
+    { path: '/profile', component: Profile }
 ]
 
 fetch('/api/items').then((response) => {

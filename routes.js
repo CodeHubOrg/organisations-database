@@ -1,5 +1,6 @@
 import { express, Router } from 'express';
 import path from 'path';
+import auth from './auth';
 import bodyParser from 'body-parser';
 import api from './backend/api';
 import ItemPersist from './backend/stores/itemPersist.js';
@@ -9,6 +10,8 @@ const router = Router();
 
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+auth(router)
 
 // return all resources
 router.get("/api/items", function(req, res){
@@ -70,8 +73,22 @@ router.post("/api/items/", jsonParser, function(req,res){
     ).catch(console.log)
 });
 
-router.get("/", function(req, res) {
-  res.sendFile(__dirname + '/index.html')
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+})
+
+function ensureAuthenticated(req,res,next){
+  if(req.isAuthenticated())
+    return next();
+  res.redirect('/');
+}
+
+
+// need the wildcart so react-router can take over
+// see https://codedump.io/share/V9K5oTL502r4/1/issue-with-routing-in-react-app
+router.get("*", function(req, res) {
+  res.sendFile(__dirname + '/public/index.html')
 })
 
 export default router;
