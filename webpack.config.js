@@ -14,23 +14,15 @@ var cssConfig = isProd ? cssProd : cssDev
 
 console.log(cssConfig, isProd);
 
-module.exports = {
-  entry: [
-    'webpack-hot-middleware/client',
-    './src/index.js'
-  ],
-  output: {
-    path: path.join(__dirname,'public'),
-    filename: 'bundle.js'
-  },
+let pluginsCommon = [
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
+  new webpack.ProvidePlugin({
+     'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+  })
+]
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.ProvidePlugin({
-       'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
-    }),
-    new HtmlWebpackPlugin({
+let pluginsProd =  [ new HtmlWebpackPlugin({
       title: 'JavaScript tools and resources',
       minify: {
         collapseWhitespace: true
@@ -43,7 +35,23 @@ module.exports = {
       disable: !isProd,
       allChunks: true
     })
+]
+
+const plugins = isProd ? pluginsCommon.concat(pluginsProd) : pluginsCommon
+
+
+module.exports = {
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/index.js'
   ],
+  output: {
+    path: path.join(__dirname,'public'),
+    publicPath: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
+  },
+
+  plugins: plugins,
   module: {
     rules: [
       {
