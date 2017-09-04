@@ -1,0 +1,133 @@
+.resource {
+    min-height: 320px;
+    border: 1px solid #dedede;
+    background-color: #F1F3F4;
+    border-radius: 5px;
+    max-width: 340px;
+    padding: 0.75em;
+    font-family: Inconsolata, PTMono, monospace;
+    font-size: 80%;
+
+    h3{
+        font-size: 120%;
+        line-height: 1.3;
+    }
+}
+
+.resource--header {
+    background-color: #E3B300;
+    border-radius: 3px;
+    color: white;
+    padding: 0.75em 0.5em;
+    font-family: sans-serif;
+}
+
+.resource--header h3 {
+    margin: 0;
+}
+
+.resource--info-lines {
+    list-style: none outside;
+    padding: 0;
+    margin: 0;
+}
+
+
+.resource--info-lines li {
+    margin-top: 14px;
+    line-height: 1.5;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+
+.resource--info-lines li:last-child{
+    margin-top: 3em;
+}
+
+.resource--info-lines li.top {
+    margin-bottom: 2.5em;
+    font-size: 0.9em;
+
+}
+
+.difficulty {
+    width: 1em;
+    height: 1em;
+    border-radius: 2px;
+    //margin-bottom: 0.75em;
+}
+
+.difficulty-1 {
+    background: #7cfc00;
+}
+.difficulty-2 {
+    background: #ffff00
+}
+.difficulty-3 {
+    background: #ffa500;
+}
+.difficulty-4 {
+    background: #ff8c00
+}
+.difficulty-5 {
+    background: #ff6200;
+}
+.difficulty-6 {
+    background: #89f;
+}
+
+.duration {
+    line-height: 1;
+}
+
+
+.label {
+    color: #635147;
+    background: #edff7a;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.duration {
+    background: url(/assets/img/Time-48.png) no-repeat left;
+}
+
+.resource--Podcast {
+    background: url(/assets/img/Microphone-52.png) no-repeat left;
+}
+
+.resource--Video {
+    background: url(/assets/img/Camcorder-48.png) no-repeat left;
+}
+
+.resource--Book {
+    background: url(/assets/img/Book-48.png) no-repeat left;
+}
+
+.resource--Online.interactive {
+    background: url(/assets/img/Interactive-50.png) no-repeat left;
+}
+
+.resource--Online.written {
+    background: url(/assets/img/ELearning-48.png) no-repeat left;
+}
+
+.resource--type, .duration {
+    padding-left: 1.4em;
+    line-height: 1.1;
+    background-size: 1em !important;
+    background-position: center left;
+}
+
+
+.flex-container.info{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25em;
+    //flex-wrap: wrap;
+    > *:not(:last-child){
+        margin-right: 2em;
+    }
+}
