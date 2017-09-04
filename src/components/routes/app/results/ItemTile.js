@@ -46,7 +46,7 @@ class ItemTile extends Component {
                     </div>
                     <ul className="resource--info-lines">
                         <li className="top">
-                            <div className="grid_container info">
+                            <div className="flex-container info">
                                 <div>
                                     <div className={difficultyClass}></div>
                                 </div>
@@ -59,15 +59,14 @@ class ItemTile extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <span>Author:</span> {resource.author}
                         </li>
 
                         {linkitem}
                         <li className="description">
                         {resource.description}
                         </li>
-                        <li>
-                            <span className="key">Author:</span> {resource.author}
-                        </li>
+                        
                         <li>
                             <span className="label">{resource.tags}</span>
                         </li>
