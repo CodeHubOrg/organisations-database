@@ -19,7 +19,8 @@ const routes = [
     { path: '/admin', component: Admin },
     { path: '/new', component: ItemEdit },
     { path: '/edit/:id', component: ItemEdit },
-    { path: '/profile', component: Profile }
+    { path: '/profile', component: Profile },
+    { path: '/profile/:github_id', component: Profile }
 ]
 
 fetch('/api/items').then((response) => {

@@ -116,3 +116,18 @@ export function setSearchResults ( resultItems ) {
     resultItems: resultItems
   }
 }
+
+// User Login
+export function login ( username ) {
+  return {
+    type: types.LOGIN,
+    username: username
+  }
+}
+
+export function logout ( username ) {
+  return {
+    type: types.LOGOUT,
+    username: username
+  }
+}

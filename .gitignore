@@ -4,4 +4,5 @@ public/bundle.js
 public/styles.css
 public/index.html
 testdb.js
+appConfig.js
 .DS_Store

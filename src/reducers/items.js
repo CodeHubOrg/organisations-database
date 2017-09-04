@@ -31,7 +31,7 @@ export default function items ( state = initialState, action ) {
                 if (item.id === action.id) {
                     return Object.assign({}, item, {selected: true})
                 }
-                return Object.assign({}, item, {selected: false})
+                return state
             })
 
         case DESELECT_ITEM:

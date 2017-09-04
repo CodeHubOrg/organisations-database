@@ -8,8 +8,11 @@ const itempersist = new ItemPersist('./backend/data/itemDB.js');
 
 const router = Router();
 
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const jsonParser = bodyParser.json()
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+router.use(bodyParser.json());
+router.use(urlencodedParser);
 
 auth(router)
 
