@@ -157,23 +157,6 @@ h1.title {
     bottom: 5px;
 }
 
-.resource {
-    min-height: 320px;
-    border: 1px solid #dedede;
-    border-radius: 5px;
-    max-width: 320px;
-    padding: 0 0 10px 0;
-    margin-bottom: 20px;
-}
-
-.resource--header {
-    background: #ffdb58;
-    color: #605b56;
-    margin-top: 0;
-    border: 1px solid #ffdb58;
-
-
-}
 
 .dummy {
     color: #605b56;
@@ -181,73 +164,6 @@ h1.title {
     color: #95c14f;
     color: #edff7a;
     color: #f2fbe0;
-}
-
-.resource--header h3 {
-    padding: 5px 0 8px 0;
-    margin: 0;
-}
-
-.resource--info-lines {
-    list-style: none outside;
-    padding: 0;
-    margin: 0;
-}
-
-
-.resource--info-lines li {
-    margin-top: 14px;
-    margin-right: 10px;
-    margin-left: 10px;
-    line-height: 1.4;
-}
-
-.resource--info-lines li.top {
-    border-bottom: 1px #fbceb1 dashed
-}
-
-.difficulty {
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-}
-
-.difficulty-1 {
-    background: #7cfc00;
-}
-.difficulty-2 {
-    background: #ffff00
-}
-.difficulty-3 {
-    background: #ffa500;
-}
-.difficulty-4 {
-    background: #ff8c00
-}
-.difficulty-5 {
-    background: #ff6200;
-}
-.difficulty-6 {
-    background: #89f;
-}
-
-.duration {
-    line-height: 1.4;
-    height: 28px;
-    font-size: 10px;
-}
-
-.description {
-    color: #765;
-}
-
-.label {
-    color: #635147;
-    background: #edff7a
-;   padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 2px;
-    margin-right: 5px;
 }
 
 .text--centered {
@@ -263,38 +179,16 @@ body {
     font-size: 16px;
 }
 
-.resource--Podcast {
-    background: url(/assets/img/Microphone-52.png) no-repeat right;
-}
-
-.resource--Video {
-    background: url(/assets/img/Camcorder-48.png) no-repeat right;
-}
-
-.resource--Book {
-    background: url(/assets/img/Book-48.png) no-repeat right;
-}
-
-.resource--Online.interactive {
-    background: url(/assets/img/Interactive-50.png) no-repeat right;
-    background-size: 25px;
-}
-
-.resource--Online.written {
-    background: url(/assets/img/ELearning-48.png) no-repeat right;
-    background-size: 25px;
-}
 
 
-.resource--type {
-    padding-right: 30px;
-    margin-right: 5px;
-    font-size: 12px;
-    height: 28px;
-    line-height: 2.2;
-    text-align: right;
-    background-size: 25px;
-}
+/*
+---------------------
+---- RESOURCE ---------
+---------------------
+*/
+
+@import "partials/resource";
+
 
 /*
 ---------------------
@@ -336,7 +230,8 @@ body {
 }
 
 .grid_cell {
-	width: 310px;
+	max-width: 380px;
+    padding: 1em;
 }
 
 @media (min-width: 700px) {
