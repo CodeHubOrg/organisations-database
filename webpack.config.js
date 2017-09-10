@@ -39,6 +39,7 @@ let pluginsProd =  [ new HtmlWebpackPlugin({
 
 const plugins = isProd ? pluginsCommon.concat(pluginsProd) : pluginsCommon
 
+console.log("plugins", plugins)
 
 module.exports = {
   entry: [

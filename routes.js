@@ -4,6 +4,7 @@ import auth from './auth';
 import bodyParser from 'body-parser';
 import api from './backend/api';
 import ItemPersist from './backend/stores/itemPersist.js';
+import User from './auth-models/users'
 const itempersist = new ItemPersist('./backend/data/itemDB.js');
 
 const router = Router();
@@ -75,6 +76,15 @@ router.post("/api/items/", jsonParser, function(req,res){
       }
     ).catch(console.log)
 });
+
+router.get("/checkUser/:id", function(req, res){
+  console.log(User)
+  User.sync()
+
+
+
+  res.send({id: req.params.id})
+})
 
 router.get('/logout', function(req, res){
   req.logout();

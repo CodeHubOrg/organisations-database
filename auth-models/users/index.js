@@ -20,7 +20,14 @@ const User = sequelize.define('user', {
     github_id: {
         type: Sequelize.INTEGER,
         unique: true
+    },
+    token: {
+        type: Sequelize.STRING
+    },
+    loggedIn: {
+        type: Sequelize.BOOLEAN
     }
+
 })
 
 module.exports = User;

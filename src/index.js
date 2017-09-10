@@ -9,7 +9,8 @@ import { Router, Route, browserHistory } from 'react-router'
 import App from './components/routes/app/App'
 import Admin from './components/routes/admin/Admin'
 import ItemEdit from './components/routes/itemEdit/ItemEdit'
-import Profile from './components/routes/profile/Profile'
+import Profile from './components/routes/auth/Profile'
+import Auth from './components/routes/auth/Auth'
 import rootReducer from './reducers'
 import '../public/assets/sass/bootstrap.scss'
 import '../public/assets/sass/style.scss'
@@ -20,7 +21,7 @@ const routes = [
     { path: '/new', component: ItemEdit },
     { path: '/edit/:id', component: ItemEdit },
     { path: '/profile', component: Profile },
-    { path: '/profile/:github_id', component: Profile }
+    { path: '/profile/:id', component: Profile }
 ]
 
 fetch('/api/items').then((response) => {

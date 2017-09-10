@@ -43,43 +43,65 @@ module.exports = function(router){
     passport.use(new GitHubStrategy({
         clientID: config.GITHUB_CLIENT_ID || process.env.CLIENT_ID,
         clientSecret: config.GITHUB_CLIENT_SECRET || process.env.CLIENT_SECRET,
-        callbackURL: '/auth/github/callback',
+        callbackURL: '/login',
       },
       function(accessToken, refreshToken, user, cb) {
-          //console.log("using GITHUB strategy")
+            // console.log("keys", Object.keys(req))   - good method!
+            // console.log("request user", user)
+            // console.log("token", tokenForUser(req.user));
+            const token = tokenForUser(user.id)
 
-          return cb(null, user);
-      }
-    ));
+            User.sync({force: true}).then(() => {
+              return User.findOrCreate(
+              { where: {
+                  github_id: user.id
+                }, defaults: {
+                   name: user.displayName, 
+                   username: user.username, 
+                   email: user._json.email,
+                   token: token,
+                   loggedIn: false
+                }
+              }).spread((user, created) => {               
+                if(!created){
+                  user.update({token: token}) 
+                }
+                console.log(user.get({
+                  plain: true
+              }))
+              return cb(null, user);          
+              // res.redirect('/profile/'+user.username)
+            })       
+          })
+        }
+      ));
+
 
     //OAuth authentication route
     router.get('/auth/github', passport.authenticate('github'));
-    router.get('/auth/github/callback', 
-      passport.authenticate('github', { session: false, failureRedirect: '/' }), 
+    
+    router.get('/login', 
+    passport.authenticate('github', { session: false, failureRedirect: '/' }), 
       function(req, res) {
-        const user = req.user;
-        // console.log("keys", Object.keys(req))   - good method!
-        // console.log("request user", user)
-        // console.log("token", tokenForUser(req.user));
-        User.sync().then(() => {
-          return User.findOrCreate(
-          { where: {
-              github_id: user.id
-            }, defaults: {
-              name: user.displayName, 
-              username: user.username, 
-              email: user._json.email
-            }
-          }).spread((user, created) => {
-            console.log(user.get({
-              plain: true
-            }))            
-            res.redirect('/profile/'+user.username)
-            //res.json({ token: tokenForUser(user) });
-        })       
-      })
+          const user = req.user
+          res.redirect('/profile/'+user.github_id)
     })
 
-    // app.use(authRoutes)
-
+    router.get("/checkUser/:id", function(req, res){
+      User.sync().then(() => {
+        User.findOne({ where: { github_id: req.params.id} })
+          .then((user) => {
+            if(user){
+            const decoded = jwt.decode(user.token, config.secret)
+            const timediff = new Date().getTime() - decoded.iat  
+            console.log("timediff", timediff)
+            if(timediff < 30000){
+              user.update({loggedIn:true})
+              res.send({ token: user.token })
+              } 
+            }
+          }
+        ).catch(error => console.log(error))
+      })
+    })
 }

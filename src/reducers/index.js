@@ -6,6 +6,7 @@ import searchResults from './searchResults'
 import searchKeyword from './searchKeyword'
 import message from './message'
 import users from './users'
+import token from './token'
 
 const rootReducer = combineReducers({
   searchFilters,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   items,
   itemsview,
   message,
-  users
+  users,
+  token
 })
 
 export default rootReducer

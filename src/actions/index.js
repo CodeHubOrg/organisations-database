@@ -3,8 +3,11 @@
 // 3) addItem should create ADD_ITEM action
 // 4) editItem should create EDIT_ITEM action
 // 5) deleteItem should create DELETE_ITEM action
+
 import * as types from '../constants/ActionTypes'
 import axios from 'axios'
+
+
 
 //Action creators
 export function selectItem(itemID){
@@ -13,7 +16,6 @@ export function selectItem(itemID){
     type: types.SELECT_ITEM,
     id: itemID
   }
-
 }
 
 export function deselectItem(itemID){
@@ -21,7 +23,6 @@ export function deselectItem(itemID){
     type: types.DESELECT_ITEM,
     id: itemID
   }
-
 }
 
 export function addItem(item){
@@ -57,6 +58,26 @@ export function editItem(item){
         payload: 'Updated!'
       })
     )
+  }
+}
+
+export function fetchToken(id){
+  const url = '/checkUser/'+id
+  const request = axios.get(url)
+  return dispatch => {
+    dispatch(receiveToken(id))
+    return request.then(
+      resp => {
+        console.log("response", resp.data.token)
+        return resp.data.token        
+      }) 
+  }
+}
+
+export function receiveToken(response){
+  return {
+    type: types.RECEIVE_TOKEN,
+    response: response
   }
 }
 

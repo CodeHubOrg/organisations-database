@@ -6,3 +6,4 @@ public/index.html
 testdb.js
 appConfig.js
 .DS_Store
+auth-data/data/userdb.sqlite
