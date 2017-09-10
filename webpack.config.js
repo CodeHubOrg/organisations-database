@@ -14,7 +14,7 @@ var cssConfig = isProd ? cssProd : cssDev
 
 console.log(cssConfig, isProd);
 
-let pluginsCommon = [
+var pluginsCommon = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.ProvidePlugin({
@@ -22,7 +22,7 @@ let pluginsCommon = [
   })
 ]
 
-let pluginsProd =  [ new HtmlWebpackPlugin({
+var pluginsProd =  [ new HtmlWebpackPlugin({
       title: 'JavaScript tools and resources',
       minify: {
         collapseWhitespace: true
@@ -37,9 +37,8 @@ let pluginsProd =  [ new HtmlWebpackPlugin({
     })
 ]
 
-const plugins = isProd ? pluginsCommon.concat(pluginsProd) : pluginsCommon
+var plugins = isProd ? pluginsCommon.concat(pluginsProd) : pluginsCommon
 
-console.log("plugins", plugins)
 
 module.exports = {
   entry: [

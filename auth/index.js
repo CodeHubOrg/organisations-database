@@ -95,9 +95,16 @@ module.exports = function(router){
             const decoded = jwt.decode(user.token, config.secret)
             const timediff = new Date().getTime() - decoded.iat  
             console.log("timediff", timediff)
-            if(timediff < 30000){
+            if(timediff < 20000){
               user.update({loggedIn:true})
-              res.send({ token: user.token })
+              res.send(
+                { user: {
+                    name: user.name,
+                    username: user.username,
+                    email: user.email
+                  }, 
+                  token: user.token 
+                })
               } 
             }
           }

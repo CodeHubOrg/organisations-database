@@ -65,14 +65,23 @@ export function fetchToken(id){
   const url = '/checkUser/'+id
   const request = axios.get(url)
   return dispatch => {
-    dispatch(receiveToken(id))
+    dispatch(requestToken(id))
     return request.then(
       resp => {
-        console.log("response", resp.data.token)
-        return resp.data.token        
+        dispatch(receiveToken(resp.data))
+        console.log("response", resp.data)
+        return resp.data       
       }) 
   }
 }
+
+export function requestToken(id){
+  return {
+    type: types.REQUEST_TOKEN,
+    id: id
+  }
+}
+
 
 export function receiveToken(response){
   return {
