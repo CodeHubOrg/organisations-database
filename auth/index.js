@@ -26,7 +26,6 @@ module.exports = function(router){
         return User.findOne({ where: { github_id: payload.sub } })
         .then(user => { 
           if(user) {
-            console.log("hooray")
             done(null, user) 
           } else {
             done(null, false)
@@ -78,13 +77,13 @@ module.exports = function(router){
 
 
     //OAuth authentication route
-    router.get('/auth/github', passport.authenticate('github'));
+    router.get("/auth/github", passport.authenticate("github"));
     
-    router.get('/login', 
-    passport.authenticate('github', { session: false, failureRedirect: '/' }), 
+    router.get("/login", 
+    passport.authenticate("github", { session: false, failureRedirect: "/" }), 
       function(req, res) {
           const user = req.user
-          res.redirect('/profile/'+user.github_id)
+          res.redirect("/profile/"+user.github_id)
     })
 
     router.get("/checkUser/:id", function(req, res){
@@ -98,12 +97,12 @@ module.exports = function(router){
             if(timediff < 20000){
               user.update({loggedIn:true})
               res.send(
-                { user: {
-                    name: user.name,
-                    username: user.username,
-                    email: user.email
+                { "user": {
+                    "name": user.name,
+                    "username": user.username,
+                    "email": user.email
                   }, 
-                  token: user.token 
+                  "token": user.token 
                 })
               } 
             }

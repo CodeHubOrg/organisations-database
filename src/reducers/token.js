@@ -10,7 +10,7 @@ export default function token ( state = initialState, action) {
     if(action.type == RECEIVE_TOKEN){
       if(action.response != {}){
         // console.log("token", action.response)
-        return {user: action.response.user, token : action.response.token}
+        return {"user": action.response.user, "token": action.response.token}
       } 
       return state      
     }

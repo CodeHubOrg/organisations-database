@@ -37,9 +37,6 @@ var pluginsProd =  [ new HtmlWebpackPlugin({
     })
 ]
 
-var plugins = isProd ? pluginsCommon.concat(pluginsProd) : pluginsCommon
-
-
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
@@ -47,11 +44,11 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname,'public'),
-    publicPath: path.join(__dirname, 'public'),
+    publicPath: '/',
     filename: 'bundle.js'
   },
 
-  plugins: plugins,
+  plugins: isProd ? pluginsCommon.concat(pluginsProd) : pluginsCommon,
   module: {
     rules: [
       {

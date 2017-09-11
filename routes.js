@@ -77,26 +77,6 @@ router.post("/api/items/", jsonParser, function(req,res){
     ).catch(console.log)
 });
 
-router.get("/checkUser/:id", function(req, res){
-  console.log(User)
-  User.sync()
-
-
-
-  res.send({id: req.params.id})
-})
-
-router.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-})
-
-function ensureAuthenticated(req,res,next){
-  if(req.isAuthenticated())
-    return next();
-  res.redirect('/');
-}
-
 
 // need the wildcart so react-router can take over
 // see https://codedump.io/share/V9K5oTL502r4/1/issue-with-routing-in-react-app

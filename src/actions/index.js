@@ -62,14 +62,14 @@ export function editItem(item){
 }
 
 export function fetchToken(id){
-  const url = '/checkUser/'+id
+  const url = "/checkUser/"+id
   const request = axios.get(url)
   return dispatch => {
     dispatch(requestToken(id))
     return request.then(
       resp => {
         dispatch(receiveToken(resp.data))
-        console.log("response", resp.data)
+        // console.log("response", resp.data)
         return resp.data       
       }) 
   }
