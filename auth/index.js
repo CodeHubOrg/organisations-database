@@ -42,7 +42,7 @@ module.exports = function(router){
     passport.use(new GitHubStrategy({
         clientID: config.GITHUB_CLIENT_ID || process.env.CLIENT_ID,
         clientSecret: config.GITHUB_CLIENT_SECRET || process.env.CLIENT_SECRET,
-        callbackURL: '/login',
+        callbackURL: 'https://resources.javascript101.co.uk/login',
       },
       function(accessToken, refreshToken, user, cb) {
             // console.log("keys", Object.keys(req))   - good method!
