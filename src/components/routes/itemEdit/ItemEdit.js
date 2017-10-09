@@ -4,7 +4,7 @@ import {browserHistory} from 'react-router'
 
 import SelectFormField from '../../core/SelectFormField'
 import {addItem, editItem, setMessage} from '../../../actions'
-
+import LoginBar from '../auth/LoginBar'
 
 class ItemEdit extends Component {
   constructor(props){
@@ -36,16 +36,16 @@ class ItemEdit extends Component {
     this.setState({item: itemUpdates})
 
     // client-side validation on form change
-    this.validateField(feature)
-    //this.validateForm()
+    // this.validateField(feature)
+    this.validateForm()
   }
 
   handleSubmit(e) {
     // prevent default submission behaviour
     e.preventDefault();
 
-    if (this.validateForm())
-    {
+    // if (this.validateForm())
+    // {
       if(this.state.item.id == undefined){
 
         this.props.addItem(this.state.item)
@@ -74,7 +74,7 @@ class ItemEdit extends Component {
             browserHistory.push('/')
           }
         }, 1200)
-      }
+      // }
     }
   }
 
@@ -182,6 +182,7 @@ class ItemEdit extends Component {
     return (
 
         <div>
+          <LoginBar />
           <h1>{title}</h1>
           <form onSubmit={this.handleSubmit} className="form--add" >
             <div className="form--control">

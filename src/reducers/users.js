@@ -1,8 +1,4 @@
-import {
-    LOGIN,
-    LOGOUT,
-    CHECK_LOGIN
-} from '../constants/ActionTypes'
+// currently not in use
 
 const initialState = [
     { username:'katjad',
@@ -36,25 +32,3 @@ const initialState = [
     { username: 'tbuyus',
       loggedIn: false }
 ]
-
-export default function users ( state = initialState, action ) {
-    switch (action.type) {
-        case LOGIN:
-            return state.map(user => {
-                if (user.username === action.username) {
-                    return Object.assign({}, user, {loggedIn: true})
-                }
-                return user
-            })
-        case LOGOUT:
-            return state.map(user => {
-                if (user.username === action.username) {
-                    return Object.assign({}, user, {loggedIn: false})
-                }
-                return user
-            })
-
-        default:
-            return state
-    }
-}

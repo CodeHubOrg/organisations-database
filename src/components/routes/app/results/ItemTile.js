@@ -13,6 +13,7 @@ class ItemTile extends Component {
       xhr.open('DELETE',
       encodeURI('/api/items/'+this.props.resource.id))
       xhr.setRequestHeader('Content-Type', 'application/json')
+      xhr.setRequestHeader('authorization', localStorage.getItem("authtoken"))
       xhr.send()
 
       xhr.onload = function(){

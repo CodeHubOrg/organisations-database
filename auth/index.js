@@ -1,4 +1,4 @@
-module.exports = function(router){    
+module.exports = function(router){ 
     const passport = require('passport')
     const GitHubStrategy = require('passport-github').Strategy
     const config = require('../appConfig')
@@ -11,32 +11,14 @@ module.exports = function(router){
     router.use(passport.initialize())
 
     // JWT strategy
-    const tokenForUser = (user) => {
+    const tokenForUser = (userid) => {
       const timestamp = new Date().getTime()
-      return jwt.encode({ sub: user.id, iat: timestamp }, config.secret)
+      return jwt.encode({ sub: userid, iat: timestamp }, config.secret)
     }
     const jwtOptions = {
       jwtFromRequest: ExtractJwt.fromHeader('authorization'),
       secretOrKey: config.secret
     }
-
-    const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
-      // see if user ID in payload exists in database
-      User.sync().then(() => {
-        return User.findOne({ where: { github_id: payload.sub } })
-        .then(user => { 
-          if(user) {
-            done(null, user) 
-          } else {
-            done(null, false)
-          }
-        })
-        .catch((err) => {done(err, false)})
-      })
-    })
-    passport.use(jwtLogin)
-
-
 
     // Github Strategy for initial login
     // beware, when deployed the callback needs to be absolute: 'https://resources.javascript101.co.uk/login'
@@ -66,16 +48,15 @@ module.exports = function(router){
                 if(!created){
                   user.update({token: token}) 
                 }
-                console.log(user.get({
-                  plain: true
-              }))
+              //   console.log(user.get({
+              //     plain: true
+              // }))
               return cb(null, user);          
               // res.redirect('/profile/'+user.username)
             })       
           })
         }
       ));
-
 
     //OAuth authentication route
     router.get("/auth/github", passport.authenticate("github"));
@@ -85,6 +66,7 @@ module.exports = function(router){
       function(req, res) {
           const user = req.user
           res.redirect("/profile/"+user.github_id)
+          // res.json({"authtoken": user.token})
     })
 
     router.get("/checkUser/:id", function(req, res){
@@ -94,7 +76,7 @@ module.exports = function(router){
             if(user){
             const decoded = jwt.decode(user.token, config.secret)
             const timediff = new Date().getTime() - decoded.iat  
-            console.log("timediff", timediff)
+            // console.log("timediff", timediff)
             if(timediff < 20000){
               user.update({loggedIn:true})
               res.send(
@@ -111,4 +93,5 @@ module.exports = function(router){
         ).catch(error => console.log(error))
       })
     })
+  
 }

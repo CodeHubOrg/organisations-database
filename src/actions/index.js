@@ -6,7 +6,9 @@
 
 import * as types from '../constants/ActionTypes'
 import axios from 'axios'
+import { browserHistory } from 'react-router';
 
+const ROOT_URL = 'http://localhost:3000';
 
 
 //Action creators
@@ -27,7 +29,9 @@ export function deselectItem(itemID){
 
 export function addItem(item){
   const url = '/api/items/'
-  const request = axios.post(url,item)
+  const request = axios.post(url, item, {
+     headers: { 'authorization': localStorage.getItem('authtoken') }
+   })
   return dispatch => {
     dispatch({ 
       type: types.ADD_ITEM,
@@ -45,14 +49,16 @@ export function addItem(item){
 
 export function editItem(item){
   const url = '/api/items/'+item.id
-  const request = axios.put(url, item)
+  const request = axios.put(url, item, {
+    headers: { 'authorization': localStorage.getItem('authtoken') }
+  })
   return dispatch => {
-    dispatch({
-      type: types.EDIT_ITEM,
-      payload: request
-    })
+      dispatch({
+        type: types.EDIT_ITEM,
+        payload: request
+      })
 
-    return request.then(
+      return request.then(
       dispatch({
         type: types.SET_MESSAGE,
         payload: 'Updated!'
@@ -61,34 +67,49 @@ export function editItem(item){
   }
 }
 
-export function fetchToken(id){
-  const url = "/checkUser/"+id
+export function loginUser(gitHubUser) {
+  const url = `${ROOT_URL}/checkUser/${gitHubUser}`
   const request = axios.get(url)
-  return dispatch => {
-    dispatch(requestToken(id))
-    return request.then(
-      resp => {
-        dispatch(receiveToken(resp.data))
-        // console.log("response", resp.data)
-        return resp.data       
-      }) 
-  }
+    return dispatch => {
+      return request.then(
+          resp => {                  
+            dispatch({ type: types.AUTH_USER })
+            localStorage.setItem("authtoken", resp.data.token)
+            return resp.data 
+          }).catch(() => {
+            dispatch(authError('Login did not succeed'))
+        })
+    }
 }
 
-export function requestToken(id){
+export function logoutUser() {
+    localStorage.removeItem("authtoken");
+
+    return { type: types.UNAUTH_USER }
+}
+
+
+export function authUser(){
   return {
-    type: types.REQUEST_TOKEN,
-    id: id
+    type: types.AUTH_USER
   }
 }
 
 
-export function receiveToken(response){
+
+export function unauthUser(){
   return {
-    type: types.RECEIVE_TOKEN,
-    response: response
-  }
+    type: types.UNAUTH_USER
+  }  
 }
+
+export function authError(error) {
+    return {
+        type: types.AUTH_ERROR,
+        error: error
+    }
+}
+
 
 export function deleteItem(itemID){
   return{
@@ -144,20 +165,5 @@ export function setSearchResults ( resultItems ) {
   return {
     type: types.SET_SEARCH_RESULTS,
     resultItems: resultItems
-  }
-}
-
-// User Login
-export function login ( username ) {
-  return {
-    type: types.LOGIN,
-    username: username
-  }
-}
-
-export function logout ( username ) {
-  return {
-    type: types.LOGOUT,
-    username: username
   }
 }

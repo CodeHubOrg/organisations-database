@@ -13,12 +13,15 @@ import Profile from './components/routes/auth/Profile'
 import rootReducer from './reducers'
 import '../public/assets/sass/bootstrap.scss'
 import '../public/assets/sass/style.scss'
+import RequireAuth from './components/routes/auth/requireAuth'
+import Login from './components/routes/auth/Login'
+import { AUTH_USER } from './constants/ActionTypes'
 
 const routes = [
     { path: '/', component: App },
-    { path: '/admin', component: Admin },
-    { path: '/new', component: ItemEdit },
-    { path: '/edit/:id', component: ItemEdit },
+    { path: '/admin', component: RequireAuth(Admin) },
+    { path: '/new', component: RequireAuth(ItemEdit) },
+    { path: '/edit/:id', component: RequireAuth(ItemEdit)},
     { path: '/profile', component: Profile },
     { path: '/profile/:id', component: Profile }
 ]
@@ -31,7 +34,14 @@ fetch('/api/items').then((response) => {
     return response.json()
   }).then((json) => {
     let initialState = {'items': json}
-    let store = createStore(rootReducer, initialState, applyMiddleware(reduxThunk, reduxPromise))
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    let store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(reduxThunk, reduxPromise)))
+
+    const token = localStorage.getItem("authtoken")
+
+    if (token) {
+      store.dispatch({ type: AUTH_USER })
+    }
 
     ReactDOM.render((
         <Provider store={store}>

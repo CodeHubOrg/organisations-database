@@ -1,10 +1,16 @@
 import { express, Router } from 'express';
 import path from 'path';
 import auth from './auth';
+import passport from 'passport';
 import bodyParser from 'body-parser';
 import api from './backend/api';
-import ItemPersist from './backend/stores/itemPersist.js';
+import ItemPersist from './backend/stores/itemPersist';
 import User from './auth-models/users'
+import config from './appConfig'
+import jwt from 'jwt-simple'
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
+
+
 const itempersist = new ItemPersist('./backend/data/itemDB.js');
 
 const router = Router();
@@ -16,6 +22,29 @@ router.use(bodyParser.json());
 router.use(urlencodedParser);
 
 auth(router)
+
+const jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+    secretOrKey: config.secret
+}
+
+const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
+    User.sync().then(() => {
+      return User.findOne({ where: { github_id: payload.sub } })
+      .then(user => { 
+        if(user) {
+          return done(null, user) 
+        } else {
+          return done(null, false)
+        }
+      })
+      .catch((err) => {done(err, false)})
+    })
+  })
+  passport.use(jwtLogin)
+
+  const requireAuth = passport.authenticate("jwt",{ session: false })
+
 
 // return all resources
 router.get("/api/items", function(req, res){
@@ -42,8 +71,7 @@ router.get("/api/items/:id", function(req,res){
 });
 
 // update resource with given id
-router.put("/api/items/:id", jsonParser, function(req,res){ 
-   
+router.put("/api/items/:id", requireAuth, jsonParser, function(req,res){    
    itempersist.update(req.body).then(
      function(resource){
        res.send(resource);
@@ -55,7 +83,7 @@ router.put("/api/items/:id", jsonParser, function(req,res){
 });
 
 // delete by id
-router.delete("/api/items/:id", function(req, res){
+router.delete("/api/items/:id", requireAuth, function(req, res){
   itempersist.deleteByID(req.params.id).then(
     function(resources){
       res.send(resources);
@@ -67,7 +95,7 @@ router.delete("/api/items/:id", function(req, res){
 })
 
 // add a resource, send back "No content"
-router.post("/api/items/", jsonParser, function(req,res){
+router.post("/api/items/", requireAuth, jsonParser, function(req,res){
     // console.log("body", req.body)
     itempersist.add(req.body).then(
       function(newitem){

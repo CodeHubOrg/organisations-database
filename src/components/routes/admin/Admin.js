@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import LoginBar from '../auth/LoginBar'
 
 class Admin extends Component {
-
+    componentWillMount(){
+        
+      }
     render() {
         const { store } = this.context
         return (
             <div>
+                <LoginBar />
                 <h1>JavaScript tools and resources</h1>
-		<h4>Find everything you need to get started with Javascript</h4>
+		            <h4>Find everything you need to get started with Javascript</h4>
                 <div className="container-admin">
                     <h2>Admin</h2>
                     <ul className="nav-admin">
