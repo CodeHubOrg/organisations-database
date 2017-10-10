@@ -14,7 +14,6 @@ import rootReducer from './reducers'
 import '../public/assets/sass/bootstrap.scss'
 import '../public/assets/sass/style.scss'
 import RequireAuth from './components/routes/auth/requireAuth'
-import Login from './components/routes/auth/Login'
 import { AUTH_USER } from './constants/ActionTypes'
 
 const routes = [
