@@ -15,9 +15,9 @@ class LoginBar extends Component {
     } 
   }
   render() {
-    let loggedIn = (this.props.loggedIn) ? 'Log Out' : 'Log in with GitHub'
+    let loggedIn = (this.props.loggedIn) ? 'Log Out' : 'Log in'
     return (this.props.loggedIn) ?
-     (<div>
+     (<div className="login-bar logout">
         <a onClick={e => this.logout(e)} href="">
             <div className="btn" id="login-btn">                       
                 <p>{loggedIn}</p>
@@ -27,10 +27,10 @@ class LoginBar extends Component {
 
       ) :
       (
-         <div>
+         <div className="login-bar">
          <a  href="/auth/github">
               <div className="btn" id="login-btn">                       
-                  <p>{loggedIn}</p>
+                  <p>{loggedIn}</p>                  
               </div>
           </a>
           </div>

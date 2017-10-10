@@ -37,30 +37,33 @@ class Profile extends Component {
         }
     }
     render () {
-        let loggedIn = (this.props.loggedIn) ? 'Log out' : 'Login with Github'
+        let loggedIn = (this.props.loggedIn) ? 'Log out' : 'Log In'
         const user = this.state.user
         return (
             <div>
-                { (this.props.loggedIn) ? 
+              <h1>Profile</h1>
+              { (this.props.loggedIn) ? 
                 <span> 
-                { (user != {}) ?
+
+                { (user.username) ?
                   <span>
                   <p>You are now logged in, @{user.username} </p>
-                  <h3>Your Profile Data</h3>
+                  <h3>Your GitHub Details:</h3>
                   Name: {user.name}<br />
                   Username: @{user.username}<br />
                   Email: {user.email}<br />
                   <p>&nbsp;</p>
+                  <p>
+                  <strong>If you just logged in, we will try to redirect you to the Homepage.</strong>
+                  </p><p>Otherwise, please choose where you want to go.</p>
                   </span>
                   :
-                  <p>&nbsp;</p>
+                  <span>
+                    <p>You are currently logged in. Where do you want to go?</p>
+                  </span>
                 }
-                <a onClick={e => this.logout(e)} href="/profile/">
-                    <div className="btn" id="login-btn">                       
-                        <p>{loggedIn}</p>
-                    </div>
-                </a> 
-                <br />
+               
+                
                 <nav className="navbar navbar-light">
                   <ul className="nav navbar-nav">
                     <li className="nav-item">
@@ -74,12 +77,34 @@ class Profile extends Component {
                     </li>
                   </ul>
                 </nav>
-                </span> :       
-                <a  href="/auth/github">
+                <p>Or:</p>
+                <div className="login-bar logout left">
+                <a onClick={e => this.logout(e)} href="">
                     <div className="btn" id="login-btn">                       
                         <p>{loggedIn}</p>
                     </div>
-                </a> }
+                 </a> 
+                </div>
+                </span> :
+                <div>
+                  <p>You need to be authenticated to access certain pages. Please log in through GitHub.</p>   
+                 
+                  <div className="login-bar left">    
+
+                    <a  href="/auth/github">
+                        <div className="btn" id="login-btn">     
+                            <p>{loggedIn}</p>
+                        </div>
+                    </a> 
+                  </div>
+                  <ul className="nav navbar-nav under-login">
+                    <li className="nav-item">
+                      Or: 
+                      <Link to={'/'}>Take Me Home</Link>
+                    </li>                   
+                  </ul>
+                </div>
+              }
 
             </div>
         )

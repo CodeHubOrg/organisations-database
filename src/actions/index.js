@@ -8,8 +8,8 @@ import * as types from '../constants/ActionTypes'
 import axios from 'axios'
 import { browserHistory } from 'react-router';
 
-const ROOT_URL = 'http://localhost:3000';
-
+// const ROOT_URL = 'http://localhost:3000';  for local development
+const ROOT_URL = 'https://resources.javascript101.co.uk';
 
 //Action creators
 export function selectItem(itemID){
@@ -75,6 +75,10 @@ export function loginUser(gitHubUser) {
           resp => {                  
             dispatch({ type: types.AUTH_USER })
             localStorage.setItem("authtoken", resp.data.token)
+            setTimeout(() => {
+              browserHistory.push('/')},
+              4000
+            )
             return resp.data 
           }).catch(() => {
             dispatch(authError('Login did not succeed'))

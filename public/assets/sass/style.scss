@@ -5,7 +5,7 @@ html {
   box-sizing: inherit;
 }
 
-body {
+body {    
 	margin: 20px;
     font-family: "Neue Helvetica", arial, sans-serif;
     line-height: 1.5em;
@@ -257,3 +257,31 @@ body {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
+
+
+/*
+-----------------
+------ LOGIN ----
+-----------------
+*/
+
+
+.login-bar {
+    border: 2px solid #999;
+    border-radius: 8px;
+    width: 120px;
+    position: absolute;
+    right: 40px;
+    background: url('/assets/img/GitHub-Mark-32px.png') no-repeat 80px;
+    &.left {
+        left: 30px;
+    }
+    &.logout {
+        background: #eee;
+    }
+}
+
+.under-login {
+    margin-top: 80px;
+}
+
