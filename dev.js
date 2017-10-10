@@ -16,7 +16,7 @@ const port = 3000;
 const compiler = webpack(config)
 app.use(express.static(path.join(__dirname + '/public')));
 
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: '/public' }))
 app.use(webpackHotMiddleware(compiler));
 
 app.use(routes);

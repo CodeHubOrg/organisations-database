@@ -12,7 +12,16 @@ var cssProd = ExtractTextPlugin.extract({
 })
 var cssConfig = isProd ? cssProd : cssDev
 
-console.log(cssConfig, isProd);
+var entry = isProd ?
+  { entry: './src/index.js' } :
+  { entry: [
+    'webpack-hot-middleware/client',
+    './src/index.js'
+  ] }
+
+var publ = (!isProd || process.env.HMR) ? '/public' : '/'
+
+console.log("public path", publ)
 
 var pluginsCommon = [
   new webpack.HotModuleReplacementPlugin(),
@@ -21,7 +30,6 @@ var pluginsCommon = [
      'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
   })
 ]
-
 var pluginsProd =  [ new HtmlWebpackPlugin({
       title: 'JavaScript tools and resources',
       minify: {
@@ -36,19 +44,17 @@ var pluginsProd =  [ new HtmlWebpackPlugin({
       allChunks: true
     })
 ]
+var plugins =  isProd ? pluginsCommon.concat(pluginsProd) : pluginsCommon;
+
 
 module.exports = {
-  entry: [
-    'webpack-hot-middleware/client',
-    './src/index.js'
-  ],
+  entry,
   output: {
     path: path.join(__dirname,'public'),
-    publicPath: '/',
+    publicPath: publ,
     filename: 'bundle.js'
   },
-
-  plugins: isProd ? pluginsCommon.concat(pluginsProd) : pluginsCommon,
+  plugins: plugins,
   module: {
     rules: [
       {
