@@ -274,7 +274,7 @@ body {
     right: 40px;
     background: url('/assets/img/GitHub-Mark-32px.png') no-repeat 80px;
     &.left {
-        left: 30px;
+        position: static;
     }
     &.logout {
         background: #eee;
