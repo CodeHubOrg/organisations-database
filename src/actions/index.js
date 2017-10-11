@@ -8,8 +8,8 @@ import * as types from '../constants/ActionTypes'
 import axios from 'axios'
 import { browserHistory } from 'react-router';
 
-// const ROOT_URL = 'http://localhost:3000';  for local development
-const ROOT_URL = 'https://resources.javascript101.co.uk';
+const ROOT_URL = 'http://localhost:3000';
+
 
 //Action creators
 export function selectItem(itemID){
