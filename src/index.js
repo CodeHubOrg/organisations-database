@@ -33,8 +33,13 @@ fetch('/api/items').then((response) => {
     return response.json()
   }).then((json) => {
     let initialState = {'items': json}
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-    let store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(reduxThunk, reduxPromise)))
+
+    // if you want to use the Redux web dev tools in Chrome, replace the the line starting with
+    // "let store = ..." by the following commented lines
+    // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    // let store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(reduxThunk, reduxPromise)))
+
+    let store = createStore(rootReducer, initialState, applyMiddleware(reduxThunk, reduxPromise))
 
     const token = localStorage.getItem("authtoken")
 
