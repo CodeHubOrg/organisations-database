@@ -19,6 +19,11 @@ The app is by now mostly written in ES2015.
 
 * You'll need a recent copy of node from: https://nodejs.org/
 * Run: `npm install` to install dependencies.
+
+Currently there are two different build processes in place, one for building the app, so you can afterwards run it in dev mod with hot module replacement working, and one for building the app to run in production. (There is probably a better way of configuring webpack, so you would not need to different steps, but for the moment I am glad HMR is working at all!)
+
+To enable HMR, 
+* Run: `npm run buildHMR`, then 
 * Run: `npm run dev` to run the app and view it on http://localhost:3000
 
 For running in production mode:
@@ -26,13 +31,13 @@ For running in production mode:
 * Run: `npm run start` to run the app and view it on http://localhost:8080
 
 Help:
-- The app is currently very similar to the todomvc example: https://github.com/reactjs/redux/tree/master/examples/todomvc
+- The app was originally based on the todomvc example: https://github.com/reactjs/redux/tree/master/examples/todomvc
 
 **Contributors**
 
 Too many to name individually, but key contributers include:    
 Katja Durrani & Gicela Morales (organisers of CodeHub)      
-Paul Grimshaw (founder of this project in its original form: Items Database)     
+Paul Grimshaw (founder of this project in its original form: Items Database)   
 Michael Gray (initiator of backend using lokiJS)    
 Dave Thomson (initiator of frontend using React and Redux)  
 Anne Kotecha (continuing React and Redux work on frontend)  
