@@ -33,7 +33,7 @@ module.exports = function(router){
             // console.log("token", tokenForUser(req.user));
             const token = tokenForUser(user.id)
 
-            User.sync({force: true}).then(() => {
+            User.sync().then(() => {
               return User.findOrCreate(
               { where: {
                   github_id: user.id
