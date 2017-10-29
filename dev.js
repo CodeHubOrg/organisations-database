@@ -8,7 +8,6 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './webpack.config';
 import routes from './routes';
-import auth from './auth';
 
 const app = express();
 const port = 3000;
@@ -20,7 +19,6 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: '/public' }))
 app.use(webpackHotMiddleware(compiler));
 
 app.use(routes);
-
 
 app.listen(port, function(error) {
   if (error) {

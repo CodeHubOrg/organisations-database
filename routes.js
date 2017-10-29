@@ -1,6 +1,7 @@
 import { express, Router } from 'express';
 import path from 'path';
 import auth from './auth';
+import authJWT from './auth/authJWT';
 import passport from 'passport';
 import bodyParser from 'body-parser';
 import api from './backend/api';
@@ -21,30 +22,11 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.use(bodyParser.json());
 router.use(urlencodedParser);
 
+// use passport GitHub and JWT strategies
 auth(router)
+authJWT(router)
 
-const jwtOptions = {
-    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-    secretOrKey: config.secret
-}
-
-const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
-    User.sync().then(() => {
-      return User.findOne({ where: { github_id: payload.sub } })
-      .then(user => { 
-        if(user) {
-          return done(null, user) 
-        } else {
-          return done(null, false)
-        }
-      })
-      .catch((err) => {done(err, false)})
-    })
-  })
-  passport.use(jwtLogin)
-
-  const requireAuth = passport.authenticate("jwt",{ session: false })
-
+const requireAuth = passport.authenticate("jwt",{ session: false })
 
 // return all resources
 router.get("/api/items", function(req, res){
