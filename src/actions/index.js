@@ -92,15 +92,6 @@ export function logoutUser() {
     return { type: types.UNAUTH_USER }
 }
 
-
-export function authUser(){
-  return {
-    type: types.AUTH_USER
-  }
-}
-
-
-
 export function unauthUser(){
   return {
     type: types.UNAUTH_USER
@@ -113,7 +104,6 @@ export function authError(error) {
         error: error
     }
 }
-
 
 export function deleteItem(itemID){
   return{
