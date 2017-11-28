@@ -52,18 +52,19 @@ module.exports = function(router){
             })       
           })
         }
-      ));
+      )
+    );
 
-      //OAuth authentication route
-      router.get("/auth/github", passport.authenticate("github"));
-      
-      router.get("/login", 
-      passport.authenticate("github", { session: false, failureRedirect: "/" }), 
-        function(req, res) {
-            const user = req.user
-            res.redirect("/profile/"+user.github_id)
-            // res.json({"authtoken": user.token})
-      })
+    //OAuth authentication route
+    router.get("/auth/github", passport.authenticate("github"));
+    
+    router.get("/login", 
+    passport.authenticate("github", { session: false, failureRedirect: "/" }), 
+      function(req, res) {
+          const user = req.user
+          res.redirect(`/appauth/login/access-token=${user.token}`)
+          // res.json({"authtoken": user.token})
+    })
 
       router.get("/checkUser/:id", function(req, res){
         User.sync().then(() => {

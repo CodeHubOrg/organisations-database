@@ -9,6 +9,7 @@ import { Router, Route, browserHistory } from 'react-router'
 import App from './components/routes/app/App'
 import Admin from './components/routes/admin/Admin'
 import ItemEdit from './components/routes/itemEdit/ItemEdit'
+import Login from './components/routes/auth/Login.js'
 import Profile from './components/routes/auth/Profile'
 import rootReducer from './reducers'
 import '../public/assets/sass/bootstrap.scss'
@@ -22,7 +23,8 @@ const routes = [
     { path: '/new', component: RequireAuth(ItemEdit) },
     { path: '/edit/:id', component: RequireAuth(ItemEdit)},
     { path: '/profile', component: Profile },
-    { path: '/profile/:id', component: Profile }
+    { path: '/profile/:id', component: Profile },
+    { path: '/appauth/login/:credentials', component: Login }
 ]
 
 fetch('/api/items').then((response) => {

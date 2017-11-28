@@ -86,6 +86,11 @@ export function loginUser(gitHubUser) {
     }
 }
 
+export function loginUserToken(token) {
+  localStorage.setItem("authtoken", token);
+  return authUser();
+}
+
 export function logoutUser() {
     localStorage.removeItem("authtoken");
 
