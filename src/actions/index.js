@@ -103,6 +103,12 @@ export function unauthUser(){
   }  
 }
 
+export function authUser(){
+  return {
+    type: types.AUTH_USER
+  }  
+}
+
 export function authError(error) {
     return {
         type: types.AUTH_ERROR,
